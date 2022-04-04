@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">ExchangeRates</string>
+    <string name="app_name">Обмен валют</string>
+
+    <!--  Main Activity  -->
+    <string name="main_search_title">Параметры поиска</string>
+    <string name="main_search_from">Отдаем</string>
+    <string name="main_search_to">Получаем</string>
+    <string name="main_search_value_from">Нужно обменять</string>
+    <string name="main_search_value_to">Нужно получить</string>
+    <string name="main_search_calc_commissions">Учитывать комиссии</string>
 </resources>
