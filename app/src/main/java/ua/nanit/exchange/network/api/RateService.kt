@@ -1,4 +1,4 @@
-package ua.nanit.exchange.api
+package ua.nanit.exchange.network.api
 
 import retrofit2.Call
 import retrofit2.http.GET

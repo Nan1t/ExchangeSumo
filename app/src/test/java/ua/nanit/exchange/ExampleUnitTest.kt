@@ -2,8 +2,8 @@ package ua.nanit.exchange
 
 import org.junit.Test
 
-import org.junit.Assert.*
-import ua.nanit.exchange.api.ApiClient
+import ua.nanit.exchange.network.api.ApiClient
+import ua.nanit.exchange.network.CurrencyParser
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -21,5 +21,10 @@ class ExampleUnitTest {
         println("Raw: ${resp.raw()}")
         println("ErrorBody: ${resp.errorBody()}")
         println("Body: ${resp.body()}")
+    }
+
+    @Test
+    fun testLoadingCurrency() {
+        CurrencyParser.parse()
     }
 }
