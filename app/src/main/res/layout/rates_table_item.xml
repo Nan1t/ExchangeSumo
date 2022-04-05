@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/table_item_root"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/lighter">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="60">
+        android:layout_weight="50">
 
         <TextView
             style="@style/TableText.Title"
             android:id="@+id/item_organization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Organization name"/>
+            tools:text="Organization name"/>
 
         <TextView
             style="@style/TableText.Subtitle"
             android:id="@+id/item_fund"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fund: 9999999"/>
+            tools:text="Fund: 9999999"/>
 
         <TextView
             style="@style/TableText.Subtitle"
             android:id="@+id/item_amount_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From: 100"/>
+            tools:text="From: 100"/>
 
     </LinearLayout>
 
@@ -39,17 +43,17 @@
         android:id="@+id/item_amount_give"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="20"
+        android:layout_weight="25"
         android:gravity="center"
-        android:text="999999"/>
+        tools:text="999999"/>
 
     <TextView
         style="@style/TableText"
         android:id="@+id/item_amount_get"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="20"
+        android:layout_weight="25"
         android:gravity="center"
-        android:text="999999"/>
+        tools:text="999999"/>
 
 </LinearLayout>

@@ -2,8 +2,7 @@ package ua.nanit.exchange
 
 import org.junit.Test
 
-import ua.nanit.exchange.network.api.ApiClient
-import ua.nanit.exchange.network.CurrencyParser
+import ua.nanit.exchange.webservice.ApiClient
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -14,7 +13,7 @@ class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
-        val req = ApiClient.rateService.getRates("p24uah", "pmusd", 10)
+        val req = ApiClient.rateService.getRates("p24uah", "pmusd")
         val resp = req.execute()
 
         println("Success: ${resp.isSuccessful}")
@@ -25,6 +24,6 @@ class ExampleUnitTest {
 
     @Test
     fun testLoadingCurrency() {
-        CurrencyParser.parse()
+
     }
 }

@@ -1,15 +1,17 @@
-package ua.nanit.exchange.network
+package ua.nanit.exchange.currency
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
-import ua.nanit.exchange.data.Currency
+import ua.nanit.exchange.data.parsed.Currency
 import java.util.*
 
-object CurrencyParser {
+class ParsedCurrencyProvider : CurrencyProvider {
 
-    private const val WM_URL = "https://kurs.com.ua/wm"
+    companion object {
+        private const val WM_URL = "https://kurs.com.ua/wm"
+    }
 
-    fun parse(): List<Currency> {
+    override fun getCurrencies(): List<Currency> {
         val doc = Jsoup.connect(WM_URL).get()
         val elements = doc.select(".valuta-list ul li[data-role=currency]")
         val currencies = LinkedList<Currency>()
@@ -30,5 +32,4 @@ object CurrencyParser {
 
         return Currency(id, symbol, caption, "https:$imgUrl")
     }
-
 }

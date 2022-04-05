@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Обмен валют</string>
+    <string name="app_name">Обменики валют</string>
 
     <!--  Main Activity  -->
+    <string name="main_table_head_org">Обменник</string>
+    <string name="main_table_head_give">Отдаете</string>
+    <string name="main_table_head_get">Получаете</string>
     <string name="main_search_title">Параметры поиска</string>
     <string name="main_search_from">Отдаем</string>
     <string name="main_search_to">Получаем</string>

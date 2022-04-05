@@ -1,4 +1,4 @@
-package ua.nanit.exchange.data
+package ua.nanit.exchange.data.parsed
 
 data class RateValues(val values: Values) {
 
