@@ -7,7 +7,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "ua.nanit.exchange"
+        applicationId "ua.nanit.extop"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -37,8 +37,9 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.14.3'
 
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

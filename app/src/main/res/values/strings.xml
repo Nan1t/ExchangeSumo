@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Обменики валют</string>
 
-    <!--  Main Activity  -->
-    <string name="main_table_head_org">Обменник</string>
-    <string name="main_table_head_give">Отдаете</string>
-    <string name="main_table_head_get">Получаете</string>
-    <string name="main_search_title">Параметры поиска</string>
-    <string name="main_search_from">Отдаем</string>
-    <string name="main_search_to">Получаем</string>
-    <string name="main_search_value_from">Нужно обменять</string>
-    <string name="main_search_value_to">Нужно получить</string>
-    <string name="main_search_calc_commissions">Учитывать комиссии</string>
+    <!--  Rates Activity  -->
+    <string name="rates_table_head_org">Обменник</string>
+    <string name="rates_table_head_in">Отдаете</string>
+    <string name="rates_table_head_out">Получаете</string>
+    <string name="rates_search_title">Параметры поиска</string>
+    <string name="rates_search_from">Отдаем</string>
+    <string name="rates_search_to">Получаем</string>
+    <string name="rates_search_value_from">Нужно обменять</string>
+    <string name="rates_search_value_to">Нужно получить</string>
+    <string name="rates_search_calc_commissions">Учитывать комиссии</string>
 </resources>
