@@ -1,0 +1,1194 @@
+{
+  "categories": [
+    {
+      "name": "Электронные валюты",
+      "currency": [
+        {
+          "id": "QIWI RUB",
+          "num_id": "91",
+          "slug": "QIWIRUR"
+        },
+        {
+          "id": "QIWI KZT",
+          "num_id": "208",
+          "slug": "QWKZT"
+        },
+        {
+          "id": "ЮMoney (Я.Деньги)",
+          "num_id": "10",
+          "slug": "YAMRUB"
+        },
+        {
+          "id": "WMZ",
+          "num_id": "1",
+          "slug": "WMZ"
+        },
+        {
+          "id": "WMR",
+          "num_id": "2",
+          "slug": "WMR"
+        },
+        {
+          "id": "WME",
+          "num_id": "3",
+          "slug": "WME"
+        },
+        {
+          "id": "WMU",
+          "num_id": "6",
+          "slug": "WMU"
+        },
+        {
+          "id": "WMB",
+          "num_id": "4",
+          "slug": "WMB"
+        },
+        {
+          "id": "WMY",
+          "num_id": "7",
+          "slug": "WMY"
+        },
+        {
+          "id": "WMK",
+          "num_id": "172",
+          "slug": "WMK"
+        },
+        {
+          "id": "WMG",
+          "num_id": "5",
+          "slug": "WMG"
+        },
+        {
+          "id": "WMX",
+          "num_id": "110",
+          "slug": "WMX"
+        },
+        {
+          "id": "Paymer RUB",
+          "num_id": "252",
+          "slug": "PMRRUB"
+        },
+        {
+          "id": "Paymer USD",
+          "num_id": "215",
+          "slug": "PMRUSD"
+        },
+        {
+          "id": "Paymer UAH",
+          "num_id": "263",
+          "slug": "PMRUAH"
+        },
+        {
+          "id": "Perfect Money USD",
+          "num_id": "48",
+          "slug": "PMUSD"
+        },
+        {
+          "id": "Perfect Money EUR",
+          "num_id": "49",
+          "slug": "PMEUR"
+        },
+        {
+          "id": "Perfect Money BTC",
+          "num_id": "145",
+          "slug": "PMBTC"
+        },
+        {
+          "id": "PM e-Voucher USD",
+          "num_id": "159",
+          "slug": "PMVUSD"
+        },
+        {
+          "id": "AdvCash USD",
+          "num_id": "173",
+          "slug": "ADVCUSD"
+        },
+        {
+          "id": "AdvCash RUB",
+          "num_id": "174",
+          "slug": "ADVCRUB"
+        },
+        {
+          "id": "AdvCash UAH",
+          "num_id": "243",
+          "slug": "ADVCUAH"
+        },
+        {
+          "id": "AdvCash EUR",
+          "num_id": "175",
+          "slug": "ADVCEUR"
+        },
+        {
+          "id": "AdvCash KZT",
+          "num_id": "303",
+          "slug": "ADVCKZT"
+        },
+        {
+          "id": "Payeer USD",
+          "num_id": "130",
+          "slug": "PRUSD"
+        },
+        {
+          "id": "Payeer RUB",
+          "num_id": "167",
+          "slug": "PRRUB"
+        },
+        {
+          "id": "Payeer EUR",
+          "num_id": "168",
+          "slug": "PREUR"
+        },
+        {
+          "id": "Capitalist USD",
+          "num_id": "200",
+          "slug": "CPTSUSD"
+        },
+        {
+          "id": "Capitalist RUB",
+          "num_id": "202",
+          "slug": "CPTSRUB"
+        },
+        {
+          "id": "PayPal USD",
+          "num_id": "33",
+          "slug": "PPUSD"
+        },
+        {
+          "id": "PayPal EUR",
+          "num_id": "31",
+          "slug": "PPEUR"
+        },
+        {
+          "id": "PayPal RUB",
+          "num_id": "111",
+          "slug": "PPRUB"
+        },
+        {
+          "id": "PayPal GBP",
+          "num_id": "123",
+          "slug": "PPGBP"
+        },
+        {
+          "id": "PayPal CAD",
+          "num_id": "124",
+          "slug": "PPCAD"
+        },
+        {
+          "id": "PayPal AUD",
+          "num_id": "125",
+          "slug": "PPAUD"
+        },
+        {
+          "id": "Skrill USD",
+          "num_id": "25",
+          "slug": "Skrill"
+        },
+        {
+          "id": "Skrill EUR",
+          "num_id": "160",
+          "slug": "SKLEUR"
+        },
+        {
+          "id": "W1 USD",
+          "num_id": "42",
+          "slug": "WOUSD"
+        },
+        {
+          "id": "W1 RUB",
+          "num_id": "41",
+          "slug": "WORUB"
+        },
+        {
+          "id": "W1 UAH",
+          "num_id": "43",
+          "slug": "WOUAH"
+        },
+        {
+          "id": "Paxum USD",
+          "num_id": "103",
+          "slug": "PXMUSD"
+        },
+        {
+          "id": "Paxum EUR",
+          "num_id": "136",
+          "slug": "PXMEUR"
+        },
+        {
+          "id": "EKZT",
+          "num_id": "277",
+          "slug": "EKZT"
+        },
+        {
+          "id": "Epay USD",
+          "num_id": "214",
+          "slug": "EPAYUSD"
+        },
+        {
+          "id": "Epay EUR",
+          "num_id": "240",
+          "slug": "EPAYEUR"
+        },
+        {
+          "id": "Epayments USD",
+          "num_id": "113",
+          "slug": "EPMUSD"
+        },
+        {
+          "id": "Epayments EUR",
+          "num_id": "286",
+          "slug": "EPMEUR"
+        },
+        {
+          "id": "STrustPay USD",
+          "num_id": "101",
+          "slug": "STPUSD"
+        },
+        {
+          "id": "Alipay CNY",
+          "num_id": "217",
+          "slug": "ALPCNY"
+        },
+        {
+          "id": "Global Money UAH",
+          "num_id": "274",
+          "slug": "GMUAH"
+        },
+        {
+          "id": "Idram AMD",
+          "num_id": "278",
+          "slug": "EDram"
+        },
+        {
+          "id": "InstaForex USD",
+          "num_id": "275",
+          "slug": "INFXUSD"
+        },
+        {
+          "id": "NixMoney USD",
+          "num_id": "142",
+          "slug": "NixMoney"
+        },
+        {
+          "id": "NixMoney EUR",
+          "num_id": "157",
+          "slug": "NIXEUR"
+        },
+        {
+          "id": "NixMoney BTC",
+          "num_id": "247",
+          "slug": "NIXBTC"
+        },
+        {
+          "id": "Neteller USD",
+          "num_id": "176",
+          "slug": "NTLRUSD"
+        },
+        {
+          "id": "Neteller EUR",
+          "num_id": "177",
+          "slug": "NTLREUR"
+        },
+        {
+          "id": "PaySera USD",
+          "num_id": "227",
+          "slug": "PSRUSD"
+        },
+        {
+          "id": "PaySera EUR",
+          "num_id": "228",
+          "slug": "PSREUR"
+        },
+        {
+          "id": "FasaPay USD",
+          "num_id": "272",
+          "slug": "FPUSD"
+        },
+        {
+          "id": "FasaPay IDR",
+          "num_id": "282",
+          "slug": "FPIDR"
+        },
+        {
+          "id": "EcoPayz RUB",
+          "num_id": "285",
+          "slug": "ECOPAYZRUB"
+        },
+        {
+          "id": "EcoPayz USD",
+          "num_id": "283",
+          "slug": "ECOPAYZUSD"
+        },
+        {
+          "id": "EcoPayz EUR",
+          "num_id": "284",
+          "slug": "ECOPAYZEUR"
+        },
+        {
+          "id": "WeChat CNY",
+          "num_id": "218",
+          "slug": "WCTCNY"
+        }
+      ]
+    },
+    {
+      "name": "Наличные",
+      "currency": [
+        {
+          "id": "Наличные USD",
+          "num_id": "72",
+          "slug": "CashUSD"
+        },
+        {
+          "id": "Наличные RUB",
+          "num_id": "74",
+          "slug": "CashRUB"
+        },
+        {
+          "id": "Наличные EUR",
+          "num_id": "73",
+          "slug": "CashEUR"
+        },
+        {
+          "id": "Наличные UAH",
+          "num_id": "115",
+          "slug": "CashUAH"
+        },
+        {
+          "id": "Наличные KZT",
+          "num_id": "242",
+          "slug": "CASHKZT"
+        },
+        {
+          "id": "Альфа-Банк CASH-IN RUB",
+          "num_id": "220",
+          "slug": "ACCRUB"
+        },
+        {
+          "id": "Альфа-Банк CASH-IN USD",
+          "num_id": "219",
+          "slug": "ACCUSD"
+        },
+        {
+          "id": "Альфа-Банк CASH-IN EUR",
+          "num_id": "221",
+          "slug": "ACCEUR"
+        },
+        {
+          "id": "Tinkoff cash-in RUB",
+          "num_id": "311",
+          "slug": "TCSBCRUB"
+        }
+      ]
+    },
+    {
+      "name": "Интернет-банкинг",
+      "currency": [
+        {
+          "id": "Сбербанк RUB",
+          "num_id": "90",
+          "slug": "SBRFRUB"
+        },
+        {
+          "id": "Сбербанк KZT",
+          "num_id": "206",
+          "slug": "SBERKZT"
+        },
+        {
+          "id": "Сбербанк UAH",
+          "num_id": "250",
+          "slug": "SBERUAH"
+        },
+        {
+          "id": "Альфа Банк RUB",
+          "num_id": "78",
+          "slug": "ACRUB"
+        },
+        {
+          "id": "Альфа Банк UAH",
+          "num_id": "182",
+          "slug": "ACUAH"
+        },
+        {
+          "id": "Тинькофф",
+          "num_id": "137",
+          "slug": "TKS"
+        },
+        {
+          "id": "Приват24 UAH",
+          "num_id": "81",
+          "slug": "P24UAH"
+        },
+        {
+          "id": "Приват24 USD",
+          "num_id": "80",
+          "slug": "P24USD"
+        },
+        {
+          "id": "Monobank UAH",
+          "num_id": "266",
+          "slug": "MONOBUAH"
+        },
+        {
+          "id": "Ощадбанк",
+          "num_id": "151",
+          "slug": "OSHBUAH"
+        },
+        {
+          "id": "Телебанк ВТБ24",
+          "num_id": "77",
+          "slug": "TBRUB"
+        },
+        {
+          "id": "Газпромбанк",
+          "num_id": "178",
+          "slug": "GPBRUB"
+        },
+        {
+          "id": "Беларусбанк BYN",
+          "num_id": "244",
+          "slug": "BLRBBYN"
+        },
+        {
+          "id": "Райффайзен RUB",
+          "num_id": "92",
+          "slug": "RFBRUB"
+        },
+        {
+          "id": "Райффайзен UAH",
+          "num_id": "155",
+          "slug": "RFBUAH"
+        },
+        {
+          "id": "Kaspi Bank KZT",
+          "num_id": "226",
+          "slug": "KSPBKZT"
+        },
+        {
+          "id": "Jysan Bank KZT",
+          "num_id": "334",
+          "slug": "JSNBKZT"
+        },
+        {
+          "id": "Русский Стандарт",
+          "num_id": "95",
+          "slug": "RUSSTRUB"
+        },
+        {
+          "id": "Авангард",
+          "num_id": "94",
+          "slug": "AVBRUB"
+        },
+        {
+          "id": "Почта Банк",
+          "num_id": "287",
+          "slug": "POSTBRUB"
+        },
+        {
+          "id": "Промсвязьбанк",
+          "num_id": "79",
+          "slug": "PSBRUB"
+        },
+        {
+          "id": "Открытие",
+          "num_id": "143",
+          "slug": "OPENBANK"
+        },
+        {
+          "id": "Кукуруза",
+          "num_id": "150",
+          "slug": "KUKRUB"
+        },
+        {
+          "id": "Казкоммерцбанк",
+          "num_id": "121",
+          "slug": "KKBKZT"
+        },
+        {
+          "id": "HalykBank",
+          "num_id": "144",
+          "slug": "HALYKBANK"
+        },
+        {
+          "id": "ForteBank KZT",
+          "num_id": "207",
+          "slug": "FRTBKZT"
+        },
+        {
+          "id": "ПУМБ UAH",
+          "num_id": "146",
+          "slug": "PUMBUAH"
+        },
+        {
+          "id": "ОТП Банк RUB",
+          "num_id": "271",
+          "slug": "OTPBRUB"
+        },
+        {
+          "id": "ОТП Банк UAH",
+          "num_id": "270",
+          "slug": "OTPBUAH"
+        },
+        {
+          "id": "Universal Bank",
+          "num_id": "158",
+          "slug": "UNVBUAH"
+        },
+        {
+          "id": "Homecredit",
+          "num_id": "152",
+          "slug": "HCBRUB"
+        },
+        {
+          "id": "UniCredit RUB",
+          "num_id": "153",
+          "slug": "UNCBRUB"
+        },
+        {
+          "id": "UniCredit UAH",
+          "num_id": "154",
+          "slug": "UNCBUAH"
+        },
+        {
+          "id": "UkrSibBank UAH",
+          "num_id": "129",
+          "slug": "USBUAH"
+        },
+        {
+          "id": "АТФ Банк KZT",
+          "num_id": "276",
+          "slug": "ATFBKZT"
+        },
+        {
+          "id": "Евразийский Банк KZT",
+          "num_id": "280",
+          "slug": "EURBKZT"
+        },
+        {
+          "id": "МИР",
+          "num_id": "295",
+          "slug": "MIRCRUB"
+        },
+        {
+          "id": "Trust",
+          "num_id": "93",
+          "slug": "TRBRUB"
+        },
+        {
+          "id": "РНКБ",
+          "num_id": "183",
+          "slug": "RNKBRUB"
+        },
+        {
+          "id": "МТС Банк",
+          "num_id": "305",
+          "slug": "MTSBRUB"
+        },
+        {
+          "id": "Ак Барс Банк RUB",
+          "num_id": "273",
+          "slug": "AKBBRUB"
+        },
+        {
+          "id": "Связной банк",
+          "num_id": "96",
+          "slug": "SVBRUB"
+        },
+        {
+          "id": "Россельхозбанк",
+          "num_id": "304",
+          "slug": "RSHBRUB"
+        },
+        {
+          "id": "Карты UZCARD",
+          "num_id": "302",
+          "slug": "UZCUZS"
+        },
+        {
+          "id": "Visa/Master UAH",
+          "num_id": "76",
+          "slug": "CardUAH"
+        },
+        {
+          "id": "Visa/Master RUB",
+          "num_id": "71",
+          "slug": "CardRUB"
+        },
+        {
+          "id": "Visa/Master USD",
+          "num_id": "69",
+          "slug": "CardUSD"
+        },
+        {
+          "id": "Visa/Master EUR",
+          "num_id": "70",
+          "slug": "CardEUR"
+        },
+        {
+          "id": "Visa/Master KZT",
+          "num_id": "210",
+          "slug": "CARDKZT"
+        },
+        {
+          "id": "Visa/Master BYN",
+          "num_id": "245",
+          "slug": "CARDBYN"
+        },
+        {
+          "id": "Visa/Master AMD",
+          "num_id": "279",
+          "slug": "CARDAMD"
+        },
+        {
+          "id": "Visa/Master THB",
+          "num_id": "260",
+          "slug": "CARDTHB"
+        },
+        {
+          "id": "Visa/Master MDL",
+          "num_id": "318",
+          "slug": "CARDMDL"
+        },
+        {
+          "id": "Unionpay",
+          "num_id": "122",
+          "slug": "UNPCNY"
+        },
+        {
+          "id": "Счет в банке для ИП или Юр. лиц",
+          "num_id": "235",
+          "slug": "STLMRUB"
+        },
+        {
+          "id": "Перевод UAH",
+          "num_id": "116",
+          "slug": "WIREUAH"
+        },
+        {
+          "id": "Перевод USD",
+          "num_id": "66",
+          "slug": "WireUSD"
+        },
+        {
+          "id": "Перевод RUB",
+          "num_id": "68",
+          "slug": "WireRUB"
+        },
+        {
+          "id": "Перевод EUR",
+          "num_id": "67",
+          "slug": "WireEUR"
+        },
+        {
+          "id": "Перевод KZT",
+          "num_id": "269",
+          "slug": "WIREKZT"
+        },
+        {
+          "id": "Перевод GBP",
+          "num_id": "126",
+          "slug": "WIREGBP"
+        },
+        {
+          "id": "Перевод CNY",
+          "num_id": "216",
+          "slug": "WIRECNY"
+        },
+        {
+          "id": "Перевод THB",
+          "num_id": "246",
+          "slug": "WIRETHB"
+        },
+        {
+          "id": "Перевод JPY",
+          "num_id": "229",
+          "slug": "WIREJPY"
+        },
+        {
+          "id": "Tinkoff Qr-коды RUB",
+          "num_id": "312",
+          "slug": "TCSBQRUB"
+        },
+        {
+          "id": "Перевод PLN",
+          "num_id": "314",
+          "slug": "WIREPLN"
+        },
+        {
+          "id": "Росбанк",
+          "num_id": "317",
+          "slug": "ROSBRUB"
+        }
+      ]
+    },
+    {
+      "name": "Денежные переводы",
+      "currency": [
+        {
+          "id": "Western USD",
+          "num_id": "87",
+          "slug": "WUUSD"
+        },
+        {
+          "id": "Western RUB",
+          "num_id": "88",
+          "slug": "WURUB"
+        },
+        {
+          "id": "Western EUR",
+          "num_id": "149",
+          "slug": "WUEUR"
+        },
+        {
+          "id": "Moneygram USD",
+          "num_id": "89",
+          "slug": "MGUSD"
+        },
+        {
+          "id": "Moneygram EUR",
+          "num_id": "107",
+          "slug": "MGEUR"
+        },
+        {
+          "id": "SEPA EUR",
+          "num_id": "222",
+          "slug": "SEPAEUR"
+        },
+        {
+          "id": "SEPA USD",
+          "num_id": "267",
+          "slug": "SEPAUSD"
+        },
+        {
+          "id": "Contact RUB",
+          "num_id": "127",
+          "slug": "CNTRUB"
+        },
+        {
+          "id": "Contact USD",
+          "num_id": "131",
+          "slug": "CNTUSD"
+        },
+        {
+          "id": "Contact EUR",
+          "num_id": "165",
+          "slug": "CNTEUR"
+        },
+        {
+          "id": "Корона USD",
+          "num_id": "148",
+          "slug": "GCMTUSD"
+        },
+        {
+          "id": "Корона RUB",
+          "num_id": "147",
+          "slug": "GCMTRUB"
+        },
+        {
+          "id": "Sigue USD",
+          "num_id": "253",
+          "slug": "SGMTUSD"
+        },
+        {
+          "id": "Sigue EUR",
+          "num_id": "254",
+          "slug": "SGMTEUR"
+        },
+        {
+          "id": "Ria Financial USD",
+          "num_id": "255",
+          "slug": "RMTFUSD"
+        },
+        {
+          "id": "Ria Financial EUR",
+          "num_id": "256",
+          "slug": "RMTFEUR"
+        },
+        {
+          "id": "Unistream USD",
+          "num_id": "132",
+          "slug": "USTMUSD"
+        },
+        {
+          "id": "Unistream RUB",
+          "num_id": "133",
+          "slug": "USTMRUB"
+        },
+        {
+          "id": "Мобильная связь РФ",
+          "num_id": "197",
+          "slug": "MWRUB"
+        }
+      ]
+    },
+    {
+      "name": "Криптовалюты",
+      "currency": [
+        {
+          "id": "Bitcoin (BTC)",
+          "num_id": "140",
+          "slug": "BTC"
+        },
+        {
+          "id": "Bitcoin BEP20 (BTC)",
+          "num_id": "333",
+          "slug": "BTCBEP20"
+        },
+        {
+          "id": "Wrapped Bitcoin (WBTC)",
+          "num_id": "335",
+          "slug": "WBTC"
+        },
+        {
+          "id": "Ethereum (ETH)",
+          "num_id": "189",
+          "slug": "ETH"
+        },
+        {
+          "id": "Ethereum BEP20 (ETH)",
+          "num_id": "332",
+          "slug": "ETHBEP20"
+        },
+        {
+          "id": "Ethereum Classic (ETC)",
+          "num_id": "194",
+          "slug": "ETC"
+        },
+        {
+          "id": "Ripple (XRP)",
+          "num_id": "181",
+          "slug": "XRP"
+        },
+        {
+          "id": "Tether ERC20 (USDT)",
+          "num_id": "301",
+          "slug": "USDTERC"
+        },
+        {
+          "id": "Tether TRC20 (USDT)",
+          "num_id": "307",
+          "slug": "USDTTRC"
+        },
+        {
+          "id": "Tether BEP20 (USDT)",
+          "num_id": "327",
+          "slug": "USDTBEP20"
+        },
+        {
+          "id": "Tether Omni (USDT)",
+          "num_id": "195",
+          "slug": "USDT"
+        },
+        {
+          "id": "Bitcoin Cash (BCH)",
+          "num_id": "186",
+          "slug": "BCH"
+        },
+        {
+          "id": "Bitcoin SV (BSV)",
+          "num_id": "290",
+          "slug": "BSV"
+        },
+        {
+          "id": "Litecoin (LTC)",
+          "num_id": "109",
+          "slug": "LTC"
+        },
+        {
+          "id": "Binance Coin (BNB)",
+          "num_id": "251",
+          "slug": "BNB"
+        },
+        {
+          "id": "Binance Coin BEP20 (BNB)",
+          "num_id": "339",
+          "slug": "BNBBEP20"
+        },
+        {
+          "id": "USD Coin (USDC)",
+          "num_id": "292",
+          "slug": "USDC"
+        },
+        {
+          "id": "Cardano (ADA)",
+          "num_id": "238",
+          "slug": "ADA"
+        },
+        {
+          "id": "Tron (TRX)",
+          "num_id": "239",
+          "slug": "TRX"
+        },
+        {
+          "id": "Monero (XMR)",
+          "num_id": "196",
+          "slug": "XMR"
+        },
+        {
+          "id": "Stellar (XLM)",
+          "num_id": "236",
+          "slug": "XLM"
+        },
+        {
+          "id": "EOS (EOS)",
+          "num_id": "230",
+          "slug": "EOS"
+        },
+        {
+          "id": "DASH (DASH)",
+          "num_id": "191",
+          "slug": "DASH"
+        },
+        {
+          "id": "Dogecoin (DOGE)",
+          "num_id": "179",
+          "slug": "DGC"
+        },
+        {
+          "id": "Lisk (LSK)",
+          "num_id": "264",
+          "slug": "LSK"
+        },
+        {
+          "id": "Namecoin (NMC)",
+          "num_id": "261",
+          "slug": "NMC"
+        },
+        {
+          "id": "Qtum (QTUM)",
+          "num_id": "234",
+          "slug": "QTUM"
+        },
+        {
+          "id": "TrueUSD (TUSD)",
+          "num_id": "291",
+          "slug": "TUSD"
+        },
+        {
+          "id": "Verge (XVG)",
+          "num_id": "213",
+          "slug": "XVG"
+        },
+        {
+          "id": "WAVES (WAVES)",
+          "num_id": "249",
+          "slug": "WAVES"
+        },
+        {
+          "id": "Zcash (ZEC)",
+          "num_id": "192",
+          "slug": "ZEC"
+        },
+        {
+          "id": "NXT",
+          "num_id": "164",
+          "slug": "NXT"
+        },
+        {
+          "id": "Decred (DCR)",
+          "num_id": "248",
+          "slug": "DCR"
+        },
+        {
+          "id": "Gnosis (GNO)",
+          "num_id": "265",
+          "slug": "GNO"
+        },
+        {
+          "id": "IOTA (MIOTA)",
+          "num_id": "231",
+          "slug": "IOTA"
+        },
+        {
+          "id": "NEM (XEM)",
+          "num_id": "237",
+          "slug": "XEM"
+        },
+        {
+          "id": "Bitcoin Gold (BTG)",
+          "num_id": "258",
+          "slug": "BTG"
+        },
+        {
+          "id": "NEO (NEO)",
+          "num_id": "232",
+          "slug": "NEO"
+        },
+        {
+          "id": "OmiseGO (OMG)",
+          "num_id": "233",
+          "slug": "OMG"
+        },
+        {
+          "id": "Augur (REP)",
+          "num_id": "262",
+          "slug": "REP"
+        },
+        {
+          "id": "Peercoin (PPC)",
+          "num_id": "139",
+          "slug": "PPC"
+        },
+        {
+          "id": "VeChain (VET)",
+          "num_id": "257",
+          "slug": "VET"
+        },
+        {
+          "id": "Bytecoin (BCN)",
+          "num_id": "296",
+          "slug": "BCN"
+        },
+        {
+          "id": "Livecoin RUB",
+          "num_id": "281",
+          "slug": "LVCNRUB"
+        },
+        {
+          "id": "Livecoin USD",
+          "num_id": "193",
+          "slug": "LVCNUSD"
+        },
+        {
+          "id": "Pax Dollar (USDP)",
+          "num_id": "293",
+          "slug": "USDP"
+        },
+        {
+          "id": "DAI",
+          "num_id": "320",
+          "slug": "DAI"
+        },
+        {
+          "id": "0x (ZRX)",
+          "num_id": "294",
+          "slug": "ZRX"
+        },
+        {
+          "id": "Basic Attention Token (BAT)",
+          "num_id": "297",
+          "slug": "BAT"
+        },
+        {
+          "id": "Cosmos (ATOM)",
+          "num_id": "306",
+          "slug": "ATOM"
+        },
+        {
+          "id": "Chainlink (LINK)",
+          "num_id": "308",
+          "slug": "LINK"
+        },
+        {
+          "id": "Tezos (XTZ)",
+          "num_id": "309",
+          "slug": "XTZ"
+        },
+        {
+          "id": "BitTorrent (BTT)",
+          "num_id": "310",
+          "slug": "BTT"
+        },
+        {
+          "id": "Komodo (KMD)",
+          "num_id": "313",
+          "slug": "KMD"
+        },
+        {
+          "id": "ICON (ICX)",
+          "num_id": "315",
+          "slug": "ICX"
+        },
+        {
+          "id": "Ontology (ONT)",
+          "num_id": "316",
+          "slug": "ONT"
+        },
+        {
+          "id": "Polkadot (DOT)",
+          "num_id": "319",
+          "slug": "DOT"
+        },
+        {
+          "id": "Algorand (ALGO)",
+          "num_id": "321",
+          "slug": "ALGO"
+        },
+        {
+          "id": "Uniswap (UNI)",
+          "num_id": "322",
+          "slug": "UNI"
+        },
+        {
+          "id": "THETA",
+          "num_id": "323",
+          "slug": "THETA"
+        },
+        {
+          "id": "SushiSwap (SUSHI)",
+          "num_id": "324",
+          "slug": "SUSHI"
+        },
+        {
+          "id": "Binance USD (BUSD)",
+          "num_id": "325",
+          "slug": "BUSD"
+        },
+        {
+          "id": "Solana (SOL)",
+          "num_id": "326",
+          "slug": "SOL"
+        },
+        {
+          "id": "Ravecoin (RVN)",
+          "num_id": "328",
+          "slug": "RVN"
+        },
+        {
+          "id": "SHIBA INU (SHIB)",
+          "num_id": "329",
+          "slug": "SHIB"
+        },
+        {
+          "id": "Polygon (MATIC)",
+          "num_id": "330",
+          "slug": "MATIC"
+        },
+        {
+          "id": "Kusama (KSM)",
+          "num_id": "331",
+          "slug": "KSM"
+        },
+        {
+          "id": "Decentraland (MANA)",
+          "num_id": "336",
+          "slug": "Mana"
+        },
+        {
+          "id": "Avalanche (AVAX)",
+          "num_id": "337",
+          "slug": "AVAX"
+        },
+        {
+          "id": "Yearn.finance (YFI)",
+          "num_id": "338",
+          "slug": "YFI"
+        },
+        {
+          "id": "AAVE",
+          "num_id": "340",
+          "slug": "AAVE"
+        },
+        {
+          "id": "KAVA",
+          "num_id": "341",
+          "slug": "KAVA"
+        },
+        {
+          "id": "Terra (LUNA)",
+          "num_id": "342",
+          "slug": "LUNA"
+        }
+      ]
+    }
+  ]
+}

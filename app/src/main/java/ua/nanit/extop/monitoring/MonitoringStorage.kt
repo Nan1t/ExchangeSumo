@@ -1,6 +1,6 @@
 package ua.nanit.extop.monitoring
 
-interface LocalStorage {
+interface MonitoringStorage {
 
     fun getCurrencyIn(): String?
 
@@ -15,7 +15,7 @@ interface LocalStorage {
     fun saveCurrencies(curIn: String, curOut: String)
 
     interface Factory {
-        fun create(): LocalStorage
+        fun create(): MonitoringStorage
     }
 
 }

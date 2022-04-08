@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/table_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <TextView
+        android:id="@+id/item_organization"
+        style="@style/TableText.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Organization name" />
+
+    <TextView
+        style="@style/TableText.Subtitle"
+        android:id="@+id/item_fund_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_organization"
+        android:text="@string/rate_item_fund" />
+
+    <TextView
+        style="@style/TableText.Subtitle"
+        android:id="@+id/item_fund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/item_fund_text"
+        app:layout_constraintTop_toTopOf="@id/item_fund_text"
+        tools:text="9999999"/>
+
+    <TextView
+        android:id="@+id/item_amount_in"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_75"
+        app:layout_constraintStart_toStartOf="@+id/guideline_50"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="999999" />
+
+    <TextView
+        android:id="@+id/item_min_amount_text"
+        style="@style/TableText.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/item_amount_in"
+        app:layout_constraintEnd_toStartOf="@id/item_min_amount"
+        app:layout_constraintTop_toBottomOf="@id/item_amount_in"
+        android:text="@string/rate_item_from"  />
+
+    <TextView
+        android:id="@+id/item_min_amount"
+        style="@style/TableText.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_75"
+        app:layout_constraintStart_toEndOf="@+id/item_min_amount_text"
+        app:layout_constraintTop_toTopOf="@id/item_min_amount_text"
+        tools:text="9999" />
+
+    <TextView
+        android:id="@+id/item_amount_out"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_75"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="999999" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

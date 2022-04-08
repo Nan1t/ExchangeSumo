@@ -1,9 +1,9 @@
 package ua.nanit.extop.storage
 
 import android.content.SharedPreferences
-import ua.nanit.extop.monitoring.LocalStorage
+import ua.nanit.extop.monitoring.MonitoringStorage
 
-class LocalPrefsStorage(private val prefs: SharedPreferences) : LocalStorage {
+class MonitoringPrefsStorage(private val prefs: SharedPreferences) : MonitoringStorage {
 
     companion object {
         private const val KEY_CURRENCY_IN = "currency_in"

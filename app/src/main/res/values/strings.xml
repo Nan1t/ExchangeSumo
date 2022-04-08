@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">Обменики валют</string>
+    <string name="app_name">Exchangers Top</string>
 
-    <!--  Rates Activity  -->
-    <string name="rates_table_head_org">Обменник</string>
-    <string name="rates_table_head_in">Отдаете</string>
-    <string name="rates_table_head_out">Получаете</string>
-    <string name="rates_search_title">Параметры поиска</string>
-    <string name="rates_search_from">Отдаем</string>
-    <string name="rates_search_to">Получаем</string>
-    <string name="rates_search_value_from">Нужно обменять</string>
-    <string name="rates_search_value_to">Нужно получить</string>
-    <string name="rates_search_calc_commissions">Учитывать комиссии</string>
+    <!--  Navigation Menu  -->
+    <string name="nav_exchangers">Обменники</string>
+    <string name="nav_currencies">Валюты</string>
+    <string name="nav_settings">Настройки</string>
+
+    <!--  Rates Fragment  -->
+    <string name="rates_head_org">Обменник</string>
+    <string name="rates_head_in">Отдаете</string>
+    <string name="rates_head_out">Получаете</string>
+
+    <!--  Rate Item  -->
+    <string name="rate_item_fund">Резерв:\ </string>
+    <string name="rate_item_from">от\ </string>
 </resources>

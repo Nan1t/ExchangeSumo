@@ -1,16 +1,16 @@
 package ua.nanit.extop.storage
 
 import android.content.Context
-import ua.nanit.extop.monitoring.LocalStorage
+import ua.nanit.extop.monitoring.MonitoringStorage
 
-class LocalStorageFactory(
+class PrefsStorageFactory(
     private val ctx: Context,
     private val name: String
-) : LocalStorage.Factory {
+) : MonitoringStorage.Factory {
 
-    override fun create(): LocalStorage {
+    override fun create(): MonitoringStorage {
         val prefs = ctx.getSharedPreferences(name, Context.MODE_PRIVATE)
-        return LocalPrefsStorage(prefs)
+        return MonitoringPrefsStorage(prefs)
     }
 
 }

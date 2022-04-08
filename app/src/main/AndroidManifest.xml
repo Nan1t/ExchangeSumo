@@ -8,13 +8,12 @@
     <application
         android:name="ua.nanit.extop.App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_baseline_check"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_baseline_check"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExchangeRates">
         <activity
-            android:name="ua.nanit.extop.ui.rates.RatesActivity"
+            android:name="ua.nanit.extop.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
