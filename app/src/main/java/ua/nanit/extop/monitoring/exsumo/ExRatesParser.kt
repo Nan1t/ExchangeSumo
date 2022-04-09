@@ -33,8 +33,8 @@ class ExRatesParser {
                 name,
                 amountIn?.toFloat() ?: 0F,
                 amountOut?.toFloat() ?: 0F,
-                minAmount?.substring(3)?.toFloat() ?: 0F,
-                fund?.replace(" ", "")?.toFloat() ?: 0F,
+                minAmount?.substring(3)?.toInt() ?: 0,
+                fund?.replace(" ", "")?.toInt() ?: 0,
                 link,
                 null
             )
