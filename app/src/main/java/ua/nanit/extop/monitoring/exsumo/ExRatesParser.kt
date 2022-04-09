@@ -1,7 +1,6 @@
 package ua.nanit.extop.monitoring.exsumo
 
 import org.jsoup.Jsoup
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.data.Rate
 import kotlin.collections.ArrayList
 

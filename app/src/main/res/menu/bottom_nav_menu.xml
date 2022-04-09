@@ -8,12 +8,6 @@
         android:title="@string/nav_exchangers"
         app:labelVisibilityMode="labeled"/>
     <item
-        android:id="@+id/nav_currencies"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_currency_exchange"
-        android:title="@string/nav_currencies"
-        app:labelVisibilityMode="labeled"/>
-    <item
         android:id="@+id/nav_settings"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings"

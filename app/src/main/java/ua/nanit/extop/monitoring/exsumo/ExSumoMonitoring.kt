@@ -35,7 +35,11 @@ class ExSumoMonitoring(
         val curIn = storage.getCurrencyIn()
         val curOut = storage.getCurrencyOut()
 
-        return ratesParser.parse("QIWIRUR", "MONOBUAH")
+        if (curIn != null && curOut != null) {
+            return ratesParser.parse(curIn, curOut)
+        }
+
+        return emptyList()
     }
 
     override fun getExchanger(id: String): Exchanger {

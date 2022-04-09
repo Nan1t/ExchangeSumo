@@ -3,13 +3,13 @@
 
     <!--  Navigation Menu  -->
     <string name="nav_exchangers">Обменники</string>
-    <string name="nav_currencies">Валюты</string>
     <string name="nav_settings">Настройки</string>
 
     <!--  Rates Fragment  -->
     <string name="rates_head_org">Обменник</string>
     <string name="rates_head_in">Отдаете</string>
     <string name="rates_head_out">Получаете</string>
+    <string name="rates_nothing">Список пуст</string>
 
     <!--  Rate Item  -->
     <string name="rate_item_fund">Резерв:\ </string>

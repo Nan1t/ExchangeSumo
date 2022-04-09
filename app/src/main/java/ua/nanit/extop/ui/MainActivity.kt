@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.extop.R
-import ua.nanit.extop.ui.pages.CurrenciesFragment
 import ua.nanit.extop.ui.pages.RatesFragment
 import ua.nanit.extop.ui.pages.SettingsFragment
 
@@ -34,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         when(index) {
             MainViewModel.PAGE_RATES ->
                 openPage(RatesFragment())
-            MainViewModel.PAGE_CURRENCIES ->
-                openPage(CurrenciesFragment())
             MainViewModel.PAGE_SETTINGS ->
                 openPage(SettingsFragment())
         }
@@ -45,10 +42,6 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.nav_rates -> {
                 viewModel.openRatesPage()
-                true
-            }
-            R.id.nav_currencies -> {
-                viewModel.openCurrenciesPage()
                 true
             }
             R.id.nav_settings -> {

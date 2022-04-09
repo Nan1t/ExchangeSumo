@@ -13,8 +13,7 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
 
     companion object {
         const val PAGE_RATES = 0
-        const val PAGE_CURRENCIES = 1
-        const val PAGE_SETTINGS = 2
+        const val PAGE_SETTINGS = 1
     }
 
     private val executor = Executors.newSingleThreadExecutor()
@@ -27,16 +26,12 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
 
     init {
         openRatesPage()
+        refreshRates()
     }
 
     fun openRatesPage() {
         if (_page.value != PAGE_RATES)
             _page.value = PAGE_RATES
-    }
-
-    fun openCurrenciesPage() {
-        if (_page.value != PAGE_CURRENCIES)
-            _page.value = PAGE_CURRENCIES
     }
 
     fun openSettingsPage() {
@@ -47,7 +42,10 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
     fun refreshRates() {
         executor.execute {
             val rates = monitoring.updateRates()
-            viewModelScope.launch { _rates.value = rates }
+
+            viewModelScope.launch {
+                _rates.value = rates
+            }
         }
     }
 
