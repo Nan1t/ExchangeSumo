@@ -1,6 +1,6 @@
 package ua.nanit.extop.monitoring
 
-import ua.nanit.extop.monitoring.data.Currencies
+import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.monitoring.data.Exchanger
 import ua.nanit.extop.monitoring.data.Rate
 
@@ -15,7 +15,7 @@ interface Monitoring {
 
     fun setSearchDetails(curIn: String, curOut: String)
 
-    fun getCurrencies(): Currencies
+    fun getCurrencies(): List<Currency>
 
     fun updateRates(): List<Rate>
 

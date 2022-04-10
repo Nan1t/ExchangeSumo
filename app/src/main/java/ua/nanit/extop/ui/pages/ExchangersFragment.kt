@@ -9,10 +9,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ua.nanit.extop.R
 import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.BasePage
+import ua.nanit.extop.ui.BaseFragment
 import ua.nanit.extop.ui.rates.RatesAdapter
 
-class RatesFragment : BasePage(R.layout.fragment_rates) {
+class ExchangersFragment : BaseFragment(R.layout.fragment_exchangers) {
 
     private lateinit var ratesList: RecyclerView
     private lateinit var ratesAdapter: RatesAdapter

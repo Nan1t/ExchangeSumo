@@ -37,4 +37,13 @@
         <item name="android:textSize">18sp</item>
         <item name="android:background">@color/lighter</item>
     </style>
+
+    <style name="SearchEditText">
+        <item name="android:background">@color/lighter</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawableStart">@drawable/ic_baseline_search</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+    </style>
 </resources>

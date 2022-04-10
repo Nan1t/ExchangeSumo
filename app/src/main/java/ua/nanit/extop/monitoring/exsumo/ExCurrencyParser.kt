@@ -1,7 +1,7 @@
 package ua.nanit.extop.monitoring.exsumo
 
 import com.google.gson.Gson
-import ua.nanit.extop.monitoring.data.Currencies
+import ua.nanit.extop.monitoring.data.Currency
 import java.io.InputStream
 
 /**
@@ -10,9 +10,14 @@ import java.io.InputStream
  */
 class ExCurrencyParser(private val input: InputStream) {
 
-    fun parse(): Currencies {
+    fun parse(): List<Currency> {
         val gson = Gson()
-        return gson.fromJson(input.reader(Charsets.UTF_8), Currencies::class.java)
+        val list = gson.fromJson(input.reader(Charsets.UTF_8), ExCurrencies::class.java)
+        return list.currencies
     }
+
+    data class ExCurrencies(
+        val currencies: List<Currency>
+    )
 
 }

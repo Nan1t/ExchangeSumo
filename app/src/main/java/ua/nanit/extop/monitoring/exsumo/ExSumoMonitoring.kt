@@ -2,7 +2,7 @@ package ua.nanit.extop.monitoring.exsumo
 
 import ua.nanit.extop.monitoring.MonitoringStorage
 import ua.nanit.extop.monitoring.Monitoring
-import ua.nanit.extop.monitoring.data.Currencies
+import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.monitoring.data.Exchanger
 import ua.nanit.extop.monitoring.data.Rate
 import java.io.InputStream
@@ -16,7 +16,7 @@ class ExSumoMonitoring(
     private val currenciesParser = ExCurrencyParser(currenciesFile)
     private val ratesParser = ExRatesParser()
 
-    private var currencies: Currencies? = null
+    private var currencies: List<Currency>? = null
 
     override fun storage(): MonitoringStorage = storage
 
@@ -24,7 +24,7 @@ class ExSumoMonitoring(
         storage.saveCurrencies(curIn, curOut)
     }
 
-    override fun getCurrencies(): Currencies {
+    override fun getCurrencies(): List<Currency> {
         if (currencies == null) {
             currencies = currenciesParser.parse()
         }

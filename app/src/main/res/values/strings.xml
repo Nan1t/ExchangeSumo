@@ -2,8 +2,20 @@
     <string name="app_name">Exchangers Top</string>
 
     <!--  Navigation Menu  -->
+    <string name="nav_search">Поиск</string>
     <string name="nav_exchangers">Обменники</string>
+    <string name="nav_double_exchange">Двойной обмен</string>
     <string name="nav_settings">Настройки</string>
+
+    <!--  Search Fragment  -->
+    <string name="search_hint">Введите имя валюты</string>
+    <string name="search_calc_title">Калькулятор</string>
+    <string name="search_currency_in">Что отдаете</string>
+    <string name="search_currency_out">Что получаете</string>
+    <string name="search_amount_in">Хочу отдать</string>
+    <string name="search_amount_out">Хочу получить</string>
+    <string name="search_amount">Сумма</string>
+    <string name="search_confirm">Применить</string>
 
     <!--  Rates Fragment  -->
     <string name="rates_head_org">Обменник</string>
