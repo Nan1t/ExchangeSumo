@@ -1,9 +1,11 @@
 package ua.nanit.extop.ui.search
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +35,13 @@ class CurrenciesFragment : Fragment(R.layout.fragment_currencies) {
 
         btnConfirm.visibility = View.GONE
         btnConfirm.setOnClickListener(this::onConfirmClick)
+
+        searchField.addTextChangedListener {
+            val value = it?.toString()
+            if (value != null) {
+                listAdapter.filter(value)
+            }
+        }
 
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
