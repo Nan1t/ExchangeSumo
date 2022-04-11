@@ -8,7 +8,7 @@
         android:title="@string/nav_search"
         app:labelVisibilityMode="labeled"/>
     <item
-        android:id="@+id/nav_exchangers"
+        android:id="@+id/nav_rates"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_list"
         android:title="@string/nav_exchangers"

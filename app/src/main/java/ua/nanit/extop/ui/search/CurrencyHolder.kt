@@ -1,4 +1,4 @@
-package ua.nanit.extop.ui.currencies
+package ua.nanit.extop.ui.search
 
 import android.view.View
 import android.widget.TextView

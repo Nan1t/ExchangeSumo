@@ -1,18 +1,17 @@
-package ua.nanit.extop.ui.pages
+package ua.nanit.extop.ui.rates
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ua.nanit.extop.R
 import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.BaseFragment
-import ua.nanit.extop.ui.rates.RatesAdapter
 
-class ExchangersFragment : BaseFragment(R.layout.fragment_exchangers) {
+class RatesFragment : Fragment(R.layout.fragment_rates) {
 
     private lateinit var ratesList: RecyclerView
     private lateinit var ratesAdapter: RatesAdapter
@@ -30,14 +29,17 @@ class ExchangersFragment : BaseFragment(R.layout.fragment_exchangers) {
         ratesList.adapter = ratesAdapter
         ratesList.layoutManager = LinearLayoutManager(context)
 
-        swipeRefresh.setOnRefreshListener(viewModel::refreshRates)
+        Logger.info("Created rates")
 
-        viewModel.rates.observe(viewLifecycleOwner, this::observeRates)
+//        swipeRefresh.setOnRefreshListener(viewModel::refreshRates)
+//
+//        viewModel.rates.observe(viewLifecycleOwner, this::observeRates)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.rates.removeObservers(this)
+        Logger.info("Destroyed rates")
+//        viewModel.rates.removeObservers(this)
     }
 
     private fun observeRates(rates: List<Rate>) {

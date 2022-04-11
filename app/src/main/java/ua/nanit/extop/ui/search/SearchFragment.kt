@@ -1,18 +1,19 @@
-package ua.nanit.extop.ui.pages
+package ua.nanit.extop.ui.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Currency
-import ua.nanit.extop.ui.BaseFragment
-import ua.nanit.extop.ui.MainViewModel
 
-class SearchFragment : BaseFragment(R.layout.fragment_search) {
+class SearchFragment : Fragment(R.layout.fragment_search) {
+
+    private lateinit var viewModel: SearchViewModel
 
     private lateinit var fieldCurrencyIn: TextInputEditText
     private lateinit var fieldCurrencyOut: TextInputEditText
@@ -27,12 +28,17 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         btnSwap = view.findViewById(R.id.search_btn_swap)
         btnConfirm = view.findViewById(R.id.search_btn_confirm)
 
+        viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
+            .get(SearchViewModel::class.java)
+
         fieldCurrencyIn.setOnClickListener {
-            viewModel.openCurrenciesMenu(MainViewModel.CURRENCIES_MENU_IN)
+            openCurrenciesMenu()
+            viewModel.loadCurrencies(SearchViewModel.CURRENCIES_IN)
         }
 
         fieldCurrencyOut.setOnClickListener {
-            viewModel.openCurrenciesMenu(MainViewModel.CURRENCIES_MENU_OUT)
+            openCurrenciesMenu()
+            viewModel.loadCurrencies(SearchViewModel.CURRENCIES_OUT)
         }
 
         btnSwap.setOnClickListener(this::onSwapClicked)
@@ -57,6 +63,14 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     private fun observeCurrencyOut(currency: Currency) {
         fieldCurrencyOut.setText(currency.name)
+    }
+
+    private fun openCurrenciesMenu() {
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_nav_controller, CurrenciesFragment())
+            .addToBackStack(null)
+            .commit()
     }
 
 }

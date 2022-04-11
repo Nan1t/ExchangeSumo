@@ -1,17 +1,17 @@
 package ua.nanit.extop.monitoring.exsumo
 
 import org.jsoup.Jsoup
+import ua.nanit.extop.monitoring.RatesProvider
 import ua.nanit.extop.monitoring.data.Rate
-import kotlin.collections.ArrayList
 
-class ExRatesParser {
+class ExRatesProvider : RatesProvider {
 
     companion object {
         private const val BASE_URL = "https://exchangesumo.com"
     }
 
-    fun parse(currIn: String, currOut: String): List<Rate> {
-        val url = "$BASE_URL/obmen/$currIn-$currOut"
+    override fun provide(currencyIn: String, currencyOut: String): List<Rate> {
+        val url = "${BASE_URL}/obmen/$currencyIn-$currencyOut"
         val doc = Jsoup.connect(url).get()
         val rows = doc.select("#exchangesTable tbody tr")
         val rates = ArrayList<Rate>(rows.size)
@@ -19,7 +19,7 @@ class ExRatesParser {
         for (row in rows) {
             val name = row.attr("data-xname")
             val openUrl = row.attr("data-open")
-            val link = "$BASE_URL/$openUrl"
+            val link = "${BASE_URL}/$openUrl"
             val amountIn = row.select("td.cell-give var")
                 .first()?.html()
             val amountOut = row.select("td.cell-get var")

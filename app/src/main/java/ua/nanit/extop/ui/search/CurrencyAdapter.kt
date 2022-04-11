@@ -1,4 +1,4 @@
-package ua.nanit.extop.ui.currencies
+package ua.nanit.extop.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

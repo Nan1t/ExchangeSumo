@@ -12,10 +12,6 @@ interface MonitoringStorage {
 
     fun isCalcCommissions(): Boolean
 
-    fun saveCurrencies(curIn: String, curOut: String)
-
-    interface Factory {
-        fun create(): MonitoringStorage
-    }
+    fun saveCurrencies(currencyIn: String, currencyOut: String)
 
 }

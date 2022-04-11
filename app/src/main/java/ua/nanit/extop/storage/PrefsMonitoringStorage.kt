@@ -1,9 +1,9 @@
 package ua.nanit.extop.storage
 
-import android.content.SharedPreferences
+import android.content.Context
 import ua.nanit.extop.monitoring.MonitoringStorage
 
-class MonitoringPrefsStorage(private val prefs: SharedPreferences) : MonitoringStorage {
+class PrefsMonitoringStorage(ctx: Context, name: String) : MonitoringStorage {
 
     companion object {
         private const val KEY_CURRENCY_IN = "currency_in"
@@ -12,6 +12,8 @@ class MonitoringPrefsStorage(private val prefs: SharedPreferences) : MonitoringS
         private const val KEY_AMOUNT_OUT = "amount_out"
         private const val KEY_CALC_COMMISSIONS = "calc_commissions"
     }
+
+    private val prefs = ctx.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     override fun getCurrencyIn(): String? {
         return prefs.getString(KEY_CURRENCY_IN, null)
@@ -33,10 +35,10 @@ class MonitoringPrefsStorage(private val prefs: SharedPreferences) : MonitoringS
         return prefs.getBoolean(KEY_CALC_COMMISSIONS, false)
     }
 
-    override fun saveCurrencies(curIn: String, curOut: String) {
+    override fun saveCurrencies(currencyIn: String, currencyOut: String) {
         prefs.edit()
-            .putString(KEY_CURRENCY_IN, curIn)
-            .putString(KEY_CURRENCY_OUT, curOut)
+            .putString(KEY_CURRENCY_IN, currencyIn)
+            .putString(KEY_CURRENCY_OUT, currencyOut)
             .apply()
     }
 }
