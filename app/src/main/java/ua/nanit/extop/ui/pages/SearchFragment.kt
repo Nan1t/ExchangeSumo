@@ -2,6 +2,8 @@ package ua.nanit.extop.ui.pages
 
 import android.os.Bundle
 import android.view.View
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
@@ -33,8 +35,20 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             viewModel.openCurrenciesMenu(MainViewModel.CURRENCIES_MENU_OUT)
         }
 
+        btnSwap.setOnClickListener(this::onSwapClicked)
+
         viewModel.currencyIn.observe(viewLifecycleOwner, this::observeCurrencyIn)
         viewModel.currencyOut.observe(viewLifecycleOwner, this::observeCurrencyOut)
+    }
+
+    private fun onSwapClicked(view: View) {
+        btnSwap.animate()
+            .setDuration(300)
+            .rotation(180f)
+            .withEndAction { view.rotation = 0.0F }
+            .setInterpolator(FastOutSlowInInterpolator())
+            .start()
+        viewModel.swapCurrencies()
     }
 
     private fun observeCurrencyIn(currency: Currency) {

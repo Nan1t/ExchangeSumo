@@ -2,7 +2,6 @@ package ua.nanit.extop.ui
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.Monitoring
 import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.monitoring.data.Rate
@@ -23,23 +22,23 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
 
     private val executor = Executors.newSingleThreadExecutor()
 
-    private val _page = MutableLiveData<Int>()
-    val page: LiveData<Int> get() = _page
-
-    private val _rates = MutableLiveData<List<Rate>>()
-    val rates: LiveData<List<Rate>> get() = _rates
-
-    private val _currencies = MutableLiveData<List<Currency>>()
-    val currencies: LiveData<List<Currency>> get() = _currencies
-
-    private val _currenciesMenu = MutableLiveData<Boolean>()
+    private val _currenciesMenu: MutableLiveData<Boolean> = MutableLiveData()
     val currenciesMenu: LiveData<Boolean> get() = _currenciesMenu
 
-    private val _currencyIn = MutableLiveData<Currency>()
+    private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
     val currencyIn: LiveData<Currency> get() = _currencyIn
 
-    private val _currencyOut = MutableLiveData<Currency>()
+    private val _currencyOut: MutableLiveData<Currency> = MutableLiveData()
     val currencyOut: LiveData<Currency> get() = _currencyOut
+
+    private val _currencies: MutableLiveData<List<Currency>> = MutableLiveData()
+    val currencies: LiveData<List<Currency>> get() = _currencies
+
+    private val _page: MutableLiveData<Int> = MutableLiveData()
+    val page: LiveData<Int> get() = _page
+
+    private val _rates: MutableLiveData<List<Rate>> = MutableLiveData()
+    val rates: LiveData<List<Rate>> get() = _rates
 
     private var currenciesMenuMode = CURRENCIES_MENU_NONE
 
@@ -85,8 +84,6 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
         executor.execute {
             val currencies = monitoring.getCurrencies()
 
-            Logger.info("Currencies: $currencies")
-
             viewModelScope.launch {
                 _currencies.value = currencies
             }
@@ -101,6 +98,16 @@ class MainViewModel(private val monitoring: Monitoring) : ViewModel() {
             CURRENCIES_MENU_OUT -> {
                 _currencyOut.value = currency
             }
+        }
+    }
+
+    fun swapCurrencies() {
+        val valIn = _currencyIn.value
+        val valOut = _currencyOut.value
+
+        if (valIn != null && valOut != null) {
+            _currencyIn.value = valOut!!
+            _currencyOut.value = valIn!!
         }
     }
 

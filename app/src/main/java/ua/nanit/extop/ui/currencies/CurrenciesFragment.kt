@@ -29,14 +29,16 @@ class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
         list.adapter = listAdapter
 
         btnConfirm.visibility = View.GONE
-        btnConfirm.setOnClickListener {
-            if (listAdapter.selected != null) {
-                viewModel.selectCurrency(listAdapter.selected!!)
-                parentFragmentManager.popBackStack()
-            }
-        }
+        btnConfirm.setOnClickListener(this::onConfirmClick)
 
         viewModel.currencies.observe(viewLifecycleOwner, this::observeCurrencies)
+    }
+
+    private fun onConfirmClick(view: View) {
+        if (listAdapter.selected != null) {
+            viewModel.selectCurrency(listAdapter.selected!!)
+            parentFragmentManager.popBackStack()
+        }
     }
 
     private fun onCurrencyClicked() {

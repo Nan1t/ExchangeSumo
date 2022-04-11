@@ -15,19 +15,20 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/rates_currency_in_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/rates_currency_in_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/search_currency_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/search_currency_in">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rates_currency_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions"
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false" />
@@ -45,20 +46,21 @@
         app:layout_constraintTop_toBottomOf="@+id/rates_currency_in_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/rates_currency_out_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/rates_currency_out_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:hint="@string/search_currency_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rates_currency_in_layout"
-        android:hint="@string/search_currency_out">
+        app:layout_constraintTop_toBottomOf="@+id/rates_currency_in_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rates_currency_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions"
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false" />
@@ -100,7 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:hint="@string/search_amount_out"
+        android:hint="@string/search_amount"
         app:layout_constraintBottom_toBottomOf="@+id/search_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/search_guideline"
