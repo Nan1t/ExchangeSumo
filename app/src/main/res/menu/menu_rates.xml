@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_calculator"
+        android:icon="@drawable/ic_baseline_calculate"
+        android:title="@string/toolbar_calculator"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_notifications"
+        android:icon="@drawable/ic_baseline_notification_add"
+        android:title="@string/toolbar_notifications"
+        app:showAsAction="always" />
+
+</menu>

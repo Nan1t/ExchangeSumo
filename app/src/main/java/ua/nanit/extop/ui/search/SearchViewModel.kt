@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ua.nanit.extop.AsyncUtil
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.CurrencyProvider
+import ua.nanit.extop.monitoring.CurrencyType
 import ua.nanit.extop.monitoring.MonitoringStorage
 import ua.nanit.extop.monitoring.data.Currency
 
@@ -17,16 +17,13 @@ class SearchViewModel(
 ) : ViewModel() {
 
     companion object {
-        const val CURRENCIES_NONE = 0
-        const val CURRENCIES_IN = 1
-        const val CURRENCIES_OUT = 2
-    }
-
-    init {
-        Logger.info("Search VM created")
+        const val RESULT_SUCCESS = 0
+        const val RESULT_MISSING_CURRENCY_IN = 1
+        const val RESULT_MISSING_CURRENCY_OUT = 2
     }
 
     private val executor = AsyncUtil.executor()
+    private var currenciesMenuMode: CurrencyType? = null
 
     private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
     val currencyIn: LiveData<Currency> get() = _currencyIn
@@ -37,10 +34,44 @@ class SearchViewModel(
     private val _currencies: MutableLiveData<List<Currency>> = MutableLiveData()
     val currencies: LiveData<List<Currency>> get() = _currencies
 
-    private var currenciesMenuMode = CURRENCIES_NONE
+    private val _applyParamsCallback: MutableLiveData<Int> = MutableLiveData()
+    val applyParamsCallback: LiveData<Int?> get() = _applyParamsCallback
 
-    fun loadCurrencies(mode: Int) {
-        currenciesMenuMode = mode
+    init {
+        val savedCurrencyIn = storage.getCurrencyIn()
+        val savedCurrencyOut = storage.getCurrencyOut()
+
+        if (savedCurrencyIn != null && savedCurrencyOut != null) {
+            val currencyIn = currencyProvider.getCurrency(savedCurrencyIn)
+            val currencyOut = currencyProvider.getCurrency(savedCurrencyOut)
+
+            if (currencyIn != null && currencyOut != null) {
+                _currencyIn.value = currencyIn!!
+                _currencyOut.value = currencyOut!!
+            }
+        }
+    }
+
+    fun applySearchParams() {
+        val currencyIn = _currencyIn.value?.id
+        val currencyOut = _currencyOut.value?.id
+
+        if (currencyIn == null) {
+            _applyParamsCallback.value = RESULT_MISSING_CURRENCY_IN
+            return
+        }
+
+        if (currencyOut == null) {
+            _applyParamsCallback.value = RESULT_MISSING_CURRENCY_OUT
+            return
+        }
+
+        storage.setCurrencies(currencyIn, currencyOut)
+        _applyParamsCallback.value = RESULT_SUCCESS
+    }
+
+    fun loadCurrencies(type: CurrencyType) {
+        currenciesMenuMode = type
 
         executor.execute {
             val currencies = currencyProvider.provide()
@@ -50,10 +81,10 @@ class SearchViewModel(
 
     fun selectCurrency(currency: Currency) {
         when(currenciesMenuMode) {
-            CURRENCIES_IN -> {
+            CurrencyType.IN -> {
                 _currencyIn.value = currency
             }
-            CURRENCIES_OUT -> {
+            CurrencyType.OUT -> {
                 _currencyOut.value = currency
             }
         }
@@ -67,10 +98,5 @@ class SearchViewModel(
             _currencyIn.value = valOut!!
             _currencyOut.value = valIn!!
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Logger.info("Search VM destroyed")
     }
 }

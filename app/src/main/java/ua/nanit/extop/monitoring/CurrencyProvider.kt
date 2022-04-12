@@ -6,4 +6,6 @@ interface CurrencyProvider {
 
     fun provide(): List<Currency>
 
+    fun getCurrency(id: String): Currency?
+
 }

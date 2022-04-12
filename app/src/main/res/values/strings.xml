@@ -9,12 +9,8 @@
 
     <!--  Search Fragment  -->
     <string name="search_hint">Введите имя валюты</string>
-    <string name="search_calc_title">Калькулятор</string>
     <string name="search_currency_in">Что отдаете</string>
     <string name="search_currency_out">Что получаете</string>
-    <string name="search_amount_in">Хочу отдать</string>
-    <string name="search_amount_out">Хочу получить</string>
-    <string name="search_amount">Сумма</string>
     <string name="search_confirm">Применить</string>
 
     <!--  Rates Fragment  -->
@@ -22,6 +18,16 @@
     <string name="rates_head_in">Отдаете</string>
     <string name="rates_head_out">Получаете</string>
     <string name="rates_nothing">Список пуст</string>
+
+    <!--  Rates Toolbar Menu  -->
+    <string name="toolbar_calculator">Кальулятор</string>
+    <string name="toolbar_notifications">Обменники</string>
+
+    <!--  Calculation dialog  -->
+    <string name="calc_amount_in">Хочу отдать</string>
+    <string name="calc_amount_out">Хочу получить</string>
+    <string name="calc_amount">Сумма</string>
+    <string name="calc_commissions">Учитывать комиссии</string>
 
     <!--  Rate Item  -->
     <string name="rate_item_fund">Резерв:\ </string>

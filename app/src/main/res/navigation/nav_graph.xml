@@ -8,7 +8,18 @@
     <fragment
         android:id="@+id/nav_search"
         android:name="ua.nanit.extop.ui.search.SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_nav_search_to_nav_currencies"
+            app:destination="@id/nav_currencies" />
+        <action
+            android:id="@+id/action_nav_search_to_nav_rates"
+            app:destination="@id/nav_rates" />
+    </fragment>
+
+    <fragment android:id="@+id/nav_currencies"
+        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
+        tools:layout="@layout/fragment_currencies"/>
 
     <fragment
         android:id="@+id/nav_rates"
