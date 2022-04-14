@@ -13,7 +13,7 @@ abstract class BaseVmFactory(
 
     protected fun getMonitoringFactory(): MonitoringFactory {
         val prefs = ctx.getSharedPreferences("config", Context.MODE_PRIVATE)
-        val typeId = prefs.getInt("monitoring_type", 0)
+        val typeId = prefs.getInt("monitoring_type", MonitoringType.EXCHANGE_SUMO.typeId)
 
         return when (MonitoringType.byId(typeId)) {
             MonitoringType.EXCHANGE_SUMO -> {

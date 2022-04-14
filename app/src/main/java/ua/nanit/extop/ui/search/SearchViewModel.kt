@@ -4,38 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import ua.nanit.extop.AsyncUtil
 import ua.nanit.extop.monitoring.CurrencyProvider
 import ua.nanit.extop.monitoring.CurrencyType
 import ua.nanit.extop.monitoring.MonitoringStorage
 import ua.nanit.extop.monitoring.data.Currency
+import ua.nanit.extop.ui.SingleEvent
 
 class SearchViewModel(
+    private val dispatcher: CoroutineDispatcher,
     private val storage: MonitoringStorage,
     private val currencyProvider: CurrencyProvider
 ) : ViewModel() {
 
-    companion object {
-        const val RESULT_SUCCESS = 0
-        const val RESULT_MISSING_CURRENCY_IN = 1
-        const val RESULT_MISSING_CURRENCY_OUT = 2
-    }
-
-    private val executor = AsyncUtil.executor()
     private var currenciesMenuMode: CurrencyType? = null
 
     private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
-    val currencyIn: LiveData<Currency> get() = _currencyIn
-
     private val _currencyOut: MutableLiveData<Currency> = MutableLiveData()
-    val currencyOut: LiveData<Currency> get() = _currencyOut
-
     private val _currencies: MutableLiveData<List<Currency>> = MutableLiveData()
-    val currencies: LiveData<List<Currency>> get() = _currencies
+    private val _applyState: SingleEvent<ApplyState> = SingleEvent()
 
-    private val _applyParamsCallback: MutableLiveData<Int> = MutableLiveData()
-    val applyParamsCallback: LiveData<Int?> get() = _applyParamsCallback
+    val currencyIn: LiveData<Currency> get() = _currencyIn
+    val currencyOut: LiveData<Currency> get() = _currencyOut
+    val currencies: LiveData<List<Currency>> get() = _currencies
+    val applyState: LiveData<ApplyState> get() = _applyState
 
     init {
         val savedCurrencyIn = storage.getCurrencyIn()
@@ -57,25 +50,28 @@ class SearchViewModel(
         val currencyOut = _currencyOut.value?.id
 
         if (currencyIn == null) {
-            _applyParamsCallback.value = RESULT_MISSING_CURRENCY_IN
+            _applyState.setValue(ApplyState.NO_CURRENCY_IN)
             return
         }
 
         if (currencyOut == null) {
-            _applyParamsCallback.value = RESULT_MISSING_CURRENCY_OUT
+            _applyState.setValue(ApplyState.NO_CURRENCY_OUT)
             return
         }
 
         storage.setCurrencies(currencyIn, currencyOut)
-        _applyParamsCallback.value = RESULT_SUCCESS
+        _applyState.setValue(ApplyState.SUCCESS)
     }
 
     fun loadCurrencies(type: CurrencyType) {
         currenciesMenuMode = type
 
-        executor.execute {
+        viewModelScope.launch(dispatcher) {
             val currencies = currencyProvider.provide()
-            viewModelScope.launch { _currencies.value = currencies }
+
+            viewModelScope.launch {
+                _currencies.value = currencies
+            }
         }
     }
 

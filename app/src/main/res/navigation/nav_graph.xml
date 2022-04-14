@@ -3,37 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_search">
-
-    <fragment
-        android:id="@+id/nav_search"
-        android:name="ua.nanit.extop.ui.search.SearchFragment"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_nav_search_to_nav_currencies"
-            app:destination="@id/nav_currencies" />
-        <action
-            android:id="@+id/action_nav_search_to_nav_rates"
-            app:destination="@id/nav_rates" />
-    </fragment>
-
-    <fragment android:id="@+id/nav_currencies"
-        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
-        tools:layout="@layout/fragment_currencies"/>
+    app:startDestination="@id/nav_rates">
 
     <fragment
         android:id="@+id/nav_rates"
         android:name="ua.nanit.extop.ui.rates.RatesFragment"
-        tools:layout="@layout/fragment_rates"/>
+        android:label="@string/nav_rates"
+        tools:layout="@layout/fragment_rates">
+        <action
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            android:id="@+id/action_nav_rates_to_nav_search"
+            app:destination="@id/nav_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="ua.nanit.extop.ui.search.SearchFragment"
+        android:label="@string/toolbar_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_nav_search_to_nav_currencies"
+            app:destination="@id/nav_currencies" />
+    </fragment>
+
+    <fragment android:id="@+id/nav_currencies"
+        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
+        android:label="@string/toolbar_search"
+        tools:layout="@layout/fragment_currencies"/>
 
     <fragment
         android:id="@+id/nav_double_exchange"
         android:name="ua.nanit.extop.ui.dexchange.DoubleExchangeFragment"
+        android:label="@string/nav_double"
         tools:layout="@layout/fragment_double"/>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="ua.nanit.extop.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings"
         tools:layout="@layout/fragment_settings"/>
 
 </navigation>

@@ -1,4 +1,4 @@
-package ua.nanit.extop
+package ua.nanit.extop.ui
 
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity

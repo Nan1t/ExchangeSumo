@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/nav_search"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_currency_exchange"
-        android:title="@string/nav_search"
-        app:labelVisibilityMode="labeled"/>
+
     <item
         android:id="@+id/nav_rates"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_list"
-        android:title="@string/nav_exchangers"
+        android:title="@string/nav_rates"
         app:labelVisibilityMode="labeled"/>
     <item
         android:id="@+id/nav_double_exchange"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_double_arrow"
-        android:title="@string/nav_double_exchange"
+        android:title="@string/nav_double"
         app:labelVisibilityMode="labeled"/>
     <item
         android:id="@+id/nav_settings"

@@ -13,7 +13,7 @@ class RatesAdapter : RecyclerView.Adapter<RateHolder>() {
     fun update(rates: List<Rate>) {
         list.clear()
         list.addAll(rates)
-        notifyItemRangeChanged(0, itemCount)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RateHolder {

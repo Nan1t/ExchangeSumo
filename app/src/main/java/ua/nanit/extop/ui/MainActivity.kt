@@ -2,6 +2,8 @@ package ua.nanit.extop.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -9,23 +11,46 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.extop.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Navigation {
+
+    private lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val nav = findViewById<BottomNavigationView>(R.id.main_navbar)
-        val controller = findNavController(R.id.main_nav_controller)
+        navController = findNavController(R.id.main_nav_controller)
+        navView = findViewById(R.id.main_navbar)
         val configuration = AppBarConfiguration(setOf(
-            R.id.nav_search,
             R.id.nav_rates,
             R.id.nav_double_exchange,
             R.id.nav_settings
         ))
 
-        setupActionBarWithNavController(controller, configuration)
-        nav.setupWithNavController(controller)
+        setupActionBarWithNavController(navController, configuration)
+        navView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun navigate(actionId: Int) {
+        navController.navigate(actionId)
+    }
+
+    override fun navigateUp() {
+        navController.popBackStack()
+    }
+
+    override fun show() {
+        navView.visibility = View.VISIBLE
+    }
+
+    override fun hide() {
+        navView.visibility = View.GONE
     }
 }

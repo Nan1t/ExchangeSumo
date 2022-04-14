@@ -6,23 +6,17 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.data.Currency
+import ua.nanit.extop.ui.BaseFragment
 
-class CurrenciesFragment : Fragment(R.layout.fragment_currencies) {
+class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
 
     private lateinit var viewModel: SearchViewModel
-    private lateinit var navController: NavController
 
-    private lateinit var navbar: BottomNavigationView
     private lateinit var searchField: EditText
     private lateinit var btnConfirm: ImageButton
     private lateinit var list: RecyclerView
@@ -34,9 +28,7 @@ class CurrenciesFragment : Fragment(R.layout.fragment_currencies) {
 
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
-        navController = findNavController()
 
-        navbar = requireActivity().findViewById(R.id.main_navbar)
         searchField = view.findViewById(R.id.currencies_search_field)
         btnConfirm = view.findViewById(R.id.currencies_btn_confirm)
         list = view.findViewById(R.id.currencies_list)
@@ -57,13 +49,13 @@ class CurrenciesFragment : Fragment(R.layout.fragment_currencies) {
 
         viewModel.currencies.observe(viewLifecycleOwner, this::observeCurrencies)
 
-        navbar.visibility = View.GONE
+        navigation.hide()
     }
 
     private fun onConfirmClick(view: View) {
         if (listAdapter.selected != null) {
             viewModel.selectCurrency(listAdapter.selected!!)
-            navController.navigateUp()
+            navigation.navigateUp()
         }
     }
 
@@ -77,6 +69,6 @@ class CurrenciesFragment : Fragment(R.layout.fragment_currencies) {
 
     override fun onStop() {
         super.onStop()
-        navbar.visibility = View.VISIBLE
+        navigation.show()
     }
 }

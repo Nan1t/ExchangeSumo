@@ -2,9 +2,8 @@
     <string name="app_name">Exchangers Top</string>
 
     <!--  Navigation Menu  -->
-    <string name="nav_search">Поиск</string>
-    <string name="nav_exchangers">Обменники</string>
-    <string name="nav_double_exchange">Двойной обмен</string>
+    <string name="nav_rates">Обменники</string>
+    <string name="nav_double">Двойной обмен</string>
     <string name="nav_settings">Настройки</string>
 
     <!--  Search Fragment  -->
@@ -20,8 +19,8 @@
     <string name="rates_nothing">Список пуст</string>
 
     <!--  Rates Toolbar Menu  -->
+    <string name="toolbar_search">Поиск</string>
     <string name="toolbar_calculator">Кальулятор</string>
-    <string name="toolbar_notifications">Обменники</string>
 
     <!--  Calculation dialog  -->
     <string name="calc_amount_in">Хочу отдать</string>

@@ -2,24 +2,22 @@ package ua.nanit.extop.ui.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.CurrencyType
-import ua.nanit.extop.requireCompatActionBar
+import ua.nanit.extop.ui.BaseFragment
 
-class SearchFragment : Fragment(R.layout.fragment_search) {
+class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     private lateinit var viewModel: SearchViewModel
-    private lateinit var navController: NavController
 
+    private lateinit var layoutCurrencyIn: TextInputLayout
+    private lateinit var layoutCurrencyOut: TextInputLayout
     private lateinit var fieldCurrencyIn: TextInputEditText
     private lateinit var fieldCurrencyOut: TextInputEditText
     private lateinit var btnSwap: FloatingActionButton
@@ -27,12 +25,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireCompatActionBar()?.hide()
 
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
-        navController = findNavController()
 
+        layoutCurrencyIn = view.findViewById(R.id.rates_currency_in_layout)
+        layoutCurrencyOut = view.findViewById(R.id.rates_currency_out_layout)
         fieldCurrencyIn = view.findViewById(R.id.rates_currency_in)
         fieldCurrencyOut = view.findViewById(R.id.rates_currency_out)
         btnSwap = view.findViewById(R.id.search_btn_swap)
@@ -51,19 +49,37 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         btnSwap.setOnClickListener(this::onSwapClicked)
         btnConfirm.setOnClickListener { viewModel.applySearchParams() }
 
-        viewModel.currencyIn.observe(viewLifecycleOwner) { fieldCurrencyIn.setText(it.name) }
-        viewModel.currencyOut.observe(viewLifecycleOwner) { fieldCurrencyOut.setText(it.name) }
-        viewModel.applyParamsCallback.observe(viewLifecycleOwner) {
-            when (it) {
-                SearchViewModel.RESULT_SUCCESS -> {
-                    Logger.info("Success")
-                }
-                SearchViewModel.RESULT_MISSING_CURRENCY_IN -> {
-                    fieldCurrencyIn.error = "Missing"
-                }
-                SearchViewModel.RESULT_MISSING_CURRENCY_OUT -> {
-                    fieldCurrencyOut.error = "Missing"
-                }
+        viewModel.currencyIn.observe(viewLifecycleOwner) {
+            fieldCurrencyIn.setText(it.name)
+            layoutCurrencyIn.isErrorEnabled = true
+            layoutCurrencyIn.error = null
+            layoutCurrencyIn.isErrorEnabled = false
+        }
+
+        viewModel.currencyOut.observe(viewLifecycleOwner) {
+            fieldCurrencyOut.setText(it.name)
+            layoutCurrencyOut.isErrorEnabled = true
+            layoutCurrencyOut.error = null
+            layoutCurrencyIn.isErrorEnabled = false
+        }
+
+        viewModel.applyState.observe(viewLifecycleOwner, this::observeApplyState)
+
+        navigation.hide()
+    }
+
+    private fun observeApplyState(state: ApplyState) {
+        when (state) {
+            ApplyState.SUCCESS -> {
+                navigation.navigateUp()
+            }
+            ApplyState.NO_CURRENCY_IN -> {
+                layoutCurrencyIn.isErrorEnabled = true
+                layoutCurrencyIn.error = "NO_CURRENCY_IN"
+            }
+            ApplyState.NO_CURRENCY_OUT -> {
+                layoutCurrencyOut.isErrorEnabled = true
+                layoutCurrencyOut.error = "NO_CURRENCY_OUT"
             }
         }
     }
@@ -79,7 +95,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun openCurrenciesMenu() {
-        navController.navigate(R.id.action_nav_search_to_nav_currencies)
+        navigation.navigate(R.id.action_nav_search_to_nav_currencies)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        navigation.show()
     }
 
 }
