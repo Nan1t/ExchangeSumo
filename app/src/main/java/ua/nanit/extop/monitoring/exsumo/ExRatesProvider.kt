@@ -12,7 +12,9 @@ class ExRatesProvider : RatesProvider {
 
     override fun provide(currencyIn: String, currencyOut: String): List<Rate> {
         val url = "${BASE_URL}/obmen/$currencyIn-$currencyOut"
-        val doc = Jsoup.connect(url).get()
+        val doc = Jsoup.connect(url)
+            .timeout(5000)
+            .get()
         val rows = doc.select("#exchangesTable tbody tr")
         val rates = ArrayList<Rate>(rows.size)
 
@@ -21,19 +23,30 @@ class ExRatesProvider : RatesProvider {
             val openUrl = row.attr("data-open")
             val link = "${BASE_URL}/$openUrl"
             val amountIn = row.select("td.cell-give var")
-                .first()?.html()
+                .first()
+                ?.html()
+                ?.toFloat()
             val amountOut = row.select("td.cell-get var")
-                .first()?.html()
+                .first()
+                ?.html()
+                ?.toFloat()
             val minAmount = row.select("td.cell-give span.currency span.currency-limits sup")
-                .first()?.html()
-            val fund = row.select("td.cell-rezerv").first()?.html()
+                .first()
+                ?.html()
+                ?.substring(3)
+                ?.toFloat()
+            val fund = row.select("td.cell-rezerv")
+                .first()
+                ?.html()
+                ?.replace(" ", "")
+                ?.toFloat()
 
             val rate = Rate(
                 name,
-                amountIn?.toFloat() ?: 0F,
-                amountOut?.toFloat() ?: 0F,
-                minAmount?.substring(3)?.toInt() ?: 0,
-                fund?.replace(" ", "")?.toInt() ?: 0,
+                amountIn ?: 0F,
+                amountOut ?: 0F,
+                minAmount ?: 0.0F,
+                fund ?: 0.0F,
                 link,
                 null
             )

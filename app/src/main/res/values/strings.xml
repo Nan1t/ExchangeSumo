@@ -16,11 +16,11 @@
     <string name="rates_head_org">Обменник</string>
     <string name="rates_head_in">Отдаете</string>
     <string name="rates_head_out">Получаете</string>
-    <string name="rates_nothing">Список пуст</string>
+    <string name="rates_nothing">Обменов по выбранному направлению не найдено</string>
 
     <!--  Rates Toolbar Menu  -->
     <string name="toolbar_search">Поиск</string>
-    <string name="toolbar_calculator">Кальулятор</string>
+    <string name="toolbar_calculator">Калькулятор</string>
 
     <!--  Calculation dialog  -->
     <string name="calc_amount_in">Хочу отдать</string>

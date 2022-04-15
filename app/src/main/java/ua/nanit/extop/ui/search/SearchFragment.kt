@@ -11,10 +11,12 @@ import com.google.android.material.textfield.TextInputLayout
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.CurrencyType
 import ua.nanit.extop.ui.BaseFragment
+import ua.nanit.extop.ui.shared.RatesSearchViewModel
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     private lateinit var viewModel: SearchViewModel
+    private lateinit var sharedViewModel: RatesSearchViewModel
 
     private lateinit var layoutCurrencyIn: TextInputLayout
     private lateinit var layoutCurrencyOut: TextInputLayout
@@ -28,6 +30,8 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity())
+            .get(RatesSearchViewModel::class.java)
 
         layoutCurrencyIn = view.findViewById(R.id.rates_currency_in_layout)
         layoutCurrencyOut = view.findViewById(R.id.rates_currency_out_layout)
@@ -71,6 +75,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private fun observeApplyState(state: ApplyState) {
         when (state) {
             ApplyState.SUCCESS -> {
+                sharedViewModel.signalRefreshRates()
                 navigation.navigateUp()
             }
             ApplyState.NO_CURRENCY_IN -> {

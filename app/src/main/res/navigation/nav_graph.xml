@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/nav_double_exchange"
-        android:name="ua.nanit.extop.ui.dexchange.DoubleExchangeFragment"
+        android:name="ua.nanit.extop.ui.doublex.DoubleExchangeFragment"
         android:label="@string/nav_double"
         tools:layout="@layout/fragment_double"/>
 

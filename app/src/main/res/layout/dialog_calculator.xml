@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="15dp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/search_guideline"
@@ -52,26 +53,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_radio_group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_radio_group">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/search_calc_commissions"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            app:layout_constraintBottom_toBottomOf="@+id/search_calc_commissions"
-            app:layout_constraintStart_toEndOf="@+id/search_calc_commissions"
-            app:layout_constraintTop_toTopOf="@+id/search_calc_commissions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calc_commissions"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/search_calc_commissions"
+            app:layout_constraintStart_toEndOf="@+id/search_calc_commissions"
+            app:layout_constraintTop_toTopOf="@+id/search_calc_commissions"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
