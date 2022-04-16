@@ -74,5 +74,4 @@
             app:layout_constraintStart_toEndOf="@+id/search_calc_commissions"
             app:layout_constraintTop_toTopOf="@+id/search_calc_commissions"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Exchangers Top</string>
 
+    <string name="apply">Применить</string>
+
     <!--  Navigation Menu  -->
     <string name="nav_rates">Обменники</string>
     <string name="nav_double">Двойной обмен</string>
     <string name="nav_settings">Настройки</string>
 
     <!--  Search Fragment  -->
+    <string name="search_title">Поиск</string>
     <string name="search_hint">Введите имя валюты</string>
     <string name="search_currency_in">Что отдаете</string>
     <string name="search_currency_out">Что получаете</string>
@@ -18,11 +21,13 @@
     <string name="rates_head_out">Получаете</string>
     <string name="rates_nothing">Обменов по выбранному направлению не найдено</string>
 
-    <!--  Rates Toolbar Menu  -->
-    <string name="toolbar_search">Поиск</string>
-    <string name="toolbar_calculator">Калькулятор</string>
+    <!--  Exchanger fragment  -->
+    <string name="exchanger_title">Детали обменника</string>
+    <string name="exchanger_website">Перейти на сайт</string>
+    <string name="exchanger_reviews">Перейти к отзывам</string>
 
     <!--  Calculation dialog  -->
+    <string name="calc_title">Калькулятор</string>
     <string name="calc_amount_in">Хочу отдать</string>
     <string name="calc_amount_out">Хочу получить</string>
     <string name="calc_amount">Сумма</string>

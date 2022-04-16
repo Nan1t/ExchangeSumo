@@ -11,26 +11,16 @@
         android:label="@string/nav_rates"
         tools:layout="@layout/fragment_rates">
         <action
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
             android:id="@+id/action_nav_rates_to_nav_search"
-            app:destination="@id/nav_search" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_search"
-        android:name="ua.nanit.extop.ui.search.SearchFragment"
-        android:label="@string/toolbar_search"
-        tools:layout="@layout/fragment_search">
+            app:destination="@id/nav_search"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <action
-            android:id="@+id/action_nav_search_to_nav_currencies"
-            app:destination="@id/nav_currencies" />
+            android:id="@+id/action_nav_rates_to_nav_exchanger"
+            app:destination="@id/nav_exchanger"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
-
-    <fragment android:id="@+id/nav_currencies"
-        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
-        android:label="@string/toolbar_search"
-        tools:layout="@layout/fragment_currencies"/>
 
     <fragment
         android:id="@+id/nav_double_exchange"
@@ -43,5 +33,28 @@
         android:name="ua.nanit.extop.ui.settings.SettingsFragment"
         android:label="@string/nav_settings"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="ua.nanit.extop.ui.search.SearchFragment"
+        android:label="@string/search_title"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_nav_search_to_nav_currencies"
+            app:destination="@id/nav_currencies"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment android:id="@+id/nav_currencies"
+        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
+        android:label="@string/search_title"
+        tools:layout="@layout/fragment_currencies"/>
+
+    <fragment
+        android:id="@+id/nav_exchanger"
+        android:name="ua.nanit.extop.ui.exchanger.ExchangerFragment"
+        android:label="@string/exchanger_title"
+        tools:layout="@layout/fragment_exchanger"/>
 
 </navigation>

@@ -21,7 +21,7 @@ class ExRatesProvider : RatesProvider {
         for (row in rows) {
             val name = row.attr("data-xname")
             val openUrl = row.attr("data-open")
-            val link = "${BASE_URL}/$openUrl"
+            val link = "$BASE_URL$openUrl"
             val amountIn = row.select("td.cell-give var")
                 .first()
                 ?.html()
@@ -40,6 +40,10 @@ class ExRatesProvider : RatesProvider {
                 ?.html()
                 ?.replace(" ", "")
                 ?.toFloat()
+            val reviewsRoute = row.select("td.cell-comments")
+                .first()
+                ?.attr("data-open")
+            val reviewsLink = "$BASE_URL$reviewsRoute"
 
             val rate = Rate(
                 name,
@@ -48,7 +52,7 @@ class ExRatesProvider : RatesProvider {
                 minAmount ?: 0.0F,
                 fund ?: 0.0F,
                 link,
-                null
+                reviewsLink
             )
 
             rates.add(rate)

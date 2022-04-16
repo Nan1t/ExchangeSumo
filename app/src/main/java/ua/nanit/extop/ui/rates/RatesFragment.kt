@@ -1,6 +1,8 @@
 package ua.nanit.extop.ui.rates
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -14,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.ui.BaseFragment
 import ua.nanit.extop.ui.requireCompatActionBar
@@ -30,24 +31,34 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
     private lateinit var emptyText: TextView
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
-    private var waitForUpdate = false
+    private lateinit var calculatorDialog: AlertDialog
+    private lateinit var rateSelectAction: RateBottomSheet
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        setHasOptionsMenu(true)
+
         viewModel = ViewModelProvider(requireActivity(), RatesVmFactory(requireContext()))
             .get(RatesViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity())
             .get(RatesSearchViewModel::class.java)
+
+        calculatorDialog = AlertDialog.Builder(requireContext())
+            .setTitle(R.string.calc_title)
+            .setView(R.layout.dialog_calculator)
+            .setPositiveButton(R.string.apply) { _, _ ->
+                // TODO calculate
+            }.create()
+
+        rateSelectAction = RateBottomSheet()
 
         sharedViewModel.signalRefreshRates()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
-        requireCompatActionBar()?.show()
 
-        ratesAdapter = RatesAdapter()
+        ratesAdapter = RatesAdapter(this::onRateClicked)
         ratesList = view.findViewById(R.id.rates_list)
         swipeRefresh = view.findViewById(R.id.rates_swipe_refresh)
         emptyText = view.findViewById(R.id.rates_list_empty)
@@ -75,11 +86,24 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
                 true
             }
             R.id.menu_calculator -> {
-                openCalculator()
+                calculatorDialog.show()
                 true
             }
             else -> false
         }
+    }
+
+    private fun onRateClicked(rate: Rate) {
+        rateSelectAction.title = rate.exchanger
+        rateSelectAction.linkClickListener = View.OnClickListener {
+            rateSelectAction.hide()
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(rate.link)))
+        }
+        rateSelectAction.infoClickListener = View.OnClickListener {
+            rateSelectAction.hide()
+            navigation.navigate(R.id.action_nav_rates_to_nav_exchanger)
+        }
+        rateSelectAction.show(parentFragmentManager, RateBottomSheet.TAG)
     }
 
     private fun requestRefresh(animate: Boolean) {
@@ -94,18 +118,6 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
 
         viewModel.refreshRates()
     }
-
-    private fun openCalculator() {
-        val dialog = AlertDialog.Builder(requireContext())
-        dialog.setTitle(R.string.toolbar_calculator)
-        dialog.setView(R.layout.dialog_calculator)
-        dialog.setPositiveButton("OK") { _, _ ->
-
-        }
-        dialog.create().show()
-    }
-
-    /* Observers */
 
     private fun observeListUpdates(rates: List<Rate>) {
         swipeRefresh.isRefreshing = false

@@ -46,4 +46,9 @@
         <item name="android:inputType">text</item>
         <item name="android:maxLines">1</item>
     </style>
+
+    <style name="ExchangerInfoText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/lighter</item>
+    </style>
 </resources>

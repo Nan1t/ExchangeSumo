@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/exchanger_gdl_hor_25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <View
+        android:id="@+id/exchanger_top_panel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/primaryColor"
+        app:layout_constraintBottom_toTopOf="@+id/exchanger_gdl_hor_25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/exchanger_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="15dp"
+        android:contentDescription="Logo"
+        app:layout_constraintBottom_toBottomOf="@+id/exchanger_gdl_hor_25"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/exchanger_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lighter"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/exchanger_top_panel"
+        app:layout_constraintStart_toEndOf="@+id/exchanger_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:text="Exchanger name" />
+
+    <TextView
+        style="@style/ExchangerInfoText"
+        android:id="@+id/exchanger_info_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Статус"
+        app:layout_constraintStart_toStartOf="@+id/exchanger_name"
+        app:layout_constraintTop_toBottomOf="@+id/exchanger_name" />
+
+    <TextView
+        style="@style/ExchangerInfoText"
+        android:id="@+id/exchanger_info_fund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Резерв"
+        app:layout_constraintStart_toStartOf="@+id/exchanger_name"
+        app:layout_constraintTop_toBottomOf="@+id/exchanger_info_status" />
+
+    <TextView
+        style="@style/ExchangerInfoText"
+        android:id="@+id/exchanger_info_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Возраст"
+        app:layout_constraintStart_toStartOf="@+id/exchanger_name"
+        app:layout_constraintTop_toBottomOf="@+id/exchanger_info_fund" />
+
+    <TextView
+        style="@style/ExchangerInfoText"
+        android:id="@+id/exchanger_info_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Страна"
+        app:layout_constraintStart_toStartOf="@+id/exchanger_name"
+        app:layout_constraintTop_toBottomOf="@+id/exchanger_info_age" />
+
+<!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/exchanger_website"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/exchanger_name"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/exchanger_name" />-->
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/exchanger_reviews"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/exchanger_name"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/button" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
