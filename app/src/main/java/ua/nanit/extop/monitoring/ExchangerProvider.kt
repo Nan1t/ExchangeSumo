@@ -4,6 +4,6 @@ import ua.nanit.extop.monitoring.data.Exchanger
 
 interface ExchangerProvider {
 
-    fun provide(exchangerId: String): Exchanger
+    fun provide(link: String): Exchanger
 
 }
