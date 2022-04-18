@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.extop.R
+import ua.nanit.extop.monitoring.data.Rate
 
 class MainActivity : AppCompatActivity(), Navigation {
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity(), Navigation {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.elevation = 0.0F
 
         navController = findNavController(R.id.main_nav_controller)
         navView = findViewById(R.id.main_navbar)
@@ -38,8 +40,16 @@ class MainActivity : AppCompatActivity(), Navigation {
         return true
     }
 
-    override fun navigate(actionId: Int) {
-        navController.navigate(actionId)
+    override fun navToSearch() {
+        navController.navigate(R.id.action_nav_rates_to_nav_search)
+    }
+
+    override fun navToCurrencies() {
+        navController.navigate(R.id.action_nav_search_to_nav_currencies)
+    }
+
+    override fun navToExchanger() {
+        navController.navigate(R.id.action_nav_rates_to_nav_exchanger)
     }
 
     override fun navigateUp() {

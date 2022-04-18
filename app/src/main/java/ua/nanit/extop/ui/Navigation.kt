@@ -2,7 +2,11 @@ package ua.nanit.extop.ui
 
 interface Navigation {
 
-    fun navigate(actionId: Int)
+    fun navToSearch()
+
+    fun navToCurrencies()
+
+    fun navToExchanger()
 
     fun navigateUp()
 

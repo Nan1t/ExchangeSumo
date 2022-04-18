@@ -3,9 +3,9 @@ package ua.nanit.extop.factory
 import android.content.Context
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.*
-import ua.nanit.extop.monitoring.exsumo.ExCurrencyProvider
-import ua.nanit.extop.monitoring.exsumo.ExExchangerProvider
-import ua.nanit.extop.monitoring.exsumo.ExRatesProvider
+import ua.nanit.extop.monitoring.exsumo.SumoCurrencyRepo
+import ua.nanit.extop.monitoring.exsumo.SumoExchangerRepo
+import ua.nanit.extop.monitoring.exsumo.SumoRatesRepo
 import ua.nanit.extop.storage.PrefsMonitoringStorage
 
 class ExSumoFactory(
@@ -16,17 +16,17 @@ class ExSumoFactory(
         return PrefsMonitoringStorage(ctx, "exsumo")
     }
 
-    override fun createCurrenciesProvider(): CurrencyProvider {
+    override fun createCurrenciesProvider(): CurrencyRepo {
         ctx.resources.openRawResource(R.raw.currencies_exsumo).use {
-            return ExCurrencyProvider(it)
+            return SumoCurrencyRepo(it)
         }
     }
 
-    override fun createRatesProvider(): RatesProvider {
-        return ExRatesProvider()
+    override fun createRatesProvider(): RatesRepo {
+        return SumoRatesRepo()
     }
 
-    override fun createExchangerProvider(): ExchangerProvider {
-        return ExExchangerProvider()
+    override fun createExchangerProvider(): ExchangerRepo {
+        return SumoExchangerRepo()
     }
 }

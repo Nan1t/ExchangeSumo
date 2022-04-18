@@ -8,15 +8,15 @@ class BestChangeFactory : MonitoringFactory {
         TODO("Not yet implemented")
     }
 
-    override fun createCurrenciesProvider(): CurrencyProvider {
+    override fun createCurrenciesProvider(): CurrencyRepo {
         TODO("Not yet implemented")
     }
 
-    override fun createRatesProvider(): RatesProvider {
+    override fun createRatesProvider(): RatesRepo {
         TODO("Not yet implemented")
     }
 
-    override fun createExchangerProvider(): ExchangerProvider {
+    override fun createExchangerProvider(): ExchangerRepo {
         TODO("Not yet implemented")
     }
 }

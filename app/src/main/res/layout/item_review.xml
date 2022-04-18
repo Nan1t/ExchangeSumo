@@ -17,15 +17,18 @@
 
         <TextView
             android:id="@+id/item_review_username"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            tools:text="User 1"
+            app:layout_constraintEnd_toStartOf="@+id/item_review_date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            tools:text="User" />
 
         <TextView
+            android:id="@+id/item_review_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/item_review_username"
@@ -39,8 +42,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_review_username"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"/>
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

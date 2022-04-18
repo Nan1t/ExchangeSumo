@@ -4,10 +4,10 @@ interface MonitoringFactory {
 
     fun createStorage(): MonitoringStorage
 
-    fun createCurrenciesProvider(): CurrencyProvider
+    fun createCurrenciesProvider(): CurrencyRepo
 
-    fun createRatesProvider(): RatesProvider
+    fun createRatesProvider(): RatesRepo
 
-    fun createExchangerProvider(): ExchangerProvider
+    fun createExchangerProvider(): ExchangerRepo
 
 }

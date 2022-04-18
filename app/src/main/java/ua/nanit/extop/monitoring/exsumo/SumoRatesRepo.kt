@@ -1,10 +1,10 @@
 package ua.nanit.extop.monitoring.exsumo
 
 import org.jsoup.Jsoup
-import ua.nanit.extop.monitoring.RatesProvider
+import ua.nanit.extop.monitoring.RatesRepo
 import ua.nanit.extop.monitoring.data.Rate
 
-class ExRatesProvider : RatesProvider {
+class SumoRatesRepo : RatesRepo {
 
     companion object {
         private const val BASE_URL = "https://exchangesumo.com"
@@ -22,37 +22,38 @@ class ExRatesProvider : RatesProvider {
             val name = row.attr("data-xname")
             val openUrl = row.attr("data-open")
             val link = "$BASE_URL$openUrl"
-            val amountIn = row.select("td.cell-give var")
-                .first()
+            val amountIn = row.selectFirst("td.cell-give var")
                 ?.html()
-                ?.toFloat()
-            val amountOut = row.select("td.cell-get var")
-                .first()
+                ?.toFloatOrNull()
+            val amountOut = row.selectFirst("td.cell-get var")
                 ?.html()
-                ?.toFloat()
-            val minAmount = row.select("td.cell-give span.currency span.currency-limits sup")
-                .first()
+                ?.toFloatOrNull()
+            val minAmount = row.selectFirst("td.cell-give span.currency span.currency-limits sup")
                 ?.html()
                 ?.substring(3)
-                ?.toFloat()
-            val fund = row.select("td.cell-rezerv")
-                .first()
+                ?.toFloatOrNull()
+                ?.toInt()
+            val fund = row.selectFirst("td.cell-rezerv")
                 ?.html()
                 ?.replace(" ", "")
-                ?.toFloat()
-            val reviewsRoute = row.select("td.cell-comments")
-                .first()
+                ?.toFloatOrNull()
+                ?.toInt()
+            val reviewsRoute = row.selectFirst("td.cell-comments")
                 ?.attr("data-open")
             val reviewsLink = "$BASE_URL$reviewsRoute"
+            val isManual = row.selectFirst("div.wrap-badge span.data-badge_param_manual") != null
+            val isMediator = row.selectFirst("div.wrap-badge span.data-badge_param_is_mediator") != null
 
             val rate = Rate(
                 name,
                 amountIn ?: 0F,
                 amountOut ?: 0F,
-                minAmount ?: 0.0F,
-                fund ?: 0.0F,
+                minAmount ?: 0,
+                fund ?: 0,
                 link,
-                reviewsLink
+                reviewsLink,
+                isManual,
+                isMediator
             )
 
             rates.add(rate)

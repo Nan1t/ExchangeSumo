@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import ua.nanit.extop.ui.Navigation
+import ua.nanit.extop.ui.shared.SharedViewModel
 
 open class BaseFragment(private val layoutId: Int) : Fragment() {
 
@@ -24,5 +26,8 @@ open class BaseFragment(private val layoutId: Int) : Fragment() {
     ): View? {
         return inflater.inflate(layoutId, container, false)
     }
+
+    fun sharedViewModel(): SharedViewModel =
+        ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
 }

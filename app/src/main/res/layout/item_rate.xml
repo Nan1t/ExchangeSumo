@@ -9,89 +9,104 @@
     android:padding="10dp">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_50"
+        android:id="@+id/rate_gdl_40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.40"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_75"
+        android:id="@+id/rate_gdl_60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75"/>
+        app:layout_constraintGuide_percent="0.6"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rate_gdl_80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
 
     <TextView
-        android:id="@+id/item_organization"
+        android:id="@+id/rate_organization"
         style="@style/TableText.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_50"
+        app:layout_constraintEnd_toStartOf="@+id/rate_gdl_40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Organization name" />
 
-    <TextView
-        style="@style/TableText.Subtitle"
-        android:id="@+id/item_fund_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/rate_icon_manual"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_baseline_back_hand"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_organization"
-        android:text="@string/rate_item_fund" />
+        app:layout_constraintTop_toBottomOf="@+id/rate_organization" />
+
+    <ImageView
+        android:id="@+id/rate_icon_mediator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_baseline_subdirectory_arrow_right"
+        app:layout_constraintStart_toEndOf="@id/rate_icon_manual"
+        app:layout_constraintTop_toBottomOf="@+id/rate_organization" />
 
     <TextView
-        style="@style/TableText.Subtitle"
-        android:id="@+id/item_fund"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/item_fund_text"
-        app:layout_constraintTop_toTopOf="@id/item_fund_text"
-        tools:text="9999999"/>
-
-    <TextView
-        android:id="@+id/item_amount_in"
+        android:id="@+id/rate_amount_in"
         style="@style/TableText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_75"
-        app:layout_constraintStart_toStartOf="@+id/guideline_50"
+        app:layout_constraintEnd_toStartOf="@+id/rate_gdl_60"
+        app:layout_constraintStart_toStartOf="@+id/rate_gdl_40"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="999999" />
+        tools:text="9999999" />
 
     <TextView
-        android:id="@+id/item_min_amount_text"
+        android:id="@+id/rate_min_amount_text"
         style="@style/TableText.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@id/item_amount_in"
-        app:layout_constraintEnd_toStartOf="@id/item_min_amount"
-        app:layout_constraintTop_toBottomOf="@id/item_amount_in"
+        app:layout_constraintStart_toStartOf="@id/rate_amount_in"
+        app:layout_constraintEnd_toStartOf="@id/rate_min_amount"
+        app:layout_constraintTop_toBottomOf="@id/rate_amount_in"
         android:text="@string/rate_item_from"  />
 
     <TextView
-        android:id="@+id/item_min_amount"
+        android:id="@+id/rate_min_amount"
         style="@style/TableText.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_75"
-        app:layout_constraintStart_toEndOf="@+id/item_min_amount_text"
-        app:layout_constraintTop_toTopOf="@id/item_min_amount_text"
-        tools:text="9999" />
+        app:layout_constraintEnd_toStartOf="@+id/rate_gdl_60"
+        app:layout_constraintStart_toEndOf="@+id/rate_min_amount_text"
+        app:layout_constraintTop_toTopOf="@id/rate_min_amount_text"
+        tools:text="99999" />
 
     <TextView
-        android:id="@+id/item_amount_out"
+        android:id="@+id/rate_amount_out"
         style="@style/TableText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_75"
+        app:layout_constraintEnd_toStartOf="@+id/rate_gdl_80"
+        app:layout_constraintStart_toStartOf="@+id/rate_gdl_60"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="999999" />
+        tools:text="99999999" />
+
+    <TextView
+        android:id="@+id/rate_fund"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rate_gdl_80"
+        tools:text="9999999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

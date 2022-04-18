@@ -1,7 +1,7 @@
 package ua.nanit.extop.monitoring.exsumo
 
 import com.google.gson.Gson
-import ua.nanit.extop.monitoring.CurrencyProvider
+import ua.nanit.extop.monitoring.CurrencyRepo
 import ua.nanit.extop.monitoring.data.Currency
 import java.io.InputStream
 
@@ -9,9 +9,9 @@ import java.io.InputStream
  * This "parser" reads predefined static currencies
  * because ExchangeSumo defines them statically in JS file
  */
-class ExCurrencyProvider(
+class SumoCurrencyRepo(
     input: InputStream
-) : CurrencyProvider {
+) : CurrencyRepo {
 
     private val gson = Gson()
     private val reader = input.reader(Charsets.UTF_8)

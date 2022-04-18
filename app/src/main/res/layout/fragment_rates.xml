@@ -19,7 +19,7 @@
             android:id="@+id/rates_table_head_org"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="50"
+            android:layout_weight="40"
             android:text="@string/rates_head_org"/>
 
         <TextView
@@ -27,7 +27,7 @@
             android:id="@+id/rates_table_head_in"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="25"
+            android:layout_weight="20"
             android:gravity="center"
             android:text="@string/rates_head_in"/>
 
@@ -36,9 +36,18 @@
             android:id="@+id/rates_table_head_out"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="25"
+            android:layout_weight="20"
             android:gravity="center"
             android:text="@string/rates_head_out"/>
+
+        <TextView
+            style="@style/TableText.Header"
+            android:id="@+id/rates_table_head_fund"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:text="@string/rates_head_fund"/>
     </LinearLayout>
 
     <TextView

@@ -19,12 +19,18 @@
     <string name="rates_head_org">Обменник</string>
     <string name="rates_head_in">Отдаете</string>
     <string name="rates_head_out">Получаете</string>
+    <string name="rates_head_fund">Резерв</string>
     <string name="rates_nothing">Обменов по выбранному направлению не найдено</string>
 
     <!--  Exchanger fragment  -->
     <string name="exchanger_title">Детали обменника</string>
-    <string name="exchanger_website">Перейти на сайт</string>
-    <string name="exchanger_reviews">Перейти к отзывам</string>
+    <string name="exchanger_status">Статус</string>
+    <string name="exchanger_fund">Сумма резервов</string>
+    <string name="exchanger_age">Возраст</string>
+    <string name="exchanger_country">Страна</string>
+    <string name="exchanger_website">Сайт</string>
+    <string name="exchanger_reviews">Отзывы</string>
+    <string name="exchanger_reviews_last">Последние отзывы</string>
 
     <!--  Calculation dialog  -->
     <string name="calc_title">Калькулятор</string>
@@ -34,6 +40,5 @@
     <string name="calc_commissions">Учитывать комиссии</string>
 
     <!--  Rate Item  -->
-    <string name="rate_item_fund">Резерв:\ </string>
     <string name="rate_item_from">от\ </string>
 </resources>

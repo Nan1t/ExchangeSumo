@@ -11,12 +11,12 @@ import com.google.android.material.textfield.TextInputLayout
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.CurrencyType
 import ua.nanit.extop.ui.BaseFragment
-import ua.nanit.extop.ui.shared.RatesSearchViewModel
+import ua.nanit.extop.ui.shared.SharedViewModel
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     private lateinit var viewModel: SearchViewModel
-    private lateinit var sharedViewModel: RatesSearchViewModel
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var layoutCurrencyIn: TextInputLayout
     private lateinit var layoutCurrencyOut: TextInputLayout
@@ -30,8 +30,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
-        sharedViewModel = ViewModelProvider(requireActivity())
-            .get(RatesSearchViewModel::class.java)
+        sharedViewModel = sharedViewModel()
 
         layoutCurrencyIn = view.findViewById(R.id.rates_currency_in_layout)
         layoutCurrencyOut = view.findViewById(R.id.rates_currency_out_layout)
@@ -41,12 +40,12 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         btnConfirm = view.findViewById(R.id.search_btn_confirm)
 
         fieldCurrencyIn.setOnClickListener {
-            openCurrenciesMenu()
+            navigation.navToCurrencies()
             viewModel.loadCurrencies(CurrencyType.IN)
         }
 
         fieldCurrencyOut.setOnClickListener {
-            openCurrenciesMenu()
+            navigation.navToCurrencies()
             viewModel.loadCurrencies(CurrencyType.OUT)
         }
 
@@ -68,8 +67,16 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         }
 
         viewModel.applyState.observe(viewLifecycleOwner, this::observeApplyState)
+    }
 
+    override fun onResume() {
+        super.onResume()
         navigation.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        navigation.show()
     }
 
     private fun observeApplyState(state: ApplyState) {
@@ -97,15 +104,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             .setInterpolator(FastOutSlowInInterpolator())
             .start()
         viewModel.swapCurrencies()
-    }
-
-    private fun openCurrenciesMenu() {
-        navigation.navigate(R.id.action_nav_search_to_nav_currencies)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
     }
 
 }

@@ -48,8 +48,16 @@ class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
         }
 
         viewModel.currencies.observe(viewLifecycleOwner, this::observeCurrencies)
+    }
 
+    override fun onResume() {
+        super.onResume()
         navigation.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        navigation.show()
     }
 
     private fun onConfirmClick(view: View) {
@@ -65,10 +73,5 @@ class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
 
     private fun observeCurrencies(currencies: List<Currency>) {
         listAdapter.update(currencies)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
     }
 }

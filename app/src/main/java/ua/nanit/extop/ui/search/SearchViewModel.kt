@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import ua.nanit.extop.monitoring.CurrencyProvider
+import ua.nanit.extop.monitoring.CurrencyRepo
 import ua.nanit.extop.monitoring.CurrencyType
 import ua.nanit.extop.monitoring.MonitoringStorage
 import ua.nanit.extop.monitoring.data.Currency
-import ua.nanit.extop.ui.SingleEvent
+import ua.nanit.extop.ui.Signal
 
 class SearchViewModel(
     private val dispatcher: CoroutineDispatcher,
     private val storage: MonitoringStorage,
-    private val currencyProvider: CurrencyProvider
+    private val currencyRepo: CurrencyRepo
 ) : ViewModel() {
 
     private var currenciesMenuMode: CurrencyType? = null
@@ -23,7 +23,7 @@ class SearchViewModel(
     private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
     private val _currencyOut: MutableLiveData<Currency> = MutableLiveData()
     private val _currencies: MutableLiveData<List<Currency>> = MutableLiveData()
-    private val _applyState: SingleEvent<ApplyState> = SingleEvent()
+    private val _applyState: Signal<ApplyState> = Signal()
 
     val currencyIn: LiveData<Currency> get() = _currencyIn
     val currencyOut: LiveData<Currency> get() = _currencyOut
@@ -35,8 +35,8 @@ class SearchViewModel(
         val savedCurrencyOut = storage.getCurrencyOut()
 
         if (savedCurrencyIn != null && savedCurrencyOut != null) {
-            val currencyIn = currencyProvider.getCurrency(savedCurrencyIn)
-            val currencyOut = currencyProvider.getCurrency(savedCurrencyOut)
+            val currencyIn = currencyRepo.getCurrency(savedCurrencyIn)
+            val currencyOut = currencyRepo.getCurrency(savedCurrencyOut)
 
             if (currencyIn != null && currencyOut != null) {
                 _currencyIn.value = currencyIn!!
@@ -67,7 +67,7 @@ class SearchViewModel(
         currenciesMenuMode = type
 
         viewModelScope.launch(dispatcher) {
-            val currencies = currencyProvider.provide()
+            val currencies = currencyRepo.provide()
 
             viewModelScope.launch {
                 _currencies.value = currencies

@@ -19,12 +19,12 @@ import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.ui.BaseFragment
 import ua.nanit.extop.ui.requireCompatActionBar
-import ua.nanit.extop.ui.shared.RatesSearchViewModel
+import ua.nanit.extop.ui.shared.SharedViewModel
 
 class RatesFragment : BaseFragment(R.layout.fragment_rates) {
 
     private lateinit var viewModel: RatesViewModel
-    private lateinit var sharedViewModel: RatesSearchViewModel
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var ratesList: RecyclerView
     private lateinit var ratesAdapter: RatesAdapter
@@ -40,8 +40,7 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
 
         viewModel = ViewModelProvider(requireActivity(), RatesVmFactory(requireContext()))
             .get(RatesViewModel::class.java)
-        sharedViewModel = ViewModelProvider(requireActivity())
-            .get(RatesSearchViewModel::class.java)
+        sharedViewModel = sharedViewModel()
 
         calculatorDialog = AlertDialog.Builder(requireContext())
             .setTitle(R.string.calc_title)
@@ -82,7 +81,7 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_search -> {
-                navigation.navigate(R.id.action_nav_rates_to_nav_search)
+                navigation.navToSearch()
                 true
             }
             R.id.menu_calculator -> {
@@ -101,7 +100,8 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
         }
         rateSelectAction.infoClickListener = View.OnClickListener {
             rateSelectAction.hide()
-            navigation.navigate(R.id.action_nav_rates_to_nav_exchanger)
+            sharedViewModel.signalRateInfo(rate)
+            navigation.navToExchanger()
         }
         rateSelectAction.show(parentFragmentManager, RateBottomSheet.TAG)
     }

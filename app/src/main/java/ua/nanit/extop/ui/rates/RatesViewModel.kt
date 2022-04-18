@@ -7,17 +7,17 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import ua.nanit.extop.monitoring.MonitoringStorage
-import ua.nanit.extop.monitoring.RatesProvider
+import ua.nanit.extop.monitoring.RatesRepo
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.SingleEvent
+import ua.nanit.extop.ui.Signal
 
 class RatesViewModel(
     private val dispatcher: CoroutineDispatcher,
     private val storage: MonitoringStorage,
-    private val ratesProvider: RatesProvider
+    private val ratesRepo: RatesRepo
 ) : ViewModel() {
 
-    private val _error = SingleEvent<String>()
+    private val _error = Signal<String>()
     private val _rates = MutableLiveData<List<Rate>>()
     private val _currencies = MutableLiveData<String>()
 
@@ -53,7 +53,7 @@ class RatesViewModel(
         var error: String? = null
 
         val rates: List<Rate> = try {
-            ratesProvider.provide(currencyIn, currencyOut)
+            ratesRepo.provide(currencyIn, currencyOut)
         } catch (th: Throwable) {
             th.printStackTrace()
             error = th.message

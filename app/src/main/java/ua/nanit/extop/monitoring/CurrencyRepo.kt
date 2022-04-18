@@ -2,7 +2,7 @@ package ua.nanit.extop.monitoring
 
 import ua.nanit.extop.monitoring.data.Currency
 
-interface CurrencyProvider {
+interface CurrencyRepo {
 
     fun provide(): List<Currency>
 

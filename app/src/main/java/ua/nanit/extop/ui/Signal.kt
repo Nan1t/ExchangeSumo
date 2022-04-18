@@ -6,7 +6,11 @@ import androidx.lifecycle.Observer
 
 import java.util.concurrent.atomic.AtomicBoolean
 
-open class SingleEvent<T> : MutableLiveData<T>() {
+/**
+ * LiveData for single event.
+ * Observer will be called only when data changed
+ */
+open class Signal<T> : MutableLiveData<T>() {
 
     private val activated = AtomicBoolean(false)
 
