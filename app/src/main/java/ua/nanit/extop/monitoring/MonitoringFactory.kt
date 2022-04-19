@@ -2,14 +2,16 @@ package ua.nanit.extop.monitoring
 
 interface MonitoringFactory {
 
-    fun createStorage(): MonitoringStorage
+    fun getStorage(): MonitoringStorage
 
-    fun createCurrenciesProvider(): CurrencyRepo
+    fun getCurrenciesRepo(): CurrencyRepo
 
-    fun createRatesProvider(): RatesRepo
+    fun getRatesRepo(): RatesRepo
 
-    fun createExchangerProvider(): ExchangerRepo
+    fun getDoubleExchangeRepo(): DoubleExchangeRepo
 
-    fun createCalculator(): RateCalculator
+    fun getExchangerRepo(): ExchangerRepo
+
+    fun getCalculator(): RateCalculator
 
 }

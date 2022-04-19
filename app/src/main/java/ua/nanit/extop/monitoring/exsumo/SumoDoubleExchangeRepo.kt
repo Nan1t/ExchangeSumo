@@ -8,7 +8,7 @@ import ua.nanit.extop.monitoring.data.DoubleExchange
 class SumoDoubleExchangeRepo : DoubleExchangeRepo {
 
     override fun provide(currencyIn: String, currencyOut: String): List<DoubleExchange> {
-        val url = "${SUMO_BASE_URL}/obmen/$currencyIn-$currencyOut-double"
+        val url = "${SUMO_BASE_URL}/obmen/$currencyIn-$currencyOut-double/"
         val doc = Jsoup.connect(url).get()
         val elements = doc.select("table#exchangesDoubleTable tbody tr")
         val iterator = elements.iterator()

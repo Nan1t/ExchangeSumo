@@ -39,6 +39,12 @@
     <string name="exchanger_reviews">Отзывы</string>
     <string name="exchanger_reviews_last">Последние отзывы</string>
 
+    <!--  Double Exchange Fragment  -->
+    <string name="double_head_in">Отдаете</string>
+    <string name="double_head_transit">Транзитная валюта</string>
+    <string name="double_head_out">Получите</string>
+    <string name="double_head_course">Курс</string>
+
     <!--  Calculation dialog  -->
     <string name="calc_title">Калькулятор</string>
     <string name="calc_amount_in">Хочу отдать</string>

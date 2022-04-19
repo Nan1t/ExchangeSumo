@@ -3,7 +3,7 @@ package ua.nanit.extop.ui
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import ua.nanit.extop.factory.BestChangeFactory
-import ua.nanit.extop.factory.ExSumoFactory
+import ua.nanit.extop.factory.ExchangeSumoFactory
 import ua.nanit.extop.monitoring.MonitoringFactory
 import ua.nanit.extop.monitoring.MonitoringType
 
@@ -17,7 +17,7 @@ abstract class BaseVmFactory(
 
         return when (MonitoringType.byId(typeId)) {
             MonitoringType.EXCHANGE_SUMO -> {
-                ExSumoFactory(ctx)
+                ExchangeSumoFactory(ctx)
             }
             MonitoringType.BEST_CHANGE -> {
                 BestChangeFactory()

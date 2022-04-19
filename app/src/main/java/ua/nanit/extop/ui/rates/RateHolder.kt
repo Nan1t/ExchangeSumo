@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Rate
+import ua.nanit.extop.util.toRawString
 
 class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -26,8 +27,8 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
         organization.text = rate.exchanger
         fund.text = rate.fund.toString()
         minAmount.text = rate.minAmount.toString()
-        amountIn.text = rate.amountIn.toString()
-        amountOut.text = rate.amountOut.toString()
+        amountIn.text = rate.amountIn.toRawString()
+        amountOut.text = rate.amountOut.toRawString()
 
         iconManual.visibility = if (rate.isManual) View.VISIBLE else View.GONE
         iconMediator.visibility = if (rate.isMediator) View.VISIBLE else View.GONE

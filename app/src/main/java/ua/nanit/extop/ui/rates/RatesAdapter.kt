@@ -2,20 +2,13 @@ package ua.nanit.extop.ui.rates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Rate
+import ua.nanit.extop.ui.BaseRateAdapter
 
 class RatesAdapter(
-    private val rateClickListener: (Rate) -> Unit
-) : RecyclerView.Adapter<RateHolder>() {
-
-    private var list: List<Rate>? = null
-
-    fun update(rates: List<Rate>) {
-        list = rates
-        notifyDataSetChanged()
-    }
+    clickListener: (Rate) -> Unit
+) : BaseRateAdapter<Rate, RateHolder>(clickListener) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RateHolder {
         val view = LayoutInflater.from(parent.context)
@@ -29,10 +22,6 @@ class RatesAdapter(
         holder.bind(rate)
         holder.colorizeBackground(position)
         holder.setOnClick(rateClickListener)
-    }
-
-    override fun getItemCount(): Int {
-        return list?.size ?: 0
     }
 
 }

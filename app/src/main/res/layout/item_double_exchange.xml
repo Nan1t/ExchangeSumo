@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/table_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/double_gdl_25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/double_gdl_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/double_gdl_75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <TextView
+        android:id="@+id/double_in_amount"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/double_gdl_25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9999999" />
+
+    <TextView
+        android:id="@+id/double_transit_amount"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/double_gdl_50"
+        app:layout_constraintStart_toStartOf="@+id/double_gdl_25"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9999999" />
+
+    <TextView
+        android:id="@+id/double_transit_currency"
+        style="@style/TableText.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/double_transit_amount"
+        app:layout_constraintStart_toStartOf="@+id/double_transit_amount"
+        app:layout_constraintTop_toBottomOf="@id/double_transit_amount"
+        tools:text="CURRENCY" />
+
+    <TextView
+        android:id="@+id/double_out_amount"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/double_gdl_75"
+        app:layout_constraintStart_toStartOf="@+id/double_gdl_50"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9999999" />
+
+    <TextView
+        android:id="@+id/double_course"
+        style="@style/TableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/double_gdl_75"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9999999" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

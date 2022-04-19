@@ -4,23 +4,27 @@ import ua.nanit.extop.monitoring.*
 
 class BestChangeFactory : MonitoringFactory {
 
-    override fun createStorage(): MonitoringStorage {
+    override fun getStorage(): MonitoringStorage {
         TODO("Not yet implemented")
     }
 
-    override fun createCurrenciesProvider(): CurrencyRepo {
+    override fun getCurrenciesRepo(): CurrencyRepo {
         TODO("Not yet implemented")
     }
 
-    override fun createRatesProvider(): RatesRepo {
+    override fun getRatesRepo(): RatesRepo {
         TODO("Not yet implemented")
     }
 
-    override fun createExchangerProvider(): ExchangerRepo {
+    override fun getDoubleExchangeRepo(): DoubleExchangeRepo {
         TODO("Not yet implemented")
     }
 
-    override fun createCalculator(): RateCalculator {
+    override fun getExchangerRepo(): ExchangerRepo {
+        TODO("Not yet implemented")
+    }
+
+    override fun getCalculator(): RateCalculator {
         TODO("Not yet implemented")
     }
 }

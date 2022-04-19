@@ -12,7 +12,7 @@ class ExchangerVmFactory(ctx: Context) : BaseVmFactory(ctx) {
 
         return ExchangerViewModel(
             Dispatchers.IO,
-            factory.createExchangerProvider()
+            factory.getExchangerRepo()
         ) as T
     }
 
