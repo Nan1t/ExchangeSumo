@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -15,7 +16,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.extop.R
+import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.ui.BaseFragment
 import ua.nanit.extop.ui.requireCompatActionBar
@@ -34,6 +37,9 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
     private lateinit var calculatorDialog: AlertDialog
     private lateinit var rateSelectAction: RateBottomSheet
 
+    private lateinit var calcRadioGroup: RadioGroup
+    private lateinit var calcAmount: TextInputEditText
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         setHasOptionsMenu(true)
@@ -42,12 +48,16 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
             .get(RatesViewModel::class.java)
         sharedViewModel = sharedViewModel()
 
+        val dialogView = layoutInflater.inflate(R.layout.dialog_calculator, null)
+
+        calcRadioGroup = dialogView.findViewById(R.id.calc_radio_group) ?: return
+        calcAmount = dialogView.findViewById(R.id.calc_amount) ?: return
+
         calculatorDialog = AlertDialog.Builder(requireContext())
             .setTitle(R.string.calc_title)
-            .setView(R.layout.dialog_calculator)
-            .setPositiveButton(R.string.apply) { _, _ ->
-                // TODO calculate
-            }.create()
+            .setView(dialogView)
+            .setPositiveButton(R.string.apply) { _, _ -> calculate() }
+            .create()
 
         rateSelectAction = RateBottomSheet()
 
@@ -69,6 +79,7 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
 
         viewModel.error.observe(viewLifecycleOwner, this::observeError)
         viewModel.rates.observe(viewLifecycleOwner, this::observeListUpdates)
+        viewModel.emptyRates.observe(viewLifecycleOwner) { observeEmptyRates() }
         viewModel.currencies.observe(viewLifecycleOwner) { requireCompatActionBar()?.title = it }
         sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { requestRefresh(true) }
     }
@@ -89,6 +100,19 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
                 true
             }
             else -> false
+        }
+    }
+
+    private fun calculate() {
+        val amount = calcAmount.text.toString().toFloatOrNull() ?: return
+
+        when (calcRadioGroup.checkedRadioButtonId) {
+            R.id.calc_radio_in -> {
+                viewModel.calculate(amount, Direction.IN)
+            }
+            R.id.calc_radio_out -> {
+                viewModel.calculate(amount, Direction.OUT)
+            }
         }
     }
 
@@ -119,15 +143,15 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
         viewModel.refreshRates()
     }
 
+    private fun observeEmptyRates() {
+        swipeRefresh.isRefreshing = false
+        swipeRefresh.visibility = View.GONE
+        emptyText.visibility = View.VISIBLE
+    }
+
     private fun observeListUpdates(rates: List<Rate>) {
         swipeRefresh.isRefreshing = false
-
-        if (rates.isEmpty()) {
-            swipeRefresh.visibility = View.GONE
-            emptyText.visibility = View.VISIBLE
-        } else {
-            ratesAdapter.update(rates)
-        }
+        ratesAdapter.update(rates)
     }
 
     private fun observeError(msg: String) {

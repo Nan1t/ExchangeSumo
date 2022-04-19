@@ -10,4 +10,6 @@ interface MonitoringFactory {
 
     fun createExchangerProvider(): ExchangerRepo
 
+    fun createCalculator(): RateCalculator
+
 }

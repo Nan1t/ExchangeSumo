@@ -1,6 +1,6 @@
 package ua.nanit.extop.monitoring
 
-enum class CurrencyType {
+enum class Direction {
     IN,
     OUT
 }

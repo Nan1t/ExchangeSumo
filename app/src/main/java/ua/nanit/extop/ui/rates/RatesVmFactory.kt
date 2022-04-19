@@ -13,7 +13,8 @@ class RatesVmFactory(ctx: Context) : BaseVmFactory(ctx) {
         return RatesViewModel(
             Dispatchers.IO,
             factory.createStorage(),
-            factory.createRatesProvider()
+            factory.createRatesProvider(),
+            factory.createCalculator()
         ) as T
     }
 

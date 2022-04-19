@@ -6,27 +6,28 @@
     android:padding="15dp">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/search_guideline"
+        android:id="@+id/calc_gdl_50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <RadioGroup
-        android:id="@+id/search_radio_group"
+        android:id="@+id/calc_radio_group"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/search_radio_in"
+            android:id="@+id/calc_radio_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/calc_amount_in" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/search_radio_out"
+            android:id="@+id/calc_radio_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calc_amount_out" />
@@ -34,44 +35,20 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/rates_amount_layout"
+        android:id="@+id/calc_amount_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:hint="@string/calc_amount"
-        app:layout_constraintBottom_toBottomOf="@+id/search_radio_group"
+        app:layout_constraintBottom_toBottomOf="@+id/calc_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/search_guideline"
-        app:layout_constraintTop_toTopOf="@+id/search_radio_group">
+        app:layout_constraintStart_toStartOf="@+id/calc_gdl_50"
+        app:layout_constraintTop_toTopOf="@+id/calc_radio_group">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/rates_amount"
+            android:id="@+id/calc_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_radio_group">
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/search_calc_commissions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calc_commissions"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/search_calc_commissions"
-            app:layout_constraintStart_toEndOf="@+id/search_calc_commissions"
-            app:layout_constraintTop_toTopOf="@+id/search_calc_commissions"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import ua.nanit.extop.R
-import ua.nanit.extop.monitoring.CurrencyType
+import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.ui.BaseFragment
 import ua.nanit.extop.ui.shared.SharedViewModel
 
@@ -41,12 +41,12 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
         fieldCurrencyIn.setOnClickListener {
             navigation.navToCurrencies()
-            viewModel.loadCurrencies(CurrencyType.IN)
+            viewModel.loadCurrencies(Direction.IN)
         }
 
         fieldCurrencyOut.setOnClickListener {
             navigation.navToCurrencies()
-            viewModel.loadCurrencies(CurrencyType.OUT)
+            viewModel.loadCurrencies(Direction.OUT)
         }
 
         btnSwap.setOnClickListener(this::onSwapClicked)

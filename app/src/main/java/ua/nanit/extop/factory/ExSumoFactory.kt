@@ -29,4 +29,8 @@ class ExSumoFactory(
     override fun createExchangerProvider(): ExchangerRepo {
         return SumoExchangerRepo()
     }
+
+    override fun createCalculator(): RateCalculator {
+        return CommonCalculator()
+    }
 }

@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import ua.nanit.extop.monitoring.CurrencyRepo
-import ua.nanit.extop.monitoring.CurrencyType
+import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.monitoring.MonitoringStorage
 import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.ui.Signal
@@ -18,7 +18,7 @@ class SearchViewModel(
     private val currencyRepo: CurrencyRepo
 ) : ViewModel() {
 
-    private var currenciesMenuMode: CurrencyType? = null
+    private var currenciesMenuMode: Direction? = null
 
     private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
     private val _currencyOut: MutableLiveData<Currency> = MutableLiveData()
@@ -63,7 +63,7 @@ class SearchViewModel(
         _applyState.setValue(ApplyState.SUCCESS)
     }
 
-    fun loadCurrencies(type: CurrencyType) {
+    fun loadCurrencies(type: Direction) {
         currenciesMenuMode = type
 
         viewModelScope.launch(dispatcher) {
@@ -77,10 +77,10 @@ class SearchViewModel(
 
     fun selectCurrency(currency: Currency) {
         when(currenciesMenuMode) {
-            CurrencyType.IN -> {
+            Direction.IN -> {
                 _currencyIn.value = currency
             }
-            CurrencyType.OUT -> {
+            Direction.OUT -> {
                 _currencyOut.value = currency
             }
         }

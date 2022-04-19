@@ -19,4 +19,8 @@ class BestChangeFactory : MonitoringFactory {
     override fun createExchangerProvider(): ExchangerRepo {
         TODO("Not yet implemented")
     }
+
+    override fun createCalculator(): RateCalculator {
+        TODO("Not yet implemented")
+    }
 }
