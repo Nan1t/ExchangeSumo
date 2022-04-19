@@ -3,6 +3,7 @@ package ua.nanit.extop.monitoring.exsumo
 import org.jsoup.Jsoup
 import ua.nanit.extop.monitoring.RatesRepo
 import ua.nanit.extop.monitoring.data.Rate
+import kotlin.math.roundToInt
 
 class SumoRatesRepo : RatesRepo {
 
@@ -24,20 +25,20 @@ class SumoRatesRepo : RatesRepo {
             val link = "$BASE_URL$openUrl"
             val amountIn = row.selectFirst("td.cell-give var")
                 ?.html()
-                ?.toFloatOrNull()
+                ?.toDoubleOrNull()
             val amountOut = row.selectFirst("td.cell-get var")
                 ?.html()
-                ?.toFloatOrNull()
+                ?.toDoubleOrNull()
             val minAmount = row.selectFirst("td.cell-give span.currency span.currency-limits sup")
                 ?.html()
                 ?.substring(3)
                 ?.toFloatOrNull()
-                ?.toInt()
+                ?.roundToInt()
             val fund = row.selectFirst("td.cell-rezerv")
                 ?.html()
                 ?.replace(" ", "")
                 ?.toFloatOrNull()
-                ?.toInt()
+                ?.roundToInt()
             val reviewsRoute = row.selectFirst("td.cell-comments")
                 ?.attr("data-open")
             val reviewsLink = "$BASE_URL$reviewsRoute"
@@ -47,8 +48,8 @@ class SumoRatesRepo : RatesRepo {
 
             val rate = Rate(
                 name,
-                amountIn ?: 0F,
-                amountOut ?: 0F,
+                amountIn ?: 0.0,
+                amountOut ?: 0.0,
                 minAmount ?: 0,
                 fund ?: 0,
                 link,

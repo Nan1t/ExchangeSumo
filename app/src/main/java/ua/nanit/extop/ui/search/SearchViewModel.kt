@@ -20,19 +20,23 @@ class SearchViewModel(
 
     private var currenciesMenuMode: Direction? = null
 
-    private val _currencyIn: MutableLiveData<Currency> = MutableLiveData()
-    private val _currencyOut: MutableLiveData<Currency> = MutableLiveData()
-    private val _currencies: MutableLiveData<List<Currency>> = MutableLiveData()
-    private val _applyState: Signal<ApplyState> = Signal()
+    private val _currencyIn = MutableLiveData<Currency>()
+    private val _currencyOut = MutableLiveData<Currency>()
+    private val _currencies = MutableLiveData<List<Currency>>()
+    private val _enableConfirmBtn = MutableLiveData<Boolean>()
+    private val _search = Signal<Unit>()
 
     val currencyIn: LiveData<Currency> get() = _currencyIn
     val currencyOut: LiveData<Currency> get() = _currencyOut
     val currencies: LiveData<List<Currency>> get() = _currencies
-    val applyState: LiveData<ApplyState> get() = _applyState
+    val enableConfirmBtn: LiveData<Boolean> get() = _enableConfirmBtn
+    val search: LiveData<Unit> get() = _search
 
     init {
         val savedCurrencyIn = storage.getCurrencyIn()
         val savedCurrencyOut = storage.getCurrencyOut()
+
+        _enableConfirmBtn.value = false
 
         if (savedCurrencyIn != null && savedCurrencyOut != null) {
             val currencyIn = currencyRepo.getCurrency(savedCurrencyIn)
@@ -41,26 +45,21 @@ class SearchViewModel(
             if (currencyIn != null && currencyOut != null) {
                 _currencyIn.value = currencyIn!!
                 _currencyOut.value = currencyOut!!
+                _enableConfirmBtn.value = true
             }
         }
     }
 
     fun applySearchParams() {
-        val currencyIn = _currencyIn.value?.id
-        val currencyOut = _currencyOut.value?.id
+        val currencyIn = currencyIn.value?.id
+        val currencyOut = currencyOut.value?.id
 
-        if (currencyIn == null) {
-            _applyState.setValue(ApplyState.NO_CURRENCY_IN)
-            return
-        }
-
-        if (currencyOut == null) {
-            _applyState.setValue(ApplyState.NO_CURRENCY_OUT)
+        if (currencyIn == null || currencyOut == null) {
             return
         }
 
         storage.setCurrencies(currencyIn, currencyOut)
-        _applyState.setValue(ApplyState.SUCCESS)
+        _search.setValue(Unit)
     }
 
     fun loadCurrencies(type: Direction) {
@@ -84,11 +83,14 @@ class SearchViewModel(
                 _currencyOut.value = currency
             }
         }
+
+        _enableConfirmBtn.value = currencyIn.value != null
+                && currencyOut.value != null
     }
 
     fun swapCurrencies() {
-        val valIn = _currencyIn.value
-        val valOut = _currencyOut.value
+        val valIn = currencyIn.value
+        val valOut = currencyOut.value
 
         if (valIn != null && valOut != null) {
             _currencyIn.value = valOut!!

@@ -50,11 +50,11 @@ class RatesViewModel(
                 loadRates(currencyIn, currencyOut)
             }
         } else {
-            _rates.value = emptyList()
+            _emptyRates.value = Unit
         }
     }
 
-    fun calculate(amount: Float, dir: Direction) {
+    fun calculate(amount: Double, dir: Direction) {
         val rates = _rates.value ?: return
 
         viewModelScope.launch(dispatcher) {

@@ -2,8 +2,8 @@ package ua.nanit.extop.monitoring.data
 
 data class Rate(
     val exchanger: String,
-    var amountIn: Float,
-    var amountOut: Float,
+    var amountIn: Double,
+    var amountOut: Double,
     val minAmount: Int,
     val fund: Int,
     val link: String,

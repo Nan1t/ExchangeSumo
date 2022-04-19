@@ -54,19 +54,14 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
         viewModel.currencyIn.observe(viewLifecycleOwner) {
             fieldCurrencyIn.setText(it.name)
-            layoutCurrencyIn.isErrorEnabled = true
-            layoutCurrencyIn.error = null
-            layoutCurrencyIn.isErrorEnabled = false
         }
 
         viewModel.currencyOut.observe(viewLifecycleOwner) {
             fieldCurrencyOut.setText(it.name)
-            layoutCurrencyOut.isErrorEnabled = true
-            layoutCurrencyOut.error = null
-            layoutCurrencyIn.isErrorEnabled = false
         }
 
-        viewModel.applyState.observe(viewLifecycleOwner, this::observeApplyState)
+        viewModel.enableConfirmBtn.observe(viewLifecycleOwner, this::observeEnableConfirmBtn)
+        viewModel.search.observe(viewLifecycleOwner) { observeSearch() }
     }
 
     override fun onResume() {
@@ -79,21 +74,13 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         navigation.show()
     }
 
-    private fun observeApplyState(state: ApplyState) {
-        when (state) {
-            ApplyState.SUCCESS -> {
-                sharedViewModel.signalRefreshRates()
-                navigation.navigateUp()
-            }
-            ApplyState.NO_CURRENCY_IN -> {
-                layoutCurrencyIn.isErrorEnabled = true
-                layoutCurrencyIn.error = "NO_CURRENCY_IN"
-            }
-            ApplyState.NO_CURRENCY_OUT -> {
-                layoutCurrencyOut.isErrorEnabled = true
-                layoutCurrencyOut.error = "NO_CURRENCY_OUT"
-            }
-        }
+    private fun observeEnableConfirmBtn(value: Boolean) {
+        btnConfirm.visibility = if (value) View.VISIBLE else View.GONE
+    }
+
+    private fun observeSearch() {
+        sharedViewModel.signalRefreshRates()
+        navigation.navigateUp()
     }
 
     private fun onSwapClicked(view: View) {
@@ -103,6 +90,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             .withEndAction { view.rotation = 0.0F }
             .setInterpolator(FastOutSlowInInterpolator())
             .start()
+
         viewModel.swapCurrencies()
     }
 

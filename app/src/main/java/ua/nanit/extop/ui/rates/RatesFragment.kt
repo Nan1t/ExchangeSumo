@@ -104,7 +104,7 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
     }
 
     private fun calculate() {
-        val amount = calcAmount.text.toString().toFloatOrNull() ?: return
+        val amount = calcAmount.text.toString().toDoubleOrNull() ?: return
 
         when (calcRadioGroup.checkedRadioButtonId) {
             R.id.calc_radio_in -> {
