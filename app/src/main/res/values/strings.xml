@@ -7,6 +7,7 @@
     <string name="nav_rates">Обменники</string>
     <string name="nav_double">Двойной обмен</string>
     <string name="nav_settings">Настройки</string>
+    <string name="nav_about">О приложении</string>
 
     <!--  Search Fragment  -->
     <string name="search_title">Поиск</string>
@@ -44,6 +45,11 @@
     <string name="double_head_transit">Транзитная валюта</string>
     <string name="double_head_out">Получите</string>
     <string name="double_head_course">Курс</string>
+
+    <!--  Double Exchange Bottom Sheet  -->
+    <string name="double_step_first">Шаг 1</string>
+    <string name="double_step_second">Шаг 2</string>
+    <string name="double_btn_goto">Обменять</string>
 
     <!--  Calculation dialog  -->
     <string name="calc_title">Калькулятор</string>

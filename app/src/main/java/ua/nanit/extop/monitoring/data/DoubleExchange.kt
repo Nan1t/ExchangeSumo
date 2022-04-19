@@ -8,4 +8,6 @@ data class DoubleExchange(
     val course: Double,
     val firstLink: String,
     val secondLink: String,
+    val firstExchanger: String,
+    val secondExchanger: String
 )

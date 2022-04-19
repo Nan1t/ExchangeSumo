@@ -61,8 +61,13 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
 
         if (links.size < 2) return null
 
-        val firstLink = links[0].attr("href")
-        val secondLink = links[1].attr("href")
+        val firstElem = links[0]
+        val secondElem = links[1]
+
+        val firstLink = firstElem.attr("href")
+        val secondLink = secondElem.attr("href")
+        val firstExchanger = firstElem.text().trim()
+        val secondExchanger = secondElem.text().trim()
 
         return DoubleExchange(
             amountIn,
@@ -71,7 +76,9 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
             currencyTransit,
             course,
             firstLink,
-            secondLink
+            secondLink,
+            firstExchanger,
+            secondExchanger
         )
     }
 

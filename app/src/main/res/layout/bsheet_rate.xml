@@ -103,7 +103,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_baseline_link"/>
+                android:src="@drawable/ic_baseline_currency_exchange"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -136,5 +136,4 @@
                 android:text="@string/rates_goto_info"/>
         </LinearLayout>
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

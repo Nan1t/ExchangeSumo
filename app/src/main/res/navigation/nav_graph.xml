@@ -5,6 +5,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/nav_rates">
 
+    <!--  Top Level Fragments  -->
+
     <fragment
         android:id="@+id/nav_rates"
         android:name="ua.nanit.extop.ui.rates.RatesFragment"
@@ -32,7 +34,13 @@
         android:id="@+id/nav_settings"
         android:name="ua.nanit.extop.ui.settings.SettingsFragment"
         android:label="@string/nav_settings"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_nav_about"
+            app:destination="@id/nav_about" />
+    </fragment>
+
+    <!--  Other Fragments  -->
 
     <fragment
         android:id="@+id/nav_search"
@@ -56,5 +64,11 @@
         android:name="ua.nanit.extop.ui.exchanger.ExchangerFragment"
         android:label="@string/exchanger_title"
         tools:layout="@layout/fragment_exchanger"/>
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="ua.nanit.extop.ui.about.AboutFragment"
+        android:label="@string/nav_about"
+        tools:layout="@layout/fragment_about"/>
 
 </navigation>

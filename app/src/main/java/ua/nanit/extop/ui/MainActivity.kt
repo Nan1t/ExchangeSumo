@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.extop.R
-import ua.nanit.extop.monitoring.data.Rate
 
 class MainActivity : AppCompatActivity(), Navigation {
 

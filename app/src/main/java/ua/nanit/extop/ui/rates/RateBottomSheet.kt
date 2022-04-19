@@ -29,7 +29,7 @@ class RateBottomSheet : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.rate_bottom_sheet, container, false)
+        val view = inflater.inflate(R.layout.bsheet_rate, container, false)
         val titleView = view.findViewById<TextView>(R.id.rate_dialog_title)
         val badgeManual = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_manual)
         val badgeMediator = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_mediator)
