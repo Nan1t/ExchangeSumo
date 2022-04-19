@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -17,6 +18,9 @@ class RateBottomSheet : BottomSheetDialogFragment() {
     }
 
     var title: String = ""
+    var isManual = false
+    var isMediator = false
+    var isCardVerify = false
     var linkClickListener: View.OnClickListener? = null
     var infoClickListener: View.OnClickListener? = null
 
@@ -25,14 +29,21 @@ class RateBottomSheet : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.dialog_rate, container, false)
+        val view = inflater.inflate(R.layout.rate_bottom_sheet, container, false)
         val titleView = view.findViewById<TextView>(R.id.rate_dialog_title)
+        val badgeManual = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_manual)
+        val badgeMediator = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_mediator)
+        val badgeCardVerify = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_card)
         val btnLink = view.findViewById<View>(R.id.rate_dialog_link)
         val btnInfo = view.findViewById<View>(R.id.rate_dialog_info)
 
+        titleView.text = title
+        badgeManual.visibility = if (isManual) View.VISIBLE else View.GONE
+        badgeMediator.visibility = if (isMediator) View.VISIBLE else View.GONE
+        badgeCardVerify.visibility = if (isCardVerify) View.VISIBLE else View.GONE
+
         btnLink.setOnClickListener(linkClickListener)
         btnInfo.setOnClickListener(infoClickListener)
-        titleView.text = title
 
         return view
     }

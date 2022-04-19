@@ -57,6 +57,15 @@
         app:layout_constraintStart_toEndOf="@id/rate_icon_manual"
         app:layout_constraintTop_toBottomOf="@+id/rate_organization" />
 
+    <ImageView
+        android:id="@+id/rate_icon_card_verify"
+        android:layout_width="18dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_baseline_credit_card"
+        app:layout_constraintStart_toEndOf="@id/rate_icon_mediator"
+        app:layout_constraintTop_toBottomOf="@+id/rate_organization" />
+
     <TextView
         android:id="@+id/rate_amount_in"
         style="@style/TableText"

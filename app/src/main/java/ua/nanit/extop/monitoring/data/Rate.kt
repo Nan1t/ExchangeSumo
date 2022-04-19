@@ -10,5 +10,6 @@ data class Rate(
     val reviewsLink: String,
     val isManual: Boolean,
     val isMediator: Boolean,
+    val isCardVerify: Boolean,
     var active: Boolean = true
 )

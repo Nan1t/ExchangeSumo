@@ -43,6 +43,7 @@ class SumoRatesRepo : RatesRepo {
             val reviewsLink = "$BASE_URL$reviewsRoute"
             val isManual = row.selectFirst("div.wrap-badge span.data-badge_param_manual") != null
             val isMediator = row.selectFirst("div.wrap-badge span.data-badge_param_is_mediator") != null
+            val isCardVerify = row.selectFirst("div.wrap-badge span.data-badge_param_cardverify") != null
 
             val rate = Rate(
                 name,
@@ -53,7 +54,8 @@ class SumoRatesRepo : RatesRepo {
                 link,
                 reviewsLink,
                 isManual,
-                isMediator
+                isMediator,
+                isCardVerify
             )
 
             rates.add(rate)

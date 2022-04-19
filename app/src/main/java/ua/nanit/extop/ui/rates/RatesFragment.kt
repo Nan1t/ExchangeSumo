@@ -118,15 +118,21 @@ class RatesFragment : BaseFragment(R.layout.fragment_rates) {
 
     private fun onRateClicked(rate: Rate) {
         rateSelectAction.title = rate.exchanger
+        rateSelectAction.isManual = rate.isManual
+        rateSelectAction.isMediator = rate.isMediator
+        rateSelectAction.isCardVerify = rate.isCardVerify
+
         rateSelectAction.linkClickListener = View.OnClickListener {
             rateSelectAction.hide()
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(rate.link)))
         }
+
         rateSelectAction.infoClickListener = View.OnClickListener {
             rateSelectAction.hide()
             sharedViewModel.signalRateInfo(rate)
             navigation.navToExchanger()
         }
+
         rateSelectAction.show(parentFragmentManager, RateBottomSheet.TAG)
     }
 

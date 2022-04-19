@@ -18,6 +18,7 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val fund: TextView = view.findViewById(R.id.rate_fund)
     private val iconManual: ImageView = view.findViewById(R.id.rate_icon_manual)
     private val iconMediator: ImageView = view.findViewById(R.id.rate_icon_mediator)
+    private var iconCardVerify: ImageView = view.findViewById(R.id.rate_icon_card_verify)
 
     fun bind(rate: Rate) {
         this.rate = rate
@@ -30,6 +31,7 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         iconManual.visibility = if (rate.isManual) View.VISIBLE else View.GONE
         iconMediator.visibility = if (rate.isMediator) View.VISIBLE else View.GONE
+        iconCardVerify.visibility = if (rate.isCardVerify) View.VISIBLE else View.GONE
     }
 
     fun setOnClick(listener: (Rate) -> Unit) {
