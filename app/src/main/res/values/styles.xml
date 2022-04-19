@@ -7,12 +7,12 @@
 
     <style name="TableText.Header">
         <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">start</item>
+        <item name="android:gravity">start|center</item>
     </style>
 
     <style name="TableText.Title">
         <item name="android:textSize">16sp</item>
-        <item name="android:gravity">start|center</item>
+        <item name="android:gravity">start</item>
         <item name="android:textStyle">bold</item>
     </style>
 
