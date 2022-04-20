@@ -22,7 +22,7 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
 
             if (iterator.hasNext()) {
                 val details = iterator.next()
-                val parsed = parseRate(element, details)
+                val parsed = parseRate(currencyIn, currencyOut, element, details)
 
                 if (parsed != null)
                     rates.add(parsed)
@@ -32,7 +32,8 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
         return rates
     }
 
-    private fun parseRate(rate: Element, details: Element): DoubleExchange? {
+    private fun parseRate(currencyIn: String, currencyOut: String,
+                          rate: Element, details: Element): DoubleExchange? {
         val amountIn = rate.selectFirst("td.get span.val")
             ?.text()
             ?.replace(" ", "")
@@ -70,6 +71,8 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
         val secondExchanger = secondElem.text().trim()
 
         return DoubleExchange(
+            currencyIn,
+            currencyOut,
             amountIn,
             amountOut,
             amountTransit,

@@ -18,6 +18,8 @@ class DoubleExchangeHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val course = view.findViewById<TextView>(R.id.double_course)
 
     fun bind(exchange: DoubleExchange) {
+        this.exchange = exchange
+
         amountIn.text = exchange.amountIn.toRawString()
         amountOut.text = exchange.amountOut.toRawString()
         amountTransit.text = exchange.amountTransit.toRawString()
