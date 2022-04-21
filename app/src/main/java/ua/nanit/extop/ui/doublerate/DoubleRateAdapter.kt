@@ -12,7 +12,7 @@ class DoubleRateAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoubleRateHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_double_exchange, parent, false)
+            .inflate(R.layout.item_double_rate, parent, false)
         return DoubleRateHolder(view)
     }
 

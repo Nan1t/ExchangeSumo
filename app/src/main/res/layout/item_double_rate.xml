@@ -34,11 +34,20 @@
         style="@style/TableText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/double_gdl_25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="9999999" />
+
+    <TextView
+        android:id="@+id/double_in_currency"
+        style="@style/TableText.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/double_in_amount"
+        app:layout_constraintEnd_toEndOf="@id/double_in_amount"
+        app:layout_constraintTop_toBottomOf="@id/double_in_amount"
+        tools:text="[CURRENCY]"  />
 
     <TextView
         android:id="@+id/double_transit_amount"
@@ -65,11 +74,20 @@
         style="@style/TableText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/double_gdl_75"
         app:layout_constraintStart_toStartOf="@+id/double_gdl_50"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="9999999" />
+
+    <TextView
+        android:id="@+id/double_out_currency"
+        style="@style/TableText.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/double_out_amount"
+        app:layout_constraintEnd_toEndOf="@id/double_out_amount"
+        app:layout_constraintTop_toBottomOf="@id/double_out_amount"
+        tools:text="[CURRENCY]"  />
 
     <TextView
         android:id="@+id/double_course"

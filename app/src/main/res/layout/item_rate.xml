@@ -78,6 +78,16 @@
         tools:text="9999999" />
 
     <TextView
+        android:id="@+id/rate_currency_in"
+        style="@style/TableText.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/rate_amount_in"
+        app:layout_constraintEnd_toEndOf="@id/rate_amount_in"
+        app:layout_constraintTop_toBottomOf="@id/rate_amount_in"
+        tools:text="[CURRENCY]"  />
+
+    <TextView
         android:id="@+id/rate_min_amount_text"
         style="@style/TableText.Subtitle"
         android:layout_width="wrap_content"
@@ -85,7 +95,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@id/rate_amount_in"
         app:layout_constraintEnd_toStartOf="@id/rate_min_amount"
-        app:layout_constraintTop_toBottomOf="@id/rate_amount_in"
+        app:layout_constraintTop_toBottomOf="@id/rate_currency_in"
         android:text="@string/rate_item_from"  />
 
     <TextView
@@ -107,6 +117,16 @@
         app:layout_constraintStart_toStartOf="@+id/rate_gdl_60"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="99999999" />
+
+    <TextView
+        android:id="@+id/rate_currency_out"
+        style="@style/TableText.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/rate_amount_out"
+        app:layout_constraintEnd_toEndOf="@id/rate_amount_out"
+        app:layout_constraintTop_toBottomOf="@id/rate_amount_out"
+        tools:text="[CURRENCY]"  />
 
     <TextView
         android:id="@+id/rate_fund"

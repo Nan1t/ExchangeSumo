@@ -16,6 +16,8 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val minAmount: TextView = view.findViewById(R.id.rate_min_amount)
     private val amountIn: TextView = view.findViewById(R.id.rate_amount_in)
     private val amountOut: TextView = view.findViewById(R.id.rate_amount_out)
+    private val currencyIn: TextView = view.findViewById(R.id.rate_currency_in)
+    private val currencyOut: TextView = view.findViewById(R.id.rate_currency_out)
     private val fund: TextView = view.findViewById(R.id.rate_fund)
     private val iconManual: ImageView = view.findViewById(R.id.rate_icon_manual)
     private val iconMediator: ImageView = view.findViewById(R.id.rate_icon_mediator)
@@ -29,6 +31,8 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
         minAmount.text = rate.minAmount.toString()
         amountIn.text = rate.amountIn.toRawString()
         amountOut.text = rate.amountOut.toRawString()
+        currencyIn.text = rate.currencyIn
+        currencyOut.text = rate.currencyOut
 
         iconManual.visibility = if (rate.isManual) View.VISIBLE else View.GONE
         iconMediator.visibility = if (rate.isMediator) View.VISIBLE else View.GONE

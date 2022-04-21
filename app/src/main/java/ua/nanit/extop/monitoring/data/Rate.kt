@@ -4,6 +4,8 @@ data class Rate(
     val exchanger: String,
     var amountIn: Double,
     var amountOut: Double,
+    var currencyIn: String,
+    var currencyOut: String,
     val minAmount: Int,
     val fund: Int,
     val link: String,

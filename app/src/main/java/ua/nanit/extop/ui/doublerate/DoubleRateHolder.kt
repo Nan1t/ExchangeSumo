@@ -14,6 +14,8 @@ class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val amountIn = view.findViewById<TextView>(R.id.double_in_amount)
     private val amountOut = view.findViewById<TextView>(R.id.double_out_amount)
     private val amountTransit = view.findViewById<TextView>(R.id.double_transit_amount)
+    private val currencyIn = view.findViewById<TextView>(R.id.double_in_currency)
+    private val currencyOut = view.findViewById<TextView>(R.id.double_out_currency)
     private val currencyTransit = view.findViewById<TextView>(R.id.double_transit_currency)
     private val course = view.findViewById<TextView>(R.id.double_course)
 
@@ -23,6 +25,8 @@ class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
         amountIn.text = rate.amountIn.toRawString()
         amountOut.text = rate.amountOut.toRawString()
         amountTransit.text = rate.amountTransit.toRawString()
+        currencyIn.text = rate.currencyIn
+        currencyOut.text = rate.currencyOut
         currencyTransit.text = rate.currencyTransit
         course.text = rate.course.toString()
     }

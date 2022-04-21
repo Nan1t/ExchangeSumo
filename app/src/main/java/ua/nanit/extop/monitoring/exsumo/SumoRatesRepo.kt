@@ -44,6 +44,8 @@ class SumoRatesRepo : RatesRepo {
                 name,
                 amountIn ?: 0.0,
                 amountOut ?: 0.0,
+                currencyIn,
+                currencyOut,
                 minAmount ?: 0,
                 fund ?: 0,
                 link,

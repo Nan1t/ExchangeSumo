@@ -70,7 +70,7 @@
             android:id="@+id/double_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_double_exchange"/>
+            tools:listitem="@layout/item_double_rate"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
