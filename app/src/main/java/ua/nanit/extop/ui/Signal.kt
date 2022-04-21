@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * LiveData for single event.
- * Observer will be called only when data changed
+ * Observer will be called only once until data changed again
  */
 open class Signal<T> : MutableLiveData<T>() {
 

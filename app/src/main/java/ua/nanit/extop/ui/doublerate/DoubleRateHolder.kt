@@ -1,15 +1,15 @@
-package ua.nanit.extop.ui.doublex
+package ua.nanit.extop.ui.doublerate
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
-import ua.nanit.extop.monitoring.data.DoubleExchange
+import ua.nanit.extop.monitoring.data.DoubleRate
 import ua.nanit.extop.util.toRawString
 
-class DoubleExchangeHolder(view: View) : RecyclerView.ViewHolder(view) {
+class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private var exchange: DoubleExchange? = null
+    private var rate: DoubleRate? = null
 
     private val amountIn = view.findViewById<TextView>(R.id.double_in_amount)
     private val amountOut = view.findViewById<TextView>(R.id.double_out_amount)
@@ -17,20 +17,20 @@ class DoubleExchangeHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val currencyTransit = view.findViewById<TextView>(R.id.double_transit_currency)
     private val course = view.findViewById<TextView>(R.id.double_course)
 
-    fun bind(exchange: DoubleExchange) {
-        this.exchange = exchange
+    fun bind(rate: DoubleRate) {
+        this.rate = rate
 
-        amountIn.text = exchange.amountIn.toRawString()
-        amountOut.text = exchange.amountOut.toRawString()
-        amountTransit.text = exchange.amountTransit.toRawString()
-        currencyTransit.text = exchange.currencyTransit
-        course.text = exchange.course.toString()
+        amountIn.text = rate.amountIn.toRawString()
+        amountOut.text = rate.amountOut.toRawString()
+        amountTransit.text = rate.amountTransit.toRawString()
+        currencyTransit.text = rate.currencyTransit
+        course.text = rate.course.toString()
     }
 
-    fun setOnClick(listener: (DoubleExchange) -> Unit) {
+    fun setOnClick(listener: (DoubleRate) -> Unit) {
         itemView.setOnClickListener {
-            if (exchange != null) {
-                listener(exchange!!)
+            if (rate != null) {
+                listener(rate!!)
             }
         }
     }

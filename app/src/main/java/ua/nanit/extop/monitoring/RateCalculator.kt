@@ -1,9 +1,9 @@
 package ua.nanit.extop.monitoring
 
-import ua.nanit.extop.monitoring.data.Rate
+import ua.nanit.extop.monitoring.data.Computed
 
 interface RateCalculator {
 
-    fun calculate(rates: List<Rate>, dir: Direction, amount: Double)
+    fun calculate(rates: List<Computed>, dir: Direction, amount: Double)
 
 }

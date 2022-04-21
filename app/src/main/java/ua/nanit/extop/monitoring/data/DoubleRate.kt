@@ -1,30 +1,30 @@
 package ua.nanit.extop.monitoring.data
 
-data class Rate(
-    val exchanger: String,
+import ua.nanit.extop.log.Logger
+
+data class DoubleRate(
+    val currencyIn: String,
+    val currencyOut: String,
     var amountIn: Double,
     var amountOut: Double,
-    val minAmount: Int,
-    val fund: Int,
-    val link: String,
-    val reviewsLink: String,
-    val isManual: Boolean,
-    val isMediator: Boolean,
-    val isCardVerify: Boolean,
-    var active: Boolean = true
+    val amountTransit: Double,
+    val currencyTransit: String,
+    val course: Double,
+    val firstLink: String,
+    val secondLink: String,
+    val firstExchanger: String,
+    val secondExchanger: String
 ) : Computed {
 
     override fun calcIn(amount: Double) {
         val course = amountOut / amountIn
         amountIn = amount
         amountOut = amount * course
-        active = amount <= fund
     }
 
     override fun calcOut(amount: Double) {
         val course = amountIn / amountOut
         amountOut = amount
         amountIn = amount * course
-        active = amount <= fund
     }
 }

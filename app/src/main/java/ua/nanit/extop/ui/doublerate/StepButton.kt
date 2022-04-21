@@ -1,4 +1,4 @@
-package ua.nanit.extop.ui.doublex
+package ua.nanit.extop.ui.doublerate
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
 
 class StepButton : CardView {
 

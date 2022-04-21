@@ -1,10 +1,12 @@
-package ua.nanit.extop.ui
+package ua.nanit.extop.ui.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ua.nanit.extop.ui.Navigation
@@ -30,4 +32,8 @@ open class BaseFragment(private val layoutId: Int) : Fragment() {
     fun sharedViewModel(): SharedViewModel =
         ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
+    fun Fragment.requireCompatActionBar() : ActionBar? {
+        val activity = requireActivity() as AppCompatActivity
+        return activity.supportActionBar
+    }
 }

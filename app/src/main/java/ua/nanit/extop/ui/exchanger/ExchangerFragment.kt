@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Exchanger
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.BaseFragment
+import ua.nanit.extop.ui.base.BaseFragment
 import ua.nanit.extop.ui.shared.SharedViewModel
 
 class ExchangerFragment : BaseFragment(R.layout.fragment_exchanger) {

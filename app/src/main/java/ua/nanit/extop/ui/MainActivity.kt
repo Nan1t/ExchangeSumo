@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity(), Navigation {
     }
 
     override fun navToSearch() {
-        navController.navigate(R.id.action_nav_rates_to_nav_search)
+        // TODO change to action
+        navController.navigate(R.id.nav_search)
     }
 
     override fun navToCurrencies() {

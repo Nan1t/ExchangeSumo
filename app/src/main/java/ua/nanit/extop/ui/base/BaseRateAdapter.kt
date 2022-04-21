@@ -1,4 +1,4 @@
-package ua.nanit.extop.ui
+package ua.nanit.extop.ui.base
 
 import androidx.recyclerview.widget.RecyclerView
 

@@ -3,16 +3,16 @@ package ua.nanit.extop.monitoring.exsumo
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import ua.nanit.extop.monitoring.DoubleExchangeRepo
-import ua.nanit.extop.monitoring.data.DoubleExchange
+import ua.nanit.extop.monitoring.data.DoubleRate
 
 class SumoDoubleExchangeRepo : DoubleExchangeRepo {
 
-    override fun provide(currencyIn: String, currencyOut: String): List<DoubleExchange> {
+    override fun provide(currencyIn: String, currencyOut: String): List<DoubleRate> {
         val url = "${SUMO_BASE_URL}/obmen/$currencyIn-$currencyOut-double/"
         val doc = Jsoup.connect(url).get()
         val elements = doc.select("table#exchangesDoubleTable tbody tr")
         val iterator = elements.iterator()
-        val rates = ArrayList<DoubleExchange>(elements.size / 2)
+        val rates = ArrayList<DoubleRate>(elements.size / 2)
 
         while (iterator.hasNext()) {
             val element = iterator.next()
@@ -33,7 +33,7 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
     }
 
     private fun parseRate(currencyIn: String, currencyOut: String,
-                          rate: Element, details: Element): DoubleExchange? {
+                          rate: Element, details: Element): DoubleRate? {
         val amountIn = rate.selectFirst("td.get span.val")
             ?.text()
             ?.replace(" ", "")
@@ -70,7 +70,7 @@ class SumoDoubleExchangeRepo : DoubleExchangeRepo {
         val firstExchanger = firstElem.text().trim()
         val secondExchanger = secondElem.text().trim()
 
-        return DoubleExchange(
+        return DoubleRate(
             currencyIn,
             currencyOut,
             amountIn,

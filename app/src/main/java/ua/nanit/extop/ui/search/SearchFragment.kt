@@ -10,7 +10,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.Direction
-import ua.nanit.extop.ui.BaseFragment
+import ua.nanit.extop.ui.base.BaseFragment
 import ua.nanit.extop.ui.shared.SharedViewModel
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {

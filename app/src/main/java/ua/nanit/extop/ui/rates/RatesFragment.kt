@@ -1,87 +1,32 @@
 package ua.nanit.extop.ui.rates
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.*
-import ua.nanit.extop.ui.shared.SharedViewModel
+import ua.nanit.extop.ui.base.BaseRateAdapter
+import ua.nanit.extop.ui.base.BaseRatesFragment
 
 class RatesFragment : BaseRatesFragment<Rate>(R.layout.fragment_rates) {
 
-    private lateinit var viewModel: RatesViewModel
-    private lateinit var sharedViewModel: SharedViewModel
-
-    private lateinit var calculatorDialog: AlertDialog
     private lateinit var rateSelectAction: RateBottomSheet
-
-    private lateinit var calcRadioGroup: RadioGroup
-    private lateinit var calcAmount: TextInputEditText
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        setHasOptionsMenu(true)
-
-        viewModel = getViewModel()
-        sharedViewModel = sharedViewModel()
-
-        val dialogView = layoutInflater.inflate(R.layout.dialog_calculator, null)
-
-        calcRadioGroup = dialogView.findViewById(R.id.calc_radio_group) ?: return
-        calcAmount = dialogView.findViewById(R.id.calc_amount) ?: return
-
-        calculatorDialog = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.calc_title)
-            .setView(dialogView)
-            .setPositiveButton(R.string.apply) { _, _ -> calculate() }
-            .create()
-
-        rateSelectAction = RateBottomSheet()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.currencies.observe(viewLifecycleOwner) { requireCompatActionBar()?.title = it }
-        sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { requestRefresh() }
-    }
+        rateSelectAction = RateBottomSheet()
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_rates, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+        if (viewModel.rates.value == null) showLoading()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_search -> {
-                navigation.navToSearch()
-                true
-            }
-            R.id.menu_calculator -> {
-                calculatorDialog.show()
-                true
-            }
-            else -> false
-        }
-    }
+        viewModel.refreshRates(true)
 
-    override fun getViewModel(): RatesViewModel {
-        return ViewModelProvider(requireActivity(), RatesVmFactory(requireContext()))
-            .get(RatesViewModel::class.java)
+        viewModel.rates.observe(viewLifecycleOwner, ::observeRateUpdates)
     }
 
     override fun createAdapter(): BaseRateAdapter<Rate, *> {
@@ -117,19 +62,19 @@ class RatesFragment : BaseRatesFragment<Rate>(R.layout.fragment_rates) {
             navigation.navToExchanger()
         }
 
-        rateSelectAction.show(parentFragmentManager, RateBottomSheet.TAG)
+        rateSelectAction.show(parentFragmentManager)
     }
 
-    private fun calculate() {
-        val amount = calcAmount.text.toString().toDoubleOrNull() ?: return
+    override fun requestRefresh() {
+        viewModel.refreshRates()
+    }
 
-        when (calcRadioGroup.checkedRadioButtonId) {
-            R.id.calc_radio_in -> {
-                viewModel.calculate(amount, Direction.IN)
-            }
-            R.id.calc_radio_out -> {
-                viewModel.calculate(amount, Direction.OUT)
-            }
-        }
+    private fun observeRateUpdates(rates: List<Rate>) {
+        setSwipeRefreshing(false)
+        ratesAdapter.update(rates)
+    }
+
+    override fun calculateRates(dir: Direction, amount: Double) {
+        viewModel.calculateRates(amount, dir)
     }
 }

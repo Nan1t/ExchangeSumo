@@ -1,4 +1,4 @@
-package ua.nanit.extop.ui
+package ua.nanit.extop.ui.base
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider

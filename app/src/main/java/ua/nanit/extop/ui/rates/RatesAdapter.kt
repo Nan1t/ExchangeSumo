@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Rate
-import ua.nanit.extop.ui.BaseRateAdapter
+import ua.nanit.extop.ui.base.BaseRateAdapter
 
 class RatesAdapter(
     clickListener: (Rate) -> Unit

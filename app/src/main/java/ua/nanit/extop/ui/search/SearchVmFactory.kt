@@ -3,7 +3,7 @@ package ua.nanit.extop.ui.search
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
-import ua.nanit.extop.ui.BaseVmFactory
+import ua.nanit.extop.ui.base.BaseVmFactory
 
 class SearchVmFactory(ctx: Context) : BaseVmFactory(ctx) {
 

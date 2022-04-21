@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Currency
-import ua.nanit.extop.ui.BaseFragment
+import ua.nanit.extop.ui.base.BaseFragment
 
 class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
 

@@ -1,11 +1,12 @@
 package ua.nanit.extop.util
 
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
+
+val format = DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH))
+
 fun Double.toRawString(): String {
-    val formatted = "%.9f".format(this).replace(',', '.')
-    var lastZeroIndex = formatted.length
-    for (i in formatted.indices.reversed()) {
-        if (formatted[i] != '0' && formatted[i] != '.') break
-        lastZeroIndex--
-    }
-    return formatted.substring(0, lastZeroIndex)
+    format.maximumFractionDigits = 9
+    return format.format(this)
 }

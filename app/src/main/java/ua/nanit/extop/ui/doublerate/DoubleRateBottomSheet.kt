@@ -1,14 +1,13 @@
-package ua.nanit.extop.ui.doublex
+package ua.nanit.extop.ui.doublerate
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
+import ua.nanit.extop.ui.base.BaseBottomSheet
 
-class DoubleExchangeBottomSheet : BottomSheetDialogFragment() {
+class DoubleRateBottomSheet : BaseBottomSheet() {
 
     companion object {
         const val TAG = "DoubleExchangeBottomSheet"
@@ -55,5 +54,9 @@ class DoubleExchangeBottomSheet : BottomSheetDialogFragment() {
         btnStepSecond.setClickListener(secondStepClick)
 
         return view
+    }
+
+    override fun tag(): String {
+        return TAG
     }
 }

@@ -1,19 +1,22 @@
-package ua.nanit.extop.ui.doublex
+package ua.nanit.extop.ui
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
-import ua.nanit.extop.ui.BaseVmFactory
+import ua.nanit.extop.ui.base.BaseVmFactory
 
-class DoubleExchangeVmFactory(ctx: Context) : BaseVmFactory(ctx) {
+class RatesVmFactory(ctx: Context) : BaseVmFactory(ctx) {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val factory = getMonitoringFactory()
 
-        return DoubleExchangeVm(
+        return RatesViewModel(
             Dispatchers.IO,
             factory.getStorage(),
-            factory.getDoubleExchangeRepo()
+            factory.getRatesRepo(),
+            factory.getDoubleExchangeRepo(),
+            factory.getCalculator()
         ) as T
     }
+
 }

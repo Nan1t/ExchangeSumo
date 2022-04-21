@@ -22,7 +22,7 @@
             android:textStyle="bold"
             android:text="@string/double_step_first" />
 
-        <ua.nanit.extop.ui.doublex.StepButton
+        <ua.nanit.extop.ui.doublerate.StepButton
             android:id="@+id/double_btn_first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textStyle="bold"
             android:text="@string/double_step_second" />
 
-        <ua.nanit.extop.ui.doublex.StepButton
+        <ua.nanit.extop.ui.doublerate.StepButton
             android:id="@+id/double_btn_second"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

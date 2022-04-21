@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ua.nanit.extop.R
+import ua.nanit.extop.ui.base.BaseBottomSheet
 
-class RateBottomSheet : BottomSheetDialogFragment() {
+class RateBottomSheet : BaseBottomSheet() {
 
     companion object {
         const val TAG = "RateBottomSheet"
@@ -49,10 +47,8 @@ class RateBottomSheet : BottomSheetDialogFragment() {
         return view
     }
 
-    fun hide() {
-        val behavior = (dialog as BottomSheetDialog).behavior
-        behavior.isHideable = true
-        behavior.state = BottomSheetBehavior.STATE_HIDDEN
+    override fun tag(): String {
+        return TAG
     }
 
 }
