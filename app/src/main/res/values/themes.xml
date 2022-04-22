@@ -1,18 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.ExchangeRates" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <attr name="backgroundColorVariant" format="color" />
+    <style name="Theme.ExchangersTop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
-        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        <item name="colorPrimary">@color/lightPrimaryColor</item>
+        <item name="colorPrimaryVariant">@color/lightPrimaryDarkColor</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:textColor">#2D2D2D</item>
+        <item name="colorSurface">@color/light</item>
+        <item name="colorOnSurface">@color/darken</item>
+        <item name="android:colorBackground">@color/light</item>
+        <item name="colorOnBackground">@color/darken</item>
+        <item name="backgroundColorVariant">@color/white</item>
+        <item name="android:textColor">@color/darken</item>
     </style>
 </resources>

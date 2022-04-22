@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.DoubleRate
+import ua.nanit.extop.util.getColorFromAttr
 import ua.nanit.extop.util.toRawString
 
 class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -18,6 +19,11 @@ class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val currencyOut = view.findViewById<TextView>(R.id.double_out_currency)
     private val currencyTransit = view.findViewById<TextView>(R.id.double_transit_currency)
     private val course = view.findViewById<TextView>(R.id.double_course)
+
+    private val firstColor = itemView.context
+        .getColorFromAttr(com.google.android.material.R.attr.backgroundColor)
+    private val secondColor = itemView.context
+        .getColorFromAttr(R.attr.backgroundColorVariant)
 
     fun bind(rate: DoubleRate) {
         this.rate = rate
@@ -40,8 +46,8 @@ class DoubleRateHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     fun colorizeBackground(pos: Int) {
-        val bgColor = if (pos %2 == 0) R.color.light else R.color.lighter
-        itemView.setBackgroundResource(bgColor)
+        val bgColor = if (pos %2 == 0) firstColor else secondColor
+        itemView.setBackgroundColor(bgColor)
     }
 
 }

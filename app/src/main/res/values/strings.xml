@@ -60,4 +60,9 @@
 
     <!--  Rate Item  -->
     <string name="rate_item_from">от\ </string>
+
+    <!--  Settings Fragment  -->
+    <string name="settings_about">О приложении</string>
+    <string name="settings_locale">Язык</string>
+    <string name="settings_theme">Тема</string>
 </resources>

@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
 import ua.nanit.extop.monitoring.data.Rate
+import ua.nanit.extop.util.getColorFromAttr
 import ua.nanit.extop.util.toRawString
 
 class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,6 +23,11 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val iconManual: ImageView = view.findViewById(R.id.rate_icon_manual)
     private val iconMediator: ImageView = view.findViewById(R.id.rate_icon_mediator)
     private var iconCardVerify: ImageView = view.findViewById(R.id.rate_icon_card_verify)
+
+    private val firstColor = itemView.context
+        .getColorFromAttr(com.google.android.material.R.attr.backgroundColor)
+    private val secondColor = itemView.context
+        .getColorFromAttr(R.attr.backgroundColorVariant)
 
     fun bind(rate: Rate) {
         this.rate = rate
@@ -48,8 +54,8 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     fun colorizeBackground(pos: Int) {
-        val bgColor = if (pos %2 == 0) R.color.light else R.color.lighter
-        itemView.setBackgroundResource(bgColor)
+        val bgColor = if (pos %2 == 0) firstColor else secondColor
+        itemView.setBackgroundColor(bgColor)
     }
 
 }

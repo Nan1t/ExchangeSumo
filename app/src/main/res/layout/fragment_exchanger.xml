@@ -4,13 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/light">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light">
+        android:background="?attr/colorSurface">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -148,7 +147,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/exchanger_website"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_website"
                     app:layout_constraintStart_toStartOf="@+id/exchanger_btn_website"
@@ -170,7 +168,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/exchanger_reviews"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_reviews"
                     app:layout_constraintStart_toStartOf="@+id/exchanger_btn_reviews"

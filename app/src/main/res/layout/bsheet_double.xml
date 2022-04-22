@@ -11,10 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="?attr/colorSurface"
         app:behavior_peekHeight="500dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <TextView
+            style="@style/TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -26,10 +28,10 @@
             android:id="@+id/double_btn_first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="10dp" />
+            android:layout_margin="10dp" />
 
         <TextView
+            style="@style/TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -43,7 +45,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="10dp" />
+            android:focusable="true" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

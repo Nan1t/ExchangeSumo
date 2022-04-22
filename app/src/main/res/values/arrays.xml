@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="locales">
+        <item>Русский</item>
+        <item>Українська</item>
+    </string-array>
+
+    <string-array name="locale_keys">
+        <item>ru</item>
+        <item>en</item>
+    </string-array>
+
+    <string-array name="themes">
+        <item>Светлая</item>
+        <item>Темная</item>
+    </string-array>
+
+    <string-array name="theme_keys">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+</resources>

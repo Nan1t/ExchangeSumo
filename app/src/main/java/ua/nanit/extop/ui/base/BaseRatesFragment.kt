@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.extop.R
@@ -135,7 +136,7 @@ abstract class BaseRatesFragment<T>(layoutId: Int) : BaseFragment(layoutId) {
         calcRadioGroup = dialogView.findViewById(R.id.calc_radio_group) ?: return
         calcAmount = dialogView.findViewById(R.id.calc_amount) ?: return
 
-        calculatorDialog = AlertDialog.Builder(requireContext())
+        calculatorDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.calc_title)
             .setView(dialogView)
             .setPositiveButton(R.string.apply) { _, _ ->

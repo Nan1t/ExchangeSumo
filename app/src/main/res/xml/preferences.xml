@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="locale"
+        android:icon="@drawable/ic_baseline_public"
+        android:title="@string/settings_locale"
+        android:entries="@array/locales"
+        android:entryValues="@array/locale_keys"/>
+
+    <ListPreference
+        android:key="theme"
+        android:icon="@drawable/ic_baseline_style"
+        android:title="@string/settings_theme"
+        android:entries="@array/themes"
+        android:entryValues="@array/theme_keys"/>
+
+    <Preference
+        android:icon="@drawable/ic_baseline_info"
+        android:title="@string/settings_about" />
+
+</PreferenceScreen>

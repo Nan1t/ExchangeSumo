@@ -11,14 +11,17 @@
         android:id="@+id/rate_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
         app:behavior_peekHeight="500dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <TextView
+            style="@style/TextPrimary"
             android:id="@+id/rate_dialog_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_marginBottom="5dp"
+            android:padding="8dp"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -33,6 +36,7 @@
             android:paddingVertical="5dp">
 
             <ImageView
+                style="@style/Icon"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/ic_baseline_back_hand"/>
@@ -55,6 +59,7 @@
             android:paddingVertical="5dp">
 
             <ImageView
+                style="@style/Icon"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/ic_baseline_subdirectory_arrow_right"/>
@@ -77,6 +82,7 @@
             android:paddingVertical="5dp">
 
             <ImageView
+                style="@style/Icon"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/ic_baseline_credit_card"/>
@@ -101,6 +107,7 @@
             android:focusable="true">
 
             <ImageView
+                style="@style/Icon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_baseline_currency_exchange"/>
@@ -124,6 +131,7 @@
             android:focusable="true">
 
             <ImageView
+                style="@style/Icon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_baseline_info"/>

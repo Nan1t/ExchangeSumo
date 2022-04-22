@@ -2,13 +2,14 @@ package ua.nanit.extop.ui.settings
 
 import android.os.Bundle
 import android.view.View
+import androidx.preference.PreferenceFragmentCompat
 import ua.nanit.extop.R
 import ua.nanit.extop.ui.base.BaseFragment
 
-class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
+class SettingsFragment : PreferenceFragmentCompat() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preferences, rootKey)
     }
 
 }

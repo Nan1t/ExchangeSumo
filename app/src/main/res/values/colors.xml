@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="dark">#1E1E1E</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light">#EBEBEB</color>
-    <color name="lighter">#F5F5F5</color>
-    <color name="primaryColor">#385f6e</color>
-    <color name="primaryLightColor">#658c9c</color>
-    <color name="primaryDarkColor">#073543</color>
-    <color name="secondaryColor">#385f6e</color>
-    <color name="secondaryLightColor">#658c9c</color>
-    <color name="secondaryDarkColor">#073543</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="light">#FAFAFA</color>
+    <color name="dark">#282828</color>
+    <color name="darken">#222222</color>
+
+    <color name="lightPrimaryColor">#0277bd</color>
+    <color name="lightPrimaryLightColor">#58a5f0</color>
+    <color name="lightPrimaryDarkColor">#004c8c</color>
+
+    <color name="darkPrimaryColor">@color/darken</color>
+    <color name="darkPrimaryLightColor">@color/dark</color>
+    <color name="darkBackgroundColor">#333333</color>
+    <color name="darkBackgroundColorVariant">#393939</color>
+
+    <color name="secondaryColor">#b71c1c</color>
+    <color name="secondaryLightColor">#f05545</color>
+    <color name="secondaryDarkColor">#7f0000</color>
 </resources>

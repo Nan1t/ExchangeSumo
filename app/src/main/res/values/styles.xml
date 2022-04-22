@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="TextPrimary">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Icon">
+        <item name="tint">?attr/colorOnBackground</item>
+    </style>
+
     <style name="TableText">
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="TableText.Header">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="TableText.Title">
@@ -23,28 +32,15 @@
         <item name="android:layout_margin">4dp</item>
         <item name="android:padding">14dp</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:background">@color/lighter</item>
     </style>
 
     <style name="SearchEditText">
-        <item name="android:background">@color/lighter</item>
+        <item name="android:background">?attr/backgroundColorVariant</item>
         <item name="android:padding">12dp</item>
         <item name="android:drawableStart">@drawable/ic_baseline_search</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="android:inputType">text</item>
         <item name="android:maxLines">1</item>
-    </style>
-
-    <style name="ExchangerInfoText">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/lighter</item>
-    </style>
-
-    <style name="FaButtonDark">
-        <item name="android:backgroundTint">@color/dark</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="tint">@color/white</item>
-        <item name="borderWidth">0dp</item>
     </style>
     
     <style name="ExchangerAbout">
