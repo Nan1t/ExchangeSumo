@@ -3,7 +3,7 @@ package ua.nanit.extop.ui.exchanger
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.ItemReviewBinding
 import ua.nanit.extop.monitoring.data.Review
 
 class ReviewsAdapter(
@@ -11,9 +11,9 @@ class ReviewsAdapter(
 ) : RecyclerView.Adapter<ReviewViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_review, parent, false)
-        return ReviewViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemReviewBinding.inflate(inflater, parent, false)
+        return ReviewViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {

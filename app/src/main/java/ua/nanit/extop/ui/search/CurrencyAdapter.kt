@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ua.nanit.extop.R
-import ua.nanit.extop.log.Logger
+import ua.nanit.extop.databinding.ItemCurrencyBinding
 import ua.nanit.extop.monitoring.data.Currency
 
 class CurrencyAdapter(
@@ -52,17 +51,15 @@ class CurrencyAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_currency, parent, false)
-
-        return CurrencyHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemCurrencyBinding.inflate(inflater, parent, false)
+        return CurrencyHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         val currency = filteredList[position]
 
-        holder.currencyId.text = currency.id
-        holder.currencyName.text = currency.name
+        holder.bind(currency)
 
         if (holder.adapterPosition == selectedIndex) {
             holder.setSelectedColor()

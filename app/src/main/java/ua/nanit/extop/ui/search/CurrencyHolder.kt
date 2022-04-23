@@ -1,15 +1,14 @@
 package ua.nanit.extop.ui.search
 
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
+import ua.nanit.extop.databinding.ItemCurrencyBinding
+import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.util.getColorFromAttr
 
-class CurrencyHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-    val currencyId: TextView = view.findViewById(R.id.item_currency_id)
-    val currencyName: TextView = view.findViewById(R.id.item_currency_name)
+class CurrencyHolder(
+    private val binding: ItemCurrencyBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
     private val firstColor = itemView.context
         .getColorFromAttr(com.google.android.material.R.attr.backgroundColor)
@@ -23,6 +22,11 @@ class CurrencyHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val textSelectedColor = itemView.context
         .getColorFromAttr(com.google.android.material.R.attr.colorOnPrimary)
 
+    fun bind(currency: Currency) {
+        binding.itemCurrencyId.text = currency.id
+        binding.itemCurrencyName.text = currency.name
+    }
+
     fun clearColor(pos: Int) {
         if (pos % 2 == 0) {
             itemView.setBackgroundColor(firstColor)
@@ -30,13 +34,13 @@ class CurrencyHolder(view: View) : RecyclerView.ViewHolder(view) {
             itemView.setBackgroundColor(secondColor)
         }
 
-        currencyId.setTextColor(textDefaultColor)
-        currencyName.setTextColor(textDefaultColor)
+        binding.itemCurrencyId.setTextColor(textDefaultColor)
+        binding.itemCurrencyName.setTextColor(textDefaultColor)
     }
 
     fun setSelectedColor() {
-        currencyId.setTextColor(textSelectedColor)
-        currencyName.setTextColor(textSelectedColor)
+        binding.itemCurrencyId.setTextColor(textSelectedColor)
+        binding.itemCurrencyName.setTextColor(textSelectedColor)
         itemView.setBackgroundColor(selectedColor)
     }
 

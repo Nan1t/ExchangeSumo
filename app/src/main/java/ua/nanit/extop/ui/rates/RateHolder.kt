@@ -1,28 +1,18 @@
 package ua.nanit.extop.ui.rates
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ua.nanit.extop.R
+import ua.nanit.extop.databinding.ItemRateBinding
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.util.getColorFromAttr
 import ua.nanit.extop.util.toRawString
 
-class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
+class RateHolder(
+    private val binding: ItemRateBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
     private var rate: Rate? = null
-
-    private val organization: TextView = view.findViewById(R.id.rate_organization)
-    private val minAmount: TextView = view.findViewById(R.id.rate_min_amount)
-    private val amountIn: TextView = view.findViewById(R.id.rate_amount_in)
-    private val amountOut: TextView = view.findViewById(R.id.rate_amount_out)
-    private val currencyIn: TextView = view.findViewById(R.id.rate_currency_in)
-    private val currencyOut: TextView = view.findViewById(R.id.rate_currency_out)
-    private val fund: TextView = view.findViewById(R.id.rate_fund)
-    private val iconManual: ImageView = view.findViewById(R.id.rate_icon_manual)
-    private val iconMediator: ImageView = view.findViewById(R.id.rate_icon_mediator)
-    private var iconCardVerify: ImageView = view.findViewById(R.id.rate_icon_card_verify)
 
     private val firstColor = itemView.context
         .getColorFromAttr(com.google.android.material.R.attr.backgroundColor)
@@ -32,17 +22,17 @@ class RateHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(rate: Rate) {
         this.rate = rate
 
-        organization.text = rate.exchanger
-        fund.text = rate.fund.toString()
-        minAmount.text = rate.minAmount.toString()
-        amountIn.text = rate.amountIn.toRawString()
-        amountOut.text = rate.amountOut.toRawString()
-        currencyIn.text = rate.currencyIn
-        currencyOut.text = rate.currencyOut
+        binding.rateOrganization.text = rate.exchanger
+        binding.rateFund.text = rate.fund.toString()
+        binding.rateMinAmount.text = rate.minAmount.toString()
+        binding.rateAmountIn.text = rate.amountIn.toRawString()
+        binding.rateAmountOut.text = rate.amountOut.toRawString()
+        binding.rateCurrencyIn.text = rate.currencyIn
+        binding.rateCurrencyOut.text = rate.currencyOut
 
-        iconManual.visibility = if (rate.isManual) View.VISIBLE else View.GONE
-        iconMediator.visibility = if (rate.isMediator) View.VISIBLE else View.GONE
-        iconCardVerify.visibility = if (rate.isCardVerify) View.VISIBLE else View.GONE
+        binding.rateIconManual.visibility = if (rate.isManual) View.VISIBLE else View.GONE
+        binding.rateIconMediator.visibility = if (rate.isMediator) View.VISIBLE else View.GONE
+        binding.rateIconCardVerify.visibility = if (rate.isCardVerify) View.VISIBLE else View.GONE
     }
 
     fun setOnClick(listener: (Rate) -> Unit) {

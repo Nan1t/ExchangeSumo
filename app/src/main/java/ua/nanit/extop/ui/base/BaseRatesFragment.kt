@@ -17,13 +17,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.extop.R
+import ua.nanit.extop.databinding.DialogCalculatorBinding
 import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.ui.RatesViewModel
 import ua.nanit.extop.ui.RatesVmFactory
 import ua.nanit.extop.ui.shared.SharedViewModel
 import java.lang.IllegalArgumentException
 
-abstract class BaseRatesFragment<T>(layoutId: Int) : BaseFragment(layoutId) {
+abstract class BaseRatesFragment<T> : BaseFragment() {
 
     protected lateinit var viewModel: RatesViewModel
     protected lateinit var sharedViewModel: SharedViewModel
@@ -55,9 +56,9 @@ abstract class BaseRatesFragment<T>(layoutId: Int) : BaseFragment(layoutId) {
         super.onViewCreated(view, savedInstanceState)
 
         ratesAdapter = createAdapter()
-        ratesList = findListView(view)
-        emptyList = findEmptyListView(view)
-        swipeRefresh = findSwipeRefresh(view)
+        ratesList = getListView()
+        emptyList = getEmptyListView()
+        swipeRefresh = getSwipeRefresh()
 
         ratesList.adapter = ratesAdapter
         ratesList.layoutManager = LinearLayoutManager(requireContext())
@@ -91,11 +92,11 @@ abstract class BaseRatesFragment<T>(layoutId: Int) : BaseFragment(layoutId) {
 
     protected abstract fun createAdapter(): BaseRateAdapter<T, *>
 
-    protected abstract fun findListView(view: View): RecyclerView
+    protected abstract fun getListView(): RecyclerView
 
-    protected abstract fun findEmptyListView(view: View): TextView
+    protected abstract fun getEmptyListView(): TextView
 
-    protected abstract fun findSwipeRefresh(view: View): SwipeRefreshLayout
+    protected abstract fun getSwipeRefresh(): SwipeRefreshLayout
 
     protected abstract fun onRateClicked(rate: T)
 
@@ -131,17 +132,14 @@ abstract class BaseRatesFragment<T>(layoutId: Int) : BaseFragment(layoutId) {
     }
 
     private fun setupCalcDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_calculator, null)
-
-        calcRadioGroup = dialogView.findViewById(R.id.calc_radio_group) ?: return
-        calcAmount = dialogView.findViewById(R.id.calc_amount) ?: return
+        val binding = DialogCalculatorBinding.inflate(layoutInflater)
 
         calculatorDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.calc_title)
-            .setView(dialogView)
+            .setView(binding.root)
             .setPositiveButton(R.string.apply) { _, _ ->
-                val amount = calcAmount.text.toString().toDoubleOrNull() ?: 0.0
-                val dir = when (calcRadioGroup.checkedRadioButtonId) {
+                val amount = binding.calcAmount.text.toString().toDoubleOrNull() ?: 0.0
+                val dir = when (binding.calcRadioGroup.checkedRadioButtonId) {
                     R.id.calc_radio_in -> Direction.IN
                     R.id.calc_radio_out -> Direction.OUT
                     else -> throw IllegalArgumentException("Undefined calc direction")

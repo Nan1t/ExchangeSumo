@@ -3,24 +3,36 @@ package ua.nanit.extop.ui.rates
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.FragmentRatesBinding
 import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.ui.base.BaseRateAdapter
 import ua.nanit.extop.ui.base.BaseRatesFragment
 
-class RatesFragment : BaseRatesFragment<Rate>(R.layout.fragment_rates) {
+class RatesFragment : BaseRatesFragment<Rate>() {
 
-    private lateinit var rateSelectAction: RateBottomSheet
+    private lateinit var selectedRateSheet: RateBottomSheet
+    private lateinit var binding: FragmentRatesBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentRatesBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rateSelectAction = RateBottomSheet()
+        selectedRateSheet = RateBottomSheet()
 
         if (viewModel.rates.value == null) showLoading()
 
@@ -33,36 +45,36 @@ class RatesFragment : BaseRatesFragment<Rate>(R.layout.fragment_rates) {
         return RatesAdapter(this::onRateClicked)
     }
 
-    override fun findListView(view: View): RecyclerView {
-        return view.findViewById(R.id.rates_list)
+    override fun getListView(): RecyclerView {
+        return binding.ratesList
     }
 
-    override fun findEmptyListView(view: View): TextView {
-        return view.findViewById(R.id.rates_list_empty)
+    override fun getEmptyListView(): TextView {
+        return binding.ratesListEmpty
     }
 
-    override fun findSwipeRefresh(view: View): SwipeRefreshLayout {
-        return view.findViewById(R.id.rates_swipe_refresh)
+    override fun getSwipeRefresh(): SwipeRefreshLayout {
+        return binding.ratesSwipeRefresh
     }
 
     override fun onRateClicked(rate: Rate) {
-        rateSelectAction.title = rate.exchanger
-        rateSelectAction.isManual = rate.isManual
-        rateSelectAction.isMediator = rate.isMediator
-        rateSelectAction.isCardVerify = rate.isCardVerify
+        selectedRateSheet.title = rate.exchanger
+        selectedRateSheet.isManual = rate.isManual
+        selectedRateSheet.isMediator = rate.isMediator
+        selectedRateSheet.isCardVerify = rate.isCardVerify
 
-        rateSelectAction.linkClickListener = View.OnClickListener {
-            rateSelectAction.hide()
+        selectedRateSheet.linkClickListener = View.OnClickListener {
+            selectedRateSheet.hide()
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(rate.link)))
         }
 
-        rateSelectAction.infoClickListener = View.OnClickListener {
-            rateSelectAction.hide()
+        selectedRateSheet.infoClickListener = View.OnClickListener {
+            selectedRateSheet.hide()
             sharedViewModel.signalRateInfo(rate)
             navigation.navToExchanger()
         }
 
-        rateSelectAction.show(parentFragmentManager)
+        selectedRateSheet.show(parentFragmentManager)
     }
 
     override fun requestRefresh() {

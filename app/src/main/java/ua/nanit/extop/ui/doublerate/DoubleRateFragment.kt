@@ -3,27 +3,40 @@ package ua.nanit.extop.ui.doublerate
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.FragmentDoubleBinding
 import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.monitoring.data.DoubleRate
 import ua.nanit.extop.ui.base.BaseRateAdapter
 import ua.nanit.extop.ui.base.BaseRatesFragment
 import ua.nanit.extop.util.toRawString
 
-class DoubleRateFragment : BaseRatesFragment<DoubleRate>(R.layout.fragment_double) {
+class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
 
-    private lateinit var rateSelectAction: DoubleRateBottomSheet
+    private lateinit var selectedRateSheet: DoubleRateBottomSheet
+    private lateinit var binding: FragmentDoubleBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentDoubleBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rateSelectAction = DoubleRateBottomSheet()
+        selectedRateSheet = DoubleRateBottomSheet()
 
-        if (viewModel.doubleRates.value == null) showLoading()
+        if (viewModel.doubleRates.value == null)
+            showLoading()
 
         viewModel.refreshDoubleRates(true)
 
@@ -34,35 +47,35 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>(R.layout.fragment_doubl
         return DoubleRateAdapter(this::onRateClicked)
     }
 
-    override fun findListView(view: View): RecyclerView {
-        return view.findViewById(R.id.double_list)
+    override fun getListView(): RecyclerView {
+        return binding.doubleList
     }
 
-    override fun findEmptyListView(view: View): TextView {
-        return view.findViewById(R.id.double_list_empty)
+    override fun getEmptyListView(): TextView {
+        return binding.doubleListEmpty
     }
 
-    override fun findSwipeRefresh(view: View): SwipeRefreshLayout {
-        return view.findViewById(R.id.double_swipe_refresh)
+    override fun getSwipeRefresh(): SwipeRefreshLayout {
+        return binding.doubleSwipeRefresh
     }
 
     override fun onRateClicked(rate: DoubleRate) {
-        rateSelectAction.firstAmountIn = rate.amountIn.toRawString()
-        rateSelectAction.firstAmountOut = rate.amountTransit.toRawString()
-        rateSelectAction.firstCurrencyIn = rate.currencyIn
-        rateSelectAction.firstCurrencyOut = rate.currencyTransit
-        rateSelectAction.firstExchanger = rate.firstExchanger
+        selectedRateSheet.firstAmountIn = rate.amountIn.toRawString()
+        selectedRateSheet.firstAmountOut = rate.amountTransit.toRawString()
+        selectedRateSheet.firstCurrencyIn = rate.currencyIn
+        selectedRateSheet.firstCurrencyOut = rate.currencyTransit
+        selectedRateSheet.firstExchanger = rate.firstExchanger
 
-        rateSelectAction.secondAmountIn = rate.amountTransit.toRawString()
-        rateSelectAction.secondAmountOut = rate.amountOut.toRawString()
-        rateSelectAction.secondCurrencyIn = rate.currencyTransit
-        rateSelectAction.secondCurrencyOut = rate.currencyOut
-        rateSelectAction.secondExchanger = rate.secondExchanger
+        selectedRateSheet.secondAmountIn = rate.amountTransit.toRawString()
+        selectedRateSheet.secondAmountOut = rate.amountOut.toRawString()
+        selectedRateSheet.secondCurrencyIn = rate.currencyTransit
+        selectedRateSheet.secondCurrencyOut = rate.currencyOut
+        selectedRateSheet.secondExchanger = rate.secondExchanger
 
-        rateSelectAction.firstStepClick = { openLink(rate.firstLink) }
-        rateSelectAction.secondStepClick = { openLink(rate.secondLink) }
+        selectedRateSheet.firstStepClick = { openLink(rate.firstLink) }
+        selectedRateSheet.secondStepClick = { openLink(rate.secondLink) }
 
-        rateSelectAction.show(parentFragmentManager)
+        selectedRateSheet.show(parentFragmentManager)
     }
 
     override fun requestRefresh() {

@@ -3,35 +3,32 @@ package ua.nanit.extop.ui.exchanger
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.FragmentExchangerBinding
 import ua.nanit.extop.monitoring.data.Exchanger
 import ua.nanit.extop.monitoring.data.Rate
 import ua.nanit.extop.ui.base.BaseFragment
 import ua.nanit.extop.ui.shared.SharedViewModel
 
-class ExchangerFragment : BaseFragment(R.layout.fragment_exchanger) {
+class ExchangerFragment : BaseFragment() {
 
     private lateinit var viewModel: ExchangerViewModel
     private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var binding: FragmentExchangerBinding
 
-    private lateinit var exchangerLogo: ImageView
-    private lateinit var exchangerName: TextView
-    private lateinit var btnWebsite: FloatingActionButton
-    private lateinit var btnReviews: FloatingActionButton
-    private lateinit var reviewsList: RecyclerView
-
-    private lateinit var aboutStatus: TextView
-    private lateinit var aboutFund: TextView
-    private lateinit var aboutAge: TextView
-    private lateinit var aboutCountry: TextView
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentExchangerBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,19 +37,10 @@ class ExchangerFragment : BaseFragment(R.layout.fragment_exchanger) {
             .get(ExchangerViewModel::class.java)
         sharedViewModel = sharedViewModel()
 
-        exchangerLogo = view.findViewById(R.id.exchanger_logo)
-        exchangerName = view.findViewById(R.id.exchanger_name)
-        aboutStatus = view.findViewById(R.id.exchanger_status)
-        aboutFund = view.findViewById(R.id.exchanger_fund)
-        aboutAge = view.findViewById(R.id.exchanger_age)
-        aboutCountry = view.findViewById(R.id.exchanger_country)
-        btnWebsite = view.findViewById(R.id.exchanger_btn_website)
-        btnReviews = view.findViewById(R.id.exchanger_btn_reviews)
-        reviewsList = view.findViewById(R.id.exchanger_reviews_list)
-        reviewsList.layoutManager = LinearLayoutManager(requireContext())
+        binding.exchangerReviewsList.layoutManager = LinearLayoutManager(requireContext())
 
-        btnWebsite.setOnClickListener { viewModel.openWebsite() }
-        btnReviews.setOnClickListener { viewModel.openReviews() }
+        binding.exchangerBtnWebsite.setOnClickListener { viewModel.openWebsite() }
+        binding.exchangerBtnReviews.setOnClickListener { viewModel.openReviews() }
 
         viewModel.exchanger.observe(viewLifecycleOwner, this::observeExchanger)
         viewModel.url.observe(viewLifecycleOwner, this::observeUrl)
@@ -78,15 +66,15 @@ class ExchangerFragment : BaseFragment(R.layout.fragment_exchanger) {
     }
 
     private fun observeExchanger(exchanger: Exchanger) {
-        exchangerName.text = exchanger.name
-        reviewsList.adapter = ReviewsAdapter(exchanger.reviews)
-        aboutStatus.text = exchanger.status
-        aboutFund.text = exchanger.fund
-        aboutAge.text = exchanger.age
-        aboutCountry.text = exchanger.country
+        binding.exchangerName.text = exchanger.name
+        binding.exchangerReviewsList.adapter = ReviewsAdapter(exchanger.reviews)
+        binding.exchangerStatus.text = exchanger.status
+        binding.exchangerFund.text = exchanger.fund
+        binding.exchangerAge.text = exchanger.age
+        binding.exchangerCountry.text = exchanger.country
 
         Picasso.get()
             .load(Uri.parse(exchanger.iconUrl))
-            .into(exchangerLogo)
+            .into(binding.exchangerLogo)
     }
 }

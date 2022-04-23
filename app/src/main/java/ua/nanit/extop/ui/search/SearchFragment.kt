@@ -1,29 +1,30 @@
 package ua.nanit.extop.ui.search
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.FragmentSearchBinding
 import ua.nanit.extop.monitoring.Direction
 import ua.nanit.extop.ui.base.BaseFragment
 import ua.nanit.extop.ui.shared.SharedViewModel
 
-class SearchFragment : BaseFragment(R.layout.fragment_search) {
+class SearchFragment : BaseFragment() {
 
     private lateinit var viewModel: SearchViewModel
     private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var binding: FragmentSearchBinding
 
-    private lateinit var layoutCurrencyIn: TextInputLayout
-    private lateinit var layoutCurrencyOut: TextInputLayout
-    private lateinit var fieldCurrencyIn: TextInputEditText
-    private lateinit var fieldCurrencyOut: TextInputEditText
-    private lateinit var btnSwap: FloatingActionButton
-    private lateinit var btnConfirm: MaterialButton
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,32 +33,25 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             .get(SearchViewModel::class.java)
         sharedViewModel = sharedViewModel()
 
-        layoutCurrencyIn = view.findViewById(R.id.rates_currency_in_layout)
-        layoutCurrencyOut = view.findViewById(R.id.rates_currency_out_layout)
-        fieldCurrencyIn = view.findViewById(R.id.rates_currency_in)
-        fieldCurrencyOut = view.findViewById(R.id.rates_currency_out)
-        btnSwap = view.findViewById(R.id.search_btn_swap)
-        btnConfirm = view.findViewById(R.id.search_btn_confirm)
-
-        fieldCurrencyIn.setOnClickListener {
+        binding.ratesCurrencyIn.setOnClickListener {
             navigation.navToCurrencies()
             viewModel.loadCurrencies(Direction.IN)
         }
 
-        fieldCurrencyOut.setOnClickListener {
+        binding.ratesCurrencyOut.setOnClickListener {
             navigation.navToCurrencies()
             viewModel.loadCurrencies(Direction.OUT)
         }
 
-        btnSwap.setOnClickListener(this::onSwapClicked)
-        btnConfirm.setOnClickListener { viewModel.applySearchParams() }
+        binding.searchBtnSwap.setOnClickListener(this::onSwapClicked)
+        binding.searchBtnConfirm.setOnClickListener { viewModel.applySearchParams() }
 
         viewModel.currencyIn.observe(viewLifecycleOwner) {
-            fieldCurrencyIn.setText(it.name)
+            binding.ratesCurrencyIn.setText(it.name)
         }
 
         viewModel.currencyOut.observe(viewLifecycleOwner) {
-            fieldCurrencyOut.setText(it.name)
+            binding.ratesCurrencyOut.setText(it.name)
         }
 
         viewModel.enableConfirmBtn.observe(viewLifecycleOwner, this::observeEnableConfirmBtn)
@@ -75,7 +69,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     }
 
     private fun observeEnableConfirmBtn(value: Boolean) {
-        btnConfirm.visibility = if (value) View.VISIBLE else View.GONE
+        binding.searchBtnConfirm.visibility = if (value) View.VISIBLE else View.GONE
     }
 
     private fun observeSearch() {
@@ -84,7 +78,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     }
 
     private fun onSwapClicked(view: View) {
-        btnSwap.animate()
+        binding.searchBtnSwap.animate()
             .setDuration(300)
             .rotation(180f)
             .withEndAction { view.rotation = 0.0F }

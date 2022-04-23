@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.ViewDoubleStepBinding
 
 class StepButton : CardView {
 
@@ -36,14 +36,15 @@ class StepButton : CardView {
     }
 
     private fun setupView(ctx: Context) {
-        root = LayoutInflater.from(ctx)
-            .inflate(R.layout.view_double_step, this)
+        val binding = ViewDoubleStepBinding.inflate(LayoutInflater.from(ctx), this, true)
 
-        amountIn = root.findViewById(R.id.double_step_amount_in)
-        amountOut = root.findViewById(R.id.double_step_amount_out)
-        currencyIn = root.findViewById(R.id.double_step_currency_in)
-        currencyOut = root.findViewById(R.id.double_step_currency_out)
-        exchanger = root.findViewById(R.id.double_step_exchanger)
+        amountIn = binding.doubleStepAmountIn
+        amountOut = binding.doubleStepAmountOut
+        currencyIn = binding.doubleStepCurrencyIn
+        currencyOut = binding.doubleStepCurrencyOut
+        exchanger = binding.doubleStepExchanger
+
+        root = binding.root
     }
 
 }

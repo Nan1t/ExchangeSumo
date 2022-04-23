@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.BsheetDoubleBinding
 import ua.nanit.extop.ui.base.BaseBottomSheet
 
 class DoubleRateBottomSheet : BaseBottomSheet() {
@@ -32,11 +32,10 @@ class DoubleRateBottomSheet : BaseBottomSheet() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.bsheet_double, container, false)
-
-        val btnStepFirst = view.findViewById<StepButton>(R.id.double_btn_first)
-        val btnStepSecond = view.findViewById<StepButton>(R.id.double_btn_second)
+    ): View {
+        val binding = BsheetDoubleBinding.inflate(inflater, container, false)
+        val btnStepFirst = binding.doubleBtnFirst
+        val btnStepSecond = binding.doubleBtnSecond
 
         btnStepFirst.amountIn.text = firstAmountIn
         btnStepFirst.amountOut.text = firstAmountOut
@@ -53,7 +52,7 @@ class DoubleRateBottomSheet : BaseBottomSheet() {
         btnStepFirst.setClickListener(firstStepClick)
         btnStepSecond.setClickListener(secondStepClick)
 
-        return view
+        return binding.root
     }
 
     override fun tag(): String {

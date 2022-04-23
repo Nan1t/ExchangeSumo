@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.BsheetRateBinding
 import ua.nanit.extop.ui.base.BaseBottomSheet
 
 class RateBottomSheet : BaseBottomSheet() {
@@ -26,25 +24,18 @@ class RateBottomSheet : BaseBottomSheet() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.bsheet_rate, container, false)
+    ): View {
+        val binding = BsheetRateBinding.inflate(inflater, container, false)
 
-        val titleView = view.findViewById<TextView>(R.id.rate_dialog_title)
-        val badgeManual = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_manual)
-        val badgeMediator = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_mediator)
-        val badgeCardVerify = view.findViewById<LinearLayout>(R.id.rate_dialog_badge_card)
-        val btnLink = view.findViewById<View>(R.id.rate_dialog_link)
-        val btnInfo = view.findViewById<View>(R.id.rate_dialog_info)
+        binding.rateDialogTitle.text = title
+        binding.rateDialogBadgeManual.visibility = if (isManual) View.VISIBLE else View.GONE
+        binding.rateDialogBadgeMediator.visibility = if (isMediator) View.VISIBLE else View.GONE
+        binding.rateDialogBadgeCard.visibility = if (isCardVerify) View.VISIBLE else View.GONE
 
-        titleView.text = title
-        badgeManual.visibility = if (isManual) View.VISIBLE else View.GONE
-        badgeMediator.visibility = if (isMediator) View.VISIBLE else View.GONE
-        badgeCardVerify.visibility = if (isCardVerify) View.VISIBLE else View.GONE
+        binding.rateDialogLink.setOnClickListener(linkClickListener)
+        binding.rateDialogInfo.setOnClickListener(infoClickListener)
 
-        btnLink.setOnClickListener(linkClickListener)
-        btnInfo.setOnClickListener(infoClickListener)
-
-        return view
+        return binding.root
     }
 
     override fun tag(): String {

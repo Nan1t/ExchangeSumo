@@ -1,27 +1,30 @@
 package ua.nanit.extop.ui.search
 
 import android.os.Bundle
-import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageButton
+import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import ua.nanit.extop.R
+import ua.nanit.extop.databinding.FragmentCurrenciesBinding
 import ua.nanit.extop.monitoring.data.Currency
 import ua.nanit.extop.ui.base.BaseFragment
 
-class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
+class CurrenciesFragment : BaseFragment() {
 
     private lateinit var viewModel: SearchViewModel
-
-    private lateinit var searchField: EditText
-    private lateinit var btnConfirm: ImageButton
-    private lateinit var list: RecyclerView
+    private lateinit var binding: FragmentCurrenciesBinding
     private lateinit var listAdapter: CurrencyAdapter
-    private lateinit var watcher: TextWatcher
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCurrenciesBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,18 +32,14 @@ class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
         viewModel = ViewModelProvider(requireActivity(), SearchVmFactory(requireContext()))
             .get(SearchViewModel::class.java)
 
-        searchField = view.findViewById(R.id.currencies_search_field)
-        btnConfirm = view.findViewById(R.id.currencies_btn_confirm)
-        list = view.findViewById(R.id.currencies_list)
-
         listAdapter = CurrencyAdapter(this::onCurrencyClicked)
-        list.layoutManager = LinearLayoutManager(requireContext())
-        list.adapter = listAdapter
+        binding.currenciesList.layoutManager = LinearLayoutManager(requireContext())
+        binding.currenciesList.adapter = listAdapter
 
-        btnConfirm.visibility = View.GONE
-        btnConfirm.setOnClickListener(this::onConfirmClick)
+        binding.currenciesBtnConfirm.visibility = View.GONE
+        binding.currenciesBtnConfirm.setOnClickListener(this::onConfirmClick)
 
-        watcher = searchField.addTextChangedListener {
+        binding.currenciesSearchField.addTextChangedListener {
             val value = it?.toString()
             if (value != null) {
                 listAdapter.filter(value)
@@ -68,7 +67,7 @@ class CurrenciesFragment : BaseFragment(R.layout.fragment_currencies) {
     }
 
     private fun onCurrencyClicked() {
-        btnConfirm.visibility = View.VISIBLE
+        binding.currenciesBtnConfirm.visibility = View.VISIBLE
     }
 
     private fun observeCurrencies(currencies: List<Currency>) {
