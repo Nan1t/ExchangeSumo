@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ExchangersTop"
+rootProject.name = "ExchangeSumo"
 include ':app'

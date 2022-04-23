@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exchangers Top</string>
+    <string name="app_name" translatable="false">ExchangeSumo</string>
     <string name="locale_name">Русский</string>
 
     <string name="apply">Применить</string>
@@ -56,7 +56,6 @@
     <string name="calc_amount_in">Хочу отдать</string>
     <string name="calc_amount_out">Хочу получить</string>
     <string name="calc_amount">Сумма</string>
-    <string name="calc_commissions">Учитывать комиссии</string>
 
     <!--  Rate Item  -->
     <string name="rate_item_from">от\ </string>
@@ -76,5 +75,5 @@
 
     <string name="about_contacts_value" translatable="false">imnanit@gmail.com</string>
     <string name="about_license_value" translatable="false">GNU General Public License v3</string>
-    <string name="about_source_url" translatable="false">https://github.com/Nan1t/ExchangeRates</string>
+    <string name="about_source_url" translatable="false">https://github.com/Nan1t/ExchangeSumo</string>
 </resources>

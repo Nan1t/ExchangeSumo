@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Exchangers Top</string>
     <string name="locale_name">Українська</string>
-
     <string name="apply">Застосувати</string>
 
     <!--  Navigation Menu  -->
@@ -56,7 +54,6 @@
     <string name="calc_amount_in">Хочу віддати</string>
     <string name="calc_amount_out">Хочу отримати</string>
     <string name="calc_amount">Сума</string>
-    <string name="calc_commissions">Враховувати комісії</string>
 
     <!--  Rate Item  -->
     <string name="rate_item_from">від\ </string>
@@ -67,11 +64,10 @@
     <string name="settings_theme">Темна тема</string>
 
     <!--  About Fragment  -->
-    <string name="about_terms">Правила использования</string>
-    <string name="about_license">Лицензия</string>
-    <string name="about_contacts">Контакты</string>
-    <string name="about_contacts_copied">Контакт скопирован</string>
-    <string name="about_version">Версия</string>
-    <string name="about_sources">Исходный код</string>
-    <string name="about_terms_content">ff</string>
+    <string name="about_terms">Правила користування</string>
+    <string name="about_license">Ліцензія</string>
+    <string name="about_contacts">Контакти</string>
+    <string name="about_version">Версія</string>
+    <string name="about_sources">Вихідний код</string>
+    <string name="about_contacts_copied">Контакт скопійований</string>
 </resources>

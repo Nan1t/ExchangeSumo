@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ua.nanit.extop">
+    package="ua.nanit.exsumo">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="ua.nanit.extop.App"
+        android:name="ua.nanit.exsumo.App"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ExchangersTop">
 
         <activity
-            android:name="ua.nanit.extop.ui.MainActivity"
+            android:name="ua.nanit.exsumo.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

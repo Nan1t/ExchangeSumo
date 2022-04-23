@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/nav_rates"
-        android:name="ua.nanit.extop.ui.rates.RatesFragment"
+        android:name="ua.nanit.exsumo.ui.rates.RatesFragment"
         android:label="@string/nav_rates"
         tools:layout="@layout/fragment_rates">
         <action
@@ -26,13 +26,13 @@
 
     <fragment
         android:id="@+id/nav_double_exchange"
-        android:name="ua.nanit.extop.ui.doublerate.DoubleRateFragment"
+        android:name="ua.nanit.exsumo.ui.doublerate.DoubleRateFragment"
         android:label="@string/nav_double"
         tools:layout="@layout/fragment_double"/>
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="ua.nanit.extop.ui.settings.SettingsFragment"
+        android:name="ua.nanit.exsumo.ui.settings.SettingsFragment"
         android:label="@string/nav_settings">
         <action
             android:id="@+id/action_nav_settings_to_nav_about"
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="ua.nanit.extop.ui.search.SearchFragment"
+        android:name="ua.nanit.exsumo.ui.search.SearchFragment"
         android:label="@string/search_title"
         tools:layout="@layout/fragment_search">
         <action
@@ -54,19 +54,19 @@
     </fragment>
 
     <fragment android:id="@+id/nav_currencies"
-        android:name="ua.nanit.extop.ui.search.CurrenciesFragment"
+        android:name="ua.nanit.exsumo.ui.search.CurrenciesFragment"
         android:label="@string/search_title"
         tools:layout="@layout/fragment_currencies"/>
 
     <fragment
         android:id="@+id/nav_exchanger"
-        android:name="ua.nanit.extop.ui.exchanger.ExchangerFragment"
+        android:name="ua.nanit.exsumo.ui.exchanger.ExchangerFragment"
         android:label="@string/exchanger_title"
         tools:layout="@layout/fragment_exchanger"/>
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="ua.nanit.extop.ui.settings.AboutFragment"
+        android:name="ua.nanit.exsumo.ui.settings.AboutFragment"
         android:label="@string/settings_about" >
         <action
             android:id="@+id/action_nav_about_to_nav_tos"
@@ -75,7 +75,7 @@
 
     <fragment
         android:id="@+id/nav_tos"
-        android:name="ua.nanit.extop.ui.settings.TermsAndConditionsFragment"
+        android:name="ua.nanit.exsumo.ui.settings.TermsAndConditionsFragment"
         android:label="@string/about_terms" />
 
 </navigation>
