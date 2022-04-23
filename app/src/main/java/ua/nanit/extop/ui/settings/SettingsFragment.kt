@@ -1,8 +1,6 @@
 package ua.nanit.extop.ui.settings
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.ThemeUtils
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -10,6 +8,7 @@ import androidx.preference.SwitchPreferenceCompat
 import ua.nanit.extop.R
 import ua.nanit.extop.storage.AppStorage
 import ua.nanit.extop.util.ThemeUtil
+import java.util.*
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -27,16 +26,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
         nightMode = findPreference(AppStorage.KEY_NIGHT_MODE)!!
         about = findPreference("about")!!
 
-        locale.value = storage.locale()
-        nightMode.isChecked = storage.nightMode()
+        locale.value = Locale.getDefault().language
 
         locale.setOnPreferenceChangeListener(::onLocaleChange)
         nightMode.setOnPreferenceChangeListener(::onThemeChange)
     }
 
     private fun onLocaleChange(pref: Preference, newVal: Any?): Boolean {
-        if (pref is ListPreference) {
-
+        if (pref is ListPreference && newVal is String) {
+            requireActivity().recreate()
+            return true
         }
         return false
     }

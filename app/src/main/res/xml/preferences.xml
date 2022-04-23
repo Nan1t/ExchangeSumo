@@ -12,6 +12,7 @@
         android:key="locale"
         android:icon="@drawable/ic_baseline_public"
         android:title="@string/settings_locale"
+        android:summary="@string/locale_name"
         android:entries="@array/locales"
         android:entryValues="@array/locale_keys"/>
 

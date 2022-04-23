@@ -19,10 +19,4 @@ class AppStorage(ctx: Context) {
     fun nightMode(): Boolean {
         return prefs.getBoolean(KEY_NIGHT_MODE, false)
     }
-
-    fun saveTheme(nightMode: Boolean) {
-        prefs.edit()
-            .putBoolean(KEY_NIGHT_MODE, nightMode)
-            .apply()
-    }
 }

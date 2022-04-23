@@ -67,7 +67,7 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="ua.nanit.extop.ui.settings.AboutFragment"
-        android:label="@string/nav_about"
+        android:label="@string/settings_about"
         tools:layout="@layout/fragment_about"/>
 
 </navigation>

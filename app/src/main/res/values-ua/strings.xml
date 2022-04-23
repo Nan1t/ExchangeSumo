@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Exchangers Top</string>
+    <string name="locale_name">Українська</string>
+
+    <string name="apply">Застосувати</string>
+
+    <!--  Navigation Menu  -->
+    <string name="nav_rates">Обмінники</string>
+    <string name="nav_double">Подвійний обмін</string>
+    <string name="nav_settings">Налаштування</string>
+
+    <!--  Search Fragment  -->
+    <string name="search_title">Пошук</string>
+    <string name="search_hint">Введіть ім\'я валюти</string>
+    <string name="search_currency_in">Що віддаєте</string>
+    <string name="search_currency_out">Що отримуєте</string>
+    <string name="search_confirm">Застосувати</string>
+
+    <!--  Rates Fragment  -->
+    <string name="rates_head_org">Обмінник</string>
+    <string name="rates_head_in">Віддаєте</string>
+    <string name="rates_head_out">Отримуєте</string>
+    <string name="rates_head_fund">Резерв</string>
+    <string name="rates_nothing">Обмінів за даним напрямком не знайдено</string>
+
+    <!--  Rates Bottom Sheet  -->
+    <string name="rates_badge_manual">Ручний або напівавтоматичний режим</string>
+    <string name="rates_badge_mediator">Використовує сторонні платіжні системи</string>
+    <string name="rates_badge_card_verify">Потребує верифікацю карти</string>
+    <string name="rates_goto_exchange">Перейти до обміну</string>
+    <string name="rates_goto_info">Інформація про обмінник</string>
+
+    <!--  Exchanger fragment  -->
+    <string name="exchanger_title">Деталі обмінника</string>
+    <string name="exchanger_status">Статус</string>
+    <string name="exchanger_fund">Сума резервів</string>
+    <string name="exchanger_age">Вік</string>
+    <string name="exchanger_country">Країна</string>
+    <string name="exchanger_website">Сайт</string>
+    <string name="exchanger_reviews">Відгуки</string>
+    <string name="exchanger_reviews_last">Останні відгуки</string>
+
+    <!--  Double Exchange Fragment  -->
+    <string name="double_head_in">Віддаєте</string>
+    <string name="double_head_transit">Транзитна валюта</string>
+    <string name="double_head_out">Отримуєте</string>
+    <string name="double_head_course">Курс</string>
+
+    <!--  Double Exchange Bottom Sheet  -->
+    <string name="double_step_first">Крок 1</string>
+    <string name="double_step_second">Крок 2</string>
+    <string name="double_btn_goto">Обміняти</string>
+
+    <!--  Calculation dialog  -->
+    <string name="calc_title">Калькулятор</string>
+    <string name="calc_amount_in">Хочу віддати</string>
+    <string name="calc_amount_out">Хочу отримати</string>
+    <string name="calc_amount">Сума</string>
+    <string name="calc_commissions">Враховувати комісії</string>
+
+    <!--  Rate Item  -->
+    <string name="rate_item_from">від\ </string>
+
+    <!--  Settings Fragment  -->
+    <string name="settings_about">Про додаток</string>
+    <string name="settings_locale">Мова</string>
+    <string name="settings_theme">Темна тема</string>
+</resources>
