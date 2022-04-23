@@ -88,7 +88,7 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
 
     private fun observeRateUpdates(rates: List<DoubleRate>) {
         setSwipeRefreshing(false)
-        ratesAdapter.update(rates)
+        updateList(rates)
     }
 
     private fun openLink(link: String) {

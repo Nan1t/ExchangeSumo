@@ -2,6 +2,12 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <SwitchPreferenceCompat
+        android:key="night_mode"
+        android:defaultValue="false"
+        android:icon="@drawable/ic_baseline_mode_night"
+        android:title="@string/settings_theme" />
+
     <ListPreference
         android:key="locale"
         android:icon="@drawable/ic_baseline_public"
@@ -9,14 +15,8 @@
         android:entries="@array/locales"
         android:entryValues="@array/locale_keys"/>
 
-    <ListPreference
-        android:key="theme"
-        android:icon="@drawable/ic_baseline_style"
-        android:title="@string/settings_theme"
-        android:entries="@array/themes"
-        android:entryValues="@array/theme_keys"/>
-
     <Preference
+        android:key="about"
         android:icon="@drawable/ic_baseline_info"
         android:title="@string/settings_about" />
 

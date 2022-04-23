@@ -29,7 +29,7 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
     protected lateinit var viewModel: RatesViewModel
     protected lateinit var sharedViewModel: SharedViewModel
 
-    protected lateinit var ratesAdapter: BaseRateAdapter<T, *>
+    private lateinit var ratesAdapter: BaseRateAdapter<T, *>
     private lateinit var ratesList: RecyclerView
     private lateinit var emptyList: TextView
     private lateinit var swipeRefresh: SwipeRefreshLayout
@@ -103,6 +103,10 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
     protected abstract fun calculateRates(dir: Direction, amount: Double)
 
     protected abstract fun requestRefresh()
+
+    protected fun updateList(rates: List<T>) {
+        ratesAdapter.update(rates)
+    }
 
     protected fun setSwipeRefreshing(refresh: Boolean) {
         if (swipeRefresh.isRefreshing != refresh)

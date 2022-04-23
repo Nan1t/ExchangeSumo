@@ -83,7 +83,7 @@ class RatesFragment : BaseRatesFragment<Rate>() {
 
     private fun observeRateUpdates(rates: List<Rate>) {
         setSwipeRefreshing(false)
-        ratesAdapter.update(rates)
+        updateList(rates)
     }
 
     override fun calculateRates(dir: Direction, amount: Double) {

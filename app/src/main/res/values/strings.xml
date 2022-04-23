@@ -64,5 +64,7 @@
     <!--  Settings Fragment  -->
     <string name="settings_about">О приложении</string>
     <string name="settings_locale">Язык</string>
-    <string name="settings_theme">Тема</string>
+    <string name="settings_theme">Темная тема</string>
+    <string name="settings_theme_light">Светлая</string>
+    <string name="settings_theme_dark">Темная</string>
 </resources>
