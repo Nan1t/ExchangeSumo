@@ -8,6 +8,10 @@ interface Navigation {
 
     fun navToExchanger()
 
+    fun navToAbout()
+
+    fun navToTermsAndConditions()
+
     fun navigateUp()
 
     fun show()

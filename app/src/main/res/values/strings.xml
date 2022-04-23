@@ -65,6 +65,16 @@
     <string name="settings_about">О приложении</string>
     <string name="settings_locale">Язык</string>
     <string name="settings_theme">Темная тема</string>
-    <string name="settings_theme_light">Светлая</string>
-    <string name="settings_theme_dark">Темная</string>
+
+    <!--  About Fragment  -->
+    <string name="about_version">Версия</string>
+    <string name="about_terms">Условия использования</string>
+    <string name="about_license">Лицензия</string>
+    <string name="about_contacts">Контакты</string>
+    <string name="about_sources">Исходный код</string>
+    <string name="about_contacts_copied">Контакт скопирован</string>
+
+    <string name="about_contacts_value" translatable="false">imnanit@gmail.com</string>
+    <string name="about_license_value" translatable="false">GNU General Public License v3</string>
+    <string name="about_source_url" translatable="false">https://github.com/Nan1t/ExchangeRates</string>
 </resources>

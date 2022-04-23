@@ -10,7 +10,7 @@
 
     <ListPreference
         android:key="locale"
-        android:icon="@drawable/ic_baseline_public"
+        android:icon="@drawable/ic_baseline_language"
         android:title="@string/settings_locale"
         android:summary="@string/locale_name"
         android:entries="@array/locales"

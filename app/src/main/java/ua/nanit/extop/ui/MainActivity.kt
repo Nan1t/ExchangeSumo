@@ -58,6 +58,14 @@ class MainActivity : AppCompatActivity(), Navigation {
         navController.navigate(R.id.action_nav_rates_to_nav_exchanger)
     }
 
+    override fun navToAbout() {
+        navController.navigate(R.id.action_nav_settings_to_nav_about)
+    }
+
+    override fun navToTermsAndConditions() {
+        navController.navigate(R.id.action_nav_about_to_nav_tos)
+    }
+
     override fun navigateUp() {
         navController.popBackStack()
     }

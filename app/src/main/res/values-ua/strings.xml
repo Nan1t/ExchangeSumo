@@ -65,4 +65,13 @@
     <string name="settings_about">Про додаток</string>
     <string name="settings_locale">Мова</string>
     <string name="settings_theme">Темна тема</string>
+
+    <!--  About Fragment  -->
+    <string name="about_terms">Правила использования</string>
+    <string name="about_license">Лицензия</string>
+    <string name="about_contacts">Контакты</string>
+    <string name="about_contacts_copied">Контакт скопирован</string>
+    <string name="about_version">Версия</string>
+    <string name="about_sources">Исходный код</string>
+    <string name="about_terms_content">ff</string>
 </resources>

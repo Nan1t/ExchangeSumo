@@ -67,7 +67,15 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="ua.nanit.extop.ui.settings.AboutFragment"
-        android:label="@string/settings_about"
-        tools:layout="@layout/fragment_about"/>
+        android:label="@string/settings_about" >
+        <action
+            android:id="@+id/action_nav_about_to_nav_tos"
+            app:destination="@id/nav_tos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_tos"
+        android:name="ua.nanit.extop.ui.settings.TermsAndConditionsFragment"
+        android:label="@string/about_terms" />
 
 </navigation>
