@@ -36,10 +36,9 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
         selectedRateSheet = DoubleRateBottomSheet()
 
         if (viewModel.doubleRates.value == null)
-            showLoading()
+            setSwipeRefreshing(true)
 
         viewModel.refreshDoubleRates(true)
-
         viewModel.doubleRates.observe(viewLifecycleOwner, ::observeRateUpdates)
     }
 

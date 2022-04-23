@@ -11,20 +11,14 @@ import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.snackbar.Snackbar
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.ui.Navigation
+import ua.nanit.exsumo.ui.base.BasePrefsFragment
 
-class AboutFragment : PreferenceFragmentCompat() {
-
-    private lateinit var navigation: Navigation
+class AboutFragment : BasePrefsFragment(R.xml.about) {
 
     private lateinit var contacts: Preference
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        navigation = context as Navigation
-    }
-
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.about, rootKey)
+        super.onCreatePreferences(savedInstanceState, rootKey)
 
         val ctx = requireContext()
         val info = ctx.packageManager.getPackageInfo(ctx.packageName, 0)

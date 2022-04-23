@@ -66,7 +66,6 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
         swipeRefresh.setOnRefreshListener { refreshRates() }
 
         viewModel.currencies.observe(viewLifecycleOwner) { actionBar.title = it }
-        viewModel.emptyRates.observe(viewLifecycleOwner) { observeEmptyRates() }
         viewModel.error.observe(viewLifecycleOwner, ::observeError)
         sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { refreshRates() }
     }
@@ -105,6 +104,17 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
     protected abstract fun requestRefresh()
 
     protected fun updateList(rates: List<T>) {
+        setSwipeRefreshing(false)
+
+        if (rates.isEmpty()) {
+            ratesList.visibility = View.GONE
+            emptyList.visibility = View.VISIBLE
+            return
+        }
+
+        ratesList.visibility = View.VISIBLE
+        emptyList.visibility = View.GONE
+
         ratesAdapter.update(rates)
     }
 
@@ -113,21 +123,9 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
             swipeRefresh.post { swipeRefresh.isRefreshing = refresh }
     }
 
-    protected fun showLoading() {
-        swipeRefresh.visibility = View.VISIBLE
-        emptyList.visibility = View.GONE
-        setSwipeRefreshing(true)
-    }
-
     private fun refreshRates() {
-        showLoading()
+        setSwipeRefreshing(true)
         requestRefresh()
-    }
-
-    private fun observeEmptyRates() {
-        setSwipeRefreshing(false)
-        swipeRefresh.visibility = View.GONE
-        emptyList.visibility = View.VISIBLE
     }
 
     private fun observeError(msg: String) {

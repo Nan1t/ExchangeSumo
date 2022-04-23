@@ -1,33 +1,24 @@
 package ua.nanit.exsumo.ui.settings
 
-import android.content.Context
 import android.os.Bundle
 import androidx.preference.ListPreference
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.storage.AppStorage
-import ua.nanit.exsumo.ui.Navigation
+import ua.nanit.exsumo.ui.base.BasePrefsFragment
 import ua.nanit.exsumo.util.ThemeUtil
 import java.util.*
 
-class SettingsFragment : PreferenceFragmentCompat() {
-
-    private lateinit var navigation: Navigation
+class SettingsFragment : BasePrefsFragment(R.xml.preferences) {
 
     private lateinit var storage: AppStorage
     private lateinit var locale: ListPreference
     private lateinit var nightMode: SwitchPreferenceCompat
     private lateinit var about: Preference
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        navigation = context as Navigation
-    }
-
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.preferences, rootKey)
+        super.onCreatePreferences(savedInstanceState, rootKey)
 
         storage = AppStorage(requireContext())
 

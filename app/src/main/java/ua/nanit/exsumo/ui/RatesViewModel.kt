@@ -22,22 +22,16 @@ class RatesViewModel(
     private val _error = Signal<String>()
     private val _rates = MutableLiveData<List<Rate>>()
     private val _doubleRates = MutableLiveData<List<DoubleRate>>()
-    private val _emptyRates = MutableLiveData<Unit>()
     private val _currencies = MutableLiveData<String>()
 
     val error: LiveData<String> get() = _error
     val rates: LiveData<List<Rate>> get() = _rates
     val doubleRates: LiveData<List<DoubleRate>> get() = _doubleRates
-    val emptyRates: LiveData<Unit> get() = _emptyRates
     val currencies: LiveData<String> get() = _currencies
 
     init {
-        val currencyIn = storage.getCurrencyIn()
-        val currencyOut = storage.getCurrencyOut()
-
-        if (currencyIn != null && currencyOut != null) {
-            postCurrencies(currencyIn, currencyOut)
-        }
+        _rates.value = emptyList()
+        _doubleRates.value = emptyList()
     }
 
     fun refreshRates(restore: Boolean = false) {
@@ -47,15 +41,18 @@ class RatesViewModel(
         if (currencyIn != null && currencyOut != null) {
             postCurrencies(currencyIn, currencyOut)
 
-            if (restore && rates.value != null) return
+            if (restore && rates.value != null)
+                return
 
             viewModelScope.launch(dispatcher) {
                 Logger.info("Load rates")
                 loadRates(currencyIn, currencyOut)
             }
-        } else {
-            postEmpty()
+
+            return
         }
+
+        _rates.value = emptyList()
     }
 
     fun refreshDoubleRates(restore: Boolean = false) {
@@ -65,15 +62,18 @@ class RatesViewModel(
         if (currencyIn != null && currencyOut != null) {
             postCurrencies(currencyIn, currencyOut)
 
-            if (restore && doubleRates.value != null) return
+            if (restore && doubleRates.value != null)
+                return
 
             viewModelScope.launch(dispatcher) {
                 Logger.info("Load double rates")
                 loadDoubleRates(currencyIn, currencyOut)
             }
-        } else {
-            postEmpty()
+
+            return
         }
+
+        _doubleRates.value = emptyList()
     }
 
     private fun loadRates(currencyIn: String, currencyOut: String) {
@@ -91,11 +91,7 @@ class RatesViewModel(
             return
         }
 
-        if (rates.isEmpty()) {
-            viewModelScope.launch { postEmpty() }
-        } else {
-            viewModelScope.launch { _rates.value = rates }
-        }
+        viewModelScope.launch { _rates.value = rates }
     }
 
     private fun loadDoubleRates(currencyIn: String, currencyOut: String) {
@@ -113,11 +109,7 @@ class RatesViewModel(
             return
         }
 
-        if (rates.isEmpty()) {
-            viewModelScope.launch { postEmpty() }
-        } else {
-            viewModelScope.launch { _doubleRates.value = rates }
-        }
+        viewModelScope.launch { _doubleRates.value = rates }
     }
 
     fun calculateRates(amount: Double, dir: Direction) {
@@ -142,10 +134,6 @@ class RatesViewModel(
                 _doubleRates.value = _doubleRates.value
             }
         }
-    }
-
-    private fun postEmpty() {
-        _emptyRates.value = Unit
     }
 
     private fun postCurrencies(currencyIn: String, currencyOut: String) {

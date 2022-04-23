@@ -34,10 +34,10 @@ class RatesFragment : BaseRatesFragment<Rate>() {
 
         selectedRateSheet = RateBottomSheet()
 
-        if (viewModel.rates.value == null) showLoading()
+        if (viewModel.rates.value == null)
+            setSwipeRefreshing(true)
 
         viewModel.refreshRates(true)
-
         viewModel.rates.observe(viewLifecycleOwner, ::observeRateUpdates)
     }
 
@@ -82,7 +82,6 @@ class RatesFragment : BaseRatesFragment<Rate>() {
     }
 
     private fun observeRateUpdates(rates: List<Rate>) {
-        setSwipeRefreshing(false)
         updateList(rates)
     }
 

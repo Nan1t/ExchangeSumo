@@ -1,22 +1,38 @@
 package ua.nanit.exsumo.ui.settings
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.databinding.FragmentTermsBinding
+import ua.nanit.exsumo.ui.base.BaseFragment
 
-class TermsAndConditionsFragment : Fragment(R.layout.fragment_terms) {
+class TermsAndConditionsFragment : BaseFragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding = FragmentTermsBinding.inflate(inflater, container, false)
 
-        val binding = FragmentTermsBinding.bind(view)
-
-        binding.tosText.text = view.context.resources
+        binding.tosText.text = binding.root.context.resources
             .openRawResource(R.raw.terms_and_conditions)
             .reader()
             .readText()
+
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigation.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        navigation.show()
     }
 
 }
