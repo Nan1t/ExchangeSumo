@@ -57,24 +57,23 @@ class MainActivity : AppCompatActivity(), Navigation {
     }
 
     override fun navToSearch() {
-        // TODO change to action
-        navController.navigate(R.id.nav_search)
+        navController.navigate(R.id.action_nav_search)
     }
 
     override fun navToCurrencies() {
-        navController.navigate(R.id.action_nav_search_to_nav_currencies)
+        navController.navigate(R.id.action_nav_currencies)
     }
 
     override fun navToExchanger() {
-        navController.navigate(R.id.action_nav_rates_to_nav_exchanger)
+        navController.navigate(R.id.action_nav_exchanger)
     }
 
     override fun navToAbout() {
-        navController.navigate(R.id.action_nav_settings_to_nav_about)
+        navController.navigate(R.id.action_nav_about)
     }
 
     override fun navToTermsAndConditions() {
-        navController.navigate(R.id.action_nav_about_to_nav_tos)
+        navController.navigate(R.id.action_nav_tos)
     }
 
     override fun navigateUp() {

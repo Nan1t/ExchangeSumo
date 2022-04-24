@@ -11,33 +11,18 @@
         android:id="@+id/nav_rates"
         android:name="ua.nanit.exsumo.ui.rates.RatesFragment"
         android:label="@string/nav_rates"
-        tools:layout="@layout/fragment_rates">
-        <action
-            android:id="@+id/action_nav_rates_to_nav_search"
-            app:destination="@id/nav_search"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
-        <action
-            android:id="@+id/action_nav_rates_to_nav_exchanger"
-            app:destination="@id/nav_exchanger"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
-    </fragment>
+        tools:layout="@layout/fragment_rates" />
 
     <fragment
         android:id="@+id/nav_double_exchange"
         android:name="ua.nanit.exsumo.ui.doublerate.DoubleRateFragment"
         android:label="@string/nav_double"
-        tools:layout="@layout/fragment_double"/>
+        tools:layout="@layout/fragment_double" />
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="ua.nanit.exsumo.ui.settings.SettingsFragment"
-        android:label="@string/nav_settings">
-        <action
-            android:id="@+id/action_nav_settings_to_nav_about"
-            app:destination="@id/nav_about" />
-    </fragment>
+        android:label="@string/nav_settings" />
 
     <!--  Other Fragments  -->
 
@@ -45,37 +30,64 @@
         android:id="@+id/nav_search"
         android:name="ua.nanit.exsumo.ui.search.SearchFragment"
         android:label="@string/search_title"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_nav_search_to_nav_currencies"
-            app:destination="@id/nav_currencies"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
-    </fragment>
+        tools:layout="@layout/fragment_search" />
 
     <fragment android:id="@+id/nav_currencies"
         android:name="ua.nanit.exsumo.ui.search.CurrenciesFragment"
         android:label="@string/search_title"
-        tools:layout="@layout/fragment_currencies"/>
+        tools:layout="@layout/fragment_currencies" />
 
     <fragment
         android:id="@+id/nav_exchanger"
         android:name="ua.nanit.exsumo.ui.exchanger.ExchangerFragment"
         android:label="@string/exchanger_title"
-        tools:layout="@layout/fragment_exchanger"/>
+        tools:layout="@layout/fragment_exchanger" />
 
     <fragment
         android:id="@+id/nav_about"
         android:name="ua.nanit.exsumo.ui.settings.AboutFragment"
-        android:label="@string/settings_about" >
-        <action
-            android:id="@+id/action_nav_about_to_nav_tos"
-            app:destination="@id/nav_tos" />
-    </fragment>
+        android:label="@string/settings_about" />
 
     <fragment
         android:id="@+id/nav_tos"
         android:name="ua.nanit.exsumo.ui.settings.TermsAndConditionsFragment"
         android:label="@string/about_terms" />
+
+    <!-- Actions -->
+
+    <action android:id="@+id/action_nav_search"
+        app:destination="@id/nav_search"
+        app:enterAnim="@anim/nav_default_pop_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action android:id="@+id/action_nav_currencies"
+        app:destination="@id/nav_currencies"
+        app:enterAnim="@anim/nav_default_pop_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action android:id="@+id/action_nav_exchanger"
+        app:destination="@id/nav_exchanger"
+        app:enterAnim="@anim/nav_default_pop_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action android:id="@+id/action_nav_about"
+        app:destination="@id/nav_about"
+        app:enterAnim="@anim/nav_default_pop_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action android:id="@+id/action_nav_tos"
+        app:destination="@id/nav_tos"
+        app:enterAnim="@anim/nav_default_pop_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
 </navigation>
