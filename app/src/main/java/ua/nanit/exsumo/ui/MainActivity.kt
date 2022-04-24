@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), Navigation {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val storage = AppStorage(this)
+
         LocaleUtil.updateLocale(this, storage.locale())
         setContentView(R.layout.activity_main)
 
@@ -38,16 +39,10 @@ class MainActivity : AppCompatActivity(), Navigation {
 
         setupActionBarWithNavController(navController, configuration)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener(::onDestinationChanged)
 
-        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
-            when (destination.id) {
-                R.id.nav_rates,
-                R.id.nav_double_exchange,
-                R.id.nav_settings -> {
-                    navView.visibility = View.VISIBLE
-                }
-                else -> navView.visibility = View.GONE
-            }
+        if (!storage.isTermsAccepted()) {
+            TermsDialog().show(this, storage)
         }
     }
 
@@ -72,11 +67,22 @@ class MainActivity : AppCompatActivity(), Navigation {
         navController.navigate(R.id.action_nav_about)
     }
 
-    override fun navToTermsAndConditions() {
-        navController.navigate(R.id.action_nav_tos)
-    }
-
     override fun navigateUp() {
         navController.popBackStack()
+    }
+
+    private fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        when (destination.id) {
+            R.id.nav_rates,
+            R.id.nav_double_exchange,
+            R.id.nav_settings -> {
+                navView.visibility = View.VISIBLE
+            }
+            else -> navView.visibility = View.GONE
+        }
     }
 }

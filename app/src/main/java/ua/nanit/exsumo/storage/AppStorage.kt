@@ -8,6 +8,7 @@ class AppStorage(ctx: Context) {
     companion object {
         const val KEY_LOCALE = "locale"
         const val KEY_NIGHT_MODE = "night_mode"
+        const val KEY_TERMS_ACCEPTED = "terms_accepted"
     }
 
     private val prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
@@ -16,7 +17,17 @@ class AppStorage(ctx: Context) {
         return prefs.getString(KEY_LOCALE, "ru")!!
     }
 
-    fun nightMode(): Boolean {
+    fun isNightMode(): Boolean {
         return prefs.getBoolean(KEY_NIGHT_MODE, false)
+    }
+
+    fun isTermsAccepted(): Boolean {
+        return prefs.getBoolean(KEY_TERMS_ACCEPTED, false)
+    }
+
+    fun acceptTerms() {
+        return prefs.edit()
+            .putBoolean(KEY_TERMS_ACCEPTED, true)
+            .apply()
     }
 }

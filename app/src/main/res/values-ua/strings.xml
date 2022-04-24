@@ -1,6 +1,8 @@
 <resources>
     <string name="locale_name">Українська</string>
+
     <string name="apply">Застосувати</string>
+    <string name="cancel">Відмінити</string>
 
     <!--  Navigation Menu  -->
     <string name="nav_rates">Обмінники</string>

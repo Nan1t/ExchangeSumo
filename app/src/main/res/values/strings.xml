@@ -2,6 +2,8 @@
     <string name="app_name" translatable="false">ExchangeSumo</string>
     <string name="locale_name">Русский</string>
 
+    <string name="ok" translatable="false">ОК</string>
+    <string name="cancel">Отмена</string>
     <string name="apply">Применить</string>
 
     <!--  Navigation Menu  -->

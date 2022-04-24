@@ -12,6 +12,4 @@ interface Navigation {
 
     fun navToAbout()
 
-    fun navToTermsAndConditions()
-
 }

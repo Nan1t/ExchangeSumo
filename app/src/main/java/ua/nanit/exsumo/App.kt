@@ -14,7 +14,7 @@ class App : Application() {
 
         if (base != null) {
             val storage = AppStorage(base)
-            ThemeUtil.setNightMode(storage.nightMode())
+            ThemeUtil.setNightMode(storage.isNightMode())
         }
     }
 

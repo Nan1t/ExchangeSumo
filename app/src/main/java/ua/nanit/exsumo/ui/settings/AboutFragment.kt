@@ -7,10 +7,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.snackbar.Snackbar
 import ua.nanit.exsumo.R
-import ua.nanit.exsumo.ui.Navigation
+import ua.nanit.exsumo.ui.TermsDialog
 import ua.nanit.exsumo.ui.base.BasePrefsFragment
 
 class AboutFragment : BasePrefsFragment(R.xml.about) {
@@ -36,7 +35,7 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         }
 
         tos.setOnPreferenceClickListener {
-            navigation.navToTermsAndConditions()
+            TermsDialog().show(requireContext())
             false
         }
 
