@@ -14,17 +14,18 @@ class TermsDialog {
             .reader()
             .readText()
 
-        MaterialAlertDialogBuilder(ctx)
-            .setTitle(R.string.about_terms)
-            .setMessage(text)
-            .setPositiveButton(R.string.ok) { _, _ ->
-                storage?.acceptTerms()
-            }
-            .setNegativeButton(R.string.cancel) { _, _ ->
+        val builder = MaterialAlertDialogBuilder(ctx)
+        builder.setTitle(R.string.about_terms)
+        builder.setMessage(text)
+        builder.setPositiveButton(R.string.ok) { _, _ ->
+            storage?.acceptTerms()
+        }
+        if (storage != null) {
+            builder.setNegativeButton(R.string.cancel) { _, _ ->
                 exitProcess(0)
             }
-            .create()
-            .show()
+        }
+        builder.create().show()
     }
 
 }

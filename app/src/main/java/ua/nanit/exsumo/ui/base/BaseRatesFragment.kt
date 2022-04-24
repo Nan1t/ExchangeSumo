@@ -16,13 +16,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.skydoves.balloon.*
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.databinding.DialogCalculatorBinding
-import ua.nanit.exsumo.log.Logger
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.ui.RatesViewModel
 import ua.nanit.exsumo.ui.RatesVmFactory
 import ua.nanit.exsumo.ui.shared.SharedViewModel
+import ua.nanit.exsumo.util.getColorFromAttr
 import java.lang.IllegalArgumentException
 
 abstract class BaseRatesFragment<T> : BaseFragment() {
@@ -107,6 +108,13 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
         if (rates.isEmpty()) {
             swipeRefresh.visibility = View.GONE
             emptyList.visibility = View.VISIBLE
+
+            val searchMenuButton = requireActivity()
+                .findViewById<View?>(R.id.menu_search)
+
+            if (searchMenuButton != null) {
+                createSearchBalloon().showAlignBottom(searchMenuButton)
+            }
             return
         }
 
@@ -153,6 +161,29 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
                 calculateRates(dir, amount)
             }
             .create()
+    }
+
+    private fun createSearchBalloon(): Balloon {
+        val ctx = requireContext()
+        val bgColor = ctx.getColorFromAttr(com.google.android.material.R.attr.colorSurface)
+        val textColor = ctx.getColorFromAttr(com.google.android.material.R.attr.colorOnSurface)
+
+        return createBalloon(ctx) {
+            setWidth(BalloonSizeSpec.WRAP)
+            setHeight(BalloonSizeSpec.WRAP)
+            setTextResource(R.string.tooltip_search)
+            setBackgroundColor(bgColor)
+            setTextColor(textColor)
+            setTextSize(15f)
+            setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+            setArrowSize(10)
+            setArrowPosition(0.5f)
+            setPadding(5)
+            setCornerRadius(5f)
+            setBalloonAnimation(BalloonAnimation.ELASTIC)
+            setLifecycleOwner(viewLifecycleOwner)
+            build()
+        }
     }
 
 }

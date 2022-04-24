@@ -80,9 +80,13 @@ class MainActivity : AppCompatActivity(), Navigation {
             R.id.nav_rates,
             R.id.nav_double_exchange,
             R.id.nav_settings -> {
-                navView.visibility = View.VISIBLE
+                if (navView.visibility != View.VISIBLE)
+                    navView.visibility = View.VISIBLE
             }
-            else -> navView.visibility = View.GONE
+            else -> {
+                if (navView.visibility != View.GONE)
+                    navView.visibility = View.GONE
+            }
         }
     }
 }

@@ -5,6 +5,7 @@
     <string name="ok" translatable="false">ОК</string>
     <string name="cancel">Отмена</string>
     <string name="apply">Применить</string>
+    <string name="tooltip_search">Выберите направление обмена</string>
 
     <!--  Navigation Menu  -->
     <string name="nav_rates">Обменники</string>
