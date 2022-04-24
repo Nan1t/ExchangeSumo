@@ -49,20 +49,21 @@
             android:text="@string/rates_head_fund"/>
     </LinearLayout>
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/rates_list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/rates_nothing"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/rates_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/rates_list_empty"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:text="@string/rates_nothing"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rates_list"

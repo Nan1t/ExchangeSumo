@@ -47,16 +47,6 @@ class ExchangerFragment : BaseFragment() {
         sharedViewModel.rateInfo.observe(viewLifecycleOwner, this::requestInfo)
     }
 
-    override fun onResume() {
-        super.onResume()
-        navigation.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
-    }
-
     private fun requestInfo(rate: Rate) {
         viewModel.load(rate)
     }

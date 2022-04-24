@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.databinding.DialogCalculatorBinding
+import ua.nanit.exsumo.log.Logger
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.ui.RatesViewModel
 import ua.nanit.exsumo.ui.RatesVmFactory
@@ -67,7 +68,6 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
 
         viewModel.currencies.observe(viewLifecycleOwner) { actionBar.title = it }
         viewModel.error.observe(viewLifecycleOwner, ::observeError)
-        sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { refreshRates() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -104,28 +104,32 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
     protected abstract fun requestRefresh()
 
     protected fun updateList(rates: List<T>) {
-        setSwipeRefreshing(false)
-
         if (rates.isEmpty()) {
-            ratesList.visibility = View.GONE
+            swipeRefresh.visibility = View.GONE
             emptyList.visibility = View.VISIBLE
             return
         }
 
-        ratesList.visibility = View.VISIBLE
+        setSwipeRefreshing(false)
+        swipeRefresh.visibility = View.VISIBLE
         emptyList.visibility = View.GONE
-
         ratesAdapter.update(rates)
     }
 
-    protected fun setSwipeRefreshing(refresh: Boolean) {
-        if (swipeRefresh.isRefreshing != refresh)
-            swipeRefresh.post { swipeRefresh.isRefreshing = refresh }
-    }
-
-    private fun refreshRates() {
+    protected fun refreshRates() {
         setSwipeRefreshing(true)
         requestRefresh()
+    }
+
+    private fun setSwipeRefreshing(refresh: Boolean) {
+        if (swipeRefresh.isRefreshing != refresh) {
+            if (refresh) {
+                swipeRefresh.visibility = View.VISIBLE
+                emptyList.visibility = View.GONE
+            }
+
+            swipeRefresh.post { swipeRefresh.isRefreshing = refresh }
+        }
     }
 
     private fun observeError(msg: String) {

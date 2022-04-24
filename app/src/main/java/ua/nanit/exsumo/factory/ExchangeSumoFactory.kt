@@ -4,7 +4,7 @@ import android.content.Context
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.monitoring.*
 import ua.nanit.exsumo.monitoring.impl.SumoCurrencyRepo
-import ua.nanit.exsumo.monitoring.impl.SumoDoubleExchangeRepo
+import ua.nanit.exsumo.monitoring.impl.SumoDoubleRatesRepo
 import ua.nanit.exsumo.monitoring.impl.SumoExchangerRepo
 import ua.nanit.exsumo.monitoring.impl.SumoRatesRepo
 import ua.nanit.exsumo.storage.PrefsMonitoringStorage
@@ -31,8 +31,8 @@ class ExchangeSumoFactory(
         return SumoExchangerRepo()
     }
 
-    override fun getDoubleExchangeRepo(): DoubleExchangeRepo {
-        return SumoDoubleExchangeRepo()
+    override fun getDoubleExchangeRepo(): DoubleRatesRepo {
+        return SumoDoubleRatesRepo()
     }
 
     override fun getCalculator(): RateCalculator {

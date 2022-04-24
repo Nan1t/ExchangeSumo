@@ -58,16 +58,6 @@ class SearchFragment : BaseFragment() {
         viewModel.search.observe(viewLifecycleOwner) { observeSearch() }
     }
 
-    override fun onResume() {
-        super.onResume()
-        navigation.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
-    }
-
     private fun observeEnableConfirmBtn(value: Boolean) {
         binding.searchBtnConfirm.visibility = if (value) View.VISIBLE else View.GONE
     }

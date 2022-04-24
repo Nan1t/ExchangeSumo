@@ -8,7 +8,7 @@ interface MonitoringFactory {
 
     fun getRatesRepo(): RatesRepo
 
-    fun getDoubleExchangeRepo(): DoubleExchangeRepo
+    fun getDoubleExchangeRepo(): DoubleRatesRepo
 
     fun getExchangerRepo(): ExchangerRepo
 

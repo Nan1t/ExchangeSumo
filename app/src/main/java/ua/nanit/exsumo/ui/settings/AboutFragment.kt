@@ -46,16 +46,6 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        navigation.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
-    }
-
     private fun copyContact() {
         val clipboardManager = requireContext().getSystemService(Context.CLIPBOARD_SERVICE)
                 as ClipboardManager

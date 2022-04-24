@@ -2,10 +2,10 @@ package ua.nanit.exsumo.monitoring.impl
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
-import ua.nanit.exsumo.monitoring.DoubleExchangeRepo
+import ua.nanit.exsumo.monitoring.DoubleRatesRepo
 import ua.nanit.exsumo.monitoring.data.DoubleRate
 
-class SumoDoubleExchangeRepo : DoubleExchangeRepo {
+class SumoDoubleRatesRepo : DoubleRatesRepo {
 
     override fun provide(currencyIn: String, currencyOut: String): List<DoubleRate> {
         val url = "${SUMO_BASE_URL}/obmen/$currencyIn-$currencyOut-double/"

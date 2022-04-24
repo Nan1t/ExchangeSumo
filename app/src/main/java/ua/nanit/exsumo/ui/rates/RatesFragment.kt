@@ -31,14 +31,9 @@ class RatesFragment : BaseRatesFragment<Rate>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         selectedRateSheet = RateBottomSheet()
-
-        if (viewModel.rates.value == null)
-            setSwipeRefreshing(true)
-
-        viewModel.refreshRates(true)
-        viewModel.rates.observe(viewLifecycleOwner, ::observeRateUpdates)
+        viewModel.rates.observe(viewLifecycleOwner) { updateList(it) }
+        sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { refreshRates() }
     }
 
     override fun createAdapter(): BaseRateAdapter<Rate, *> {
@@ -79,10 +74,6 @@ class RatesFragment : BaseRatesFragment<Rate>() {
 
     override fun requestRefresh() {
         viewModel.refreshRates()
-    }
-
-    private fun observeRateUpdates(rates: List<Rate>) {
-        updateList(rates)
     }
 
     override fun calculateRates(dir: Direction, amount: Double) {

@@ -25,14 +25,4 @@ class TermsAndConditionsFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        navigation.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        navigation.show()
-    }
-
 }

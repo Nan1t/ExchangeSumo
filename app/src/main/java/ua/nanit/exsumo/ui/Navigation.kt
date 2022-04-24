@@ -2,6 +2,8 @@ package ua.nanit.exsumo.ui
 
 interface Navigation {
 
+    fun navigateUp()
+
     fun navToSearch()
 
     fun navToCurrencies()
@@ -11,11 +13,5 @@ interface Navigation {
     fun navToAbout()
 
     fun navToTermsAndConditions()
-
-    fun navigateUp()
-
-    fun show()
-
-    fun hide()
 
 }

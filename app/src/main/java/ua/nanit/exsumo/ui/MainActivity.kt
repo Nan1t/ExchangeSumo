@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -37,6 +38,17 @@ class MainActivity : AppCompatActivity(), Navigation {
 
         setupActionBarWithNavController(navController, configuration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            when (destination.id) {
+                R.id.nav_rates,
+                R.id.nav_double_exchange,
+                R.id.nav_settings -> {
+                    navView.visibility = View.VISIBLE
+                }
+                else -> navView.visibility = View.GONE
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -67,13 +79,5 @@ class MainActivity : AppCompatActivity(), Navigation {
 
     override fun navigateUp() {
         navController.popBackStack()
-    }
-
-    override fun show() {
-        navView.visibility = View.VISIBLE
-    }
-
-    override fun hide() {
-        navView.visibility = View.GONE
     }
 }

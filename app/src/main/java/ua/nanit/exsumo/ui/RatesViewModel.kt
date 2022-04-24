@@ -1,13 +1,14 @@
 package ua.nanit.exsumo.ui
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import ua.nanit.exsumo.log.Logger
 import ua.nanit.exsumo.monitoring.*
+import ua.nanit.exsumo.monitoring.data.Computed
 import ua.nanit.exsumo.monitoring.data.DoubleRate
 import ua.nanit.exsumo.monitoring.data.Rate
 
@@ -15,7 +16,7 @@ class RatesViewModel(
     private val dispatcher: CoroutineDispatcher,
     private val storage: MonitoringStorage,
     private val ratesRepo: RatesRepo,
-    private var doubleExchangeRepo: DoubleExchangeRepo,
+    private var doubleRatesRepo: DoubleRatesRepo,
     private var calculator: RateCalculator
 ) : ViewModel() {
 
@@ -29,109 +30,79 @@ class RatesViewModel(
     val doubleRates: LiveData<List<DoubleRate>> get() = _doubleRates
     val currencies: LiveData<String> get() = _currencies
 
-    init {
-        _rates.value = emptyList()
-        _doubleRates.value = emptyList()
+    fun refreshRates() {
+        refresh(ratesRepo::provide, _rates)
     }
 
-    fun refreshRates(restore: Boolean = false) {
-        val currencyIn = storage.getCurrencyIn()
-        val currencyOut = storage.getCurrencyOut()
-
-        if (currencyIn != null && currencyOut != null) {
-            postCurrencies(currencyIn, currencyOut)
-
-            if (restore && rates.value != null)
-                return
-
-            viewModelScope.launch(dispatcher) {
-                Logger.info("Load rates")
-                loadRates(currencyIn, currencyOut)
-            }
-
-            return
-        }
-
-        _rates.value = emptyList()
-    }
-
-    fun refreshDoubleRates(restore: Boolean = false) {
-        val currencyIn = storage.getCurrencyIn()
-        val currencyOut = storage.getCurrencyOut()
-
-        if (currencyIn != null && currencyOut != null) {
-            postCurrencies(currencyIn, currencyOut)
-
-            if (restore && doubleRates.value != null)
-                return
-
-            viewModelScope.launch(dispatcher) {
-                Logger.info("Load double rates")
-                loadDoubleRates(currencyIn, currencyOut)
-            }
-
-            return
-        }
-
-        _doubleRates.value = emptyList()
-    }
-
-    private fun loadRates(currencyIn: String, currencyOut: String) {
-        var error: String? = null
-
-        val rates: List<Rate> = try {
-            ratesRepo.provide(currencyIn, currencyOut)
-        } catch (th: Throwable) {
-            error = th.message
-            emptyList()
-        }
-
-        if (error != null) {
-            viewModelScope.launch { _error.setValue(error!!) }
-            return
-        }
-
-        viewModelScope.launch { _rates.value = rates }
-    }
-
-    private fun loadDoubleRates(currencyIn: String, currencyOut: String) {
-        var error: String? = null
-
-        val rates: List<DoubleRate> = try {
-            doubleExchangeRepo.provide(currencyIn, currencyOut)
-        } catch (th: Throwable) {
-            error = th.message
-            emptyList()
-        }
-
-        if (error != null) {
-            viewModelScope.launch { _error.setValue(error!!) }
-            return
-        }
-
-        viewModelScope.launch { _doubleRates.value = rates }
+    fun refreshDoubleRates() {
+        refresh(doubleRatesRepo::provide, _doubleRates)
     }
 
     fun calculateRates(amount: Double, dir: Direction) {
         val rates = rates.value ?: return
-
-        viewModelScope.launch(dispatcher) {
-            calculator.calculate(rates, dir, amount)
-
-            viewModelScope.launch {
-                _rates.value = _rates.value
-            }
-        }
+        calculate(amount, dir, rates, _rates)
     }
 
     fun calculateDoubleRates(amount: Double, dir: Direction) {
         val rates = doubleRates.value ?: return
+        calculate(amount, dir, rates, _doubleRates)
+    }
 
+    private fun <T> refresh(
+        provider: (String, String) -> List<T>,
+        livedata: MutableLiveData<List<T>>
+    ) {
+        val currencyIn = storage.getCurrencyIn()
+        val currencyOut = storage.getCurrencyOut()
+
+        if (currencyIn != null && currencyOut != null) {
+            postCurrencies(currencyIn, currencyOut)
+
+            viewModelScope.launch(dispatcher) {
+                load(currencyIn, currencyOut, provider, livedata)
+            }
+
+            return
+        }
+
+        livedata.value = emptyList()
+    }
+
+    @SuppressLint("NullSafeMutableLiveData")
+    private fun <T> load(
+        currencyIn: String,
+        currencyOut: String,
+        provider: (String, String) -> List<T>,
+        livedata: MutableLiveData<List<T>>
+    ) {
+        var error: String? = null
+
+        val rates: List<T> = try {
+            provider(currencyIn, currencyOut)
+        } catch (th: Throwable) {
+            error = th.message
+            emptyList()
+        }
+
+        if (error != null) {
+            viewModelScope.launch { _error.setValue(error) }
+            return
+        }
+
+        viewModelScope.launch { livedata.value = rates }
+    }
+
+    private fun <T: Computed> calculate(
+        amount: Double,
+        dir: Direction,
+        list: List<T>,
+        livedata: MutableLiveData<List<T>>
+    ) {
         viewModelScope.launch(dispatcher) {
-            calculator.calculate(rates, dir, amount)
+            calculator.calculate(list, dir, amount)
 
             viewModelScope.launch {
-                _doubleRates.value = _doubleRates.value
+                livedata.value = livedata.value
             }
         }
     }

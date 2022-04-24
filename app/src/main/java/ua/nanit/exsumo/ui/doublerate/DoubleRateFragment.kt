@@ -34,12 +34,8 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
         super.onViewCreated(view, savedInstanceState)
 
         selectedRateSheet = DoubleRateBottomSheet()
-
-        if (viewModel.doubleRates.value == null)
-            setSwipeRefreshing(true)
-
-        viewModel.refreshDoubleRates(true)
-        viewModel.doubleRates.observe(viewLifecycleOwner, ::observeRateUpdates)
+        viewModel.doubleRates.observe(viewLifecycleOwner) { updateList(it) }
+        sharedViewModel.doubleRatesRefresh.observe(viewLifecycleOwner) { refreshRates() }
     }
 
     override fun createAdapter(): BaseRateAdapter<DoubleRate, *> {
@@ -83,11 +79,6 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
 
     override fun calculateRates(dir: Direction, amount: Double) {
         viewModel.calculateDoubleRates(amount, dir)
-    }
-
-    private fun observeRateUpdates(rates: List<DoubleRate>) {
-        setSwipeRefreshing(false)
-        updateList(rates)
     }
 
     private fun openLink(link: String) {
