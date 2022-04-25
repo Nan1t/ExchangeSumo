@@ -9,6 +9,7 @@ class AppStorage(ctx: Context) {
         const val KEY_LOCALE = "locale"
         const val KEY_NIGHT_MODE = "night_mode"
         const val KEY_TERMS_ACCEPTED = "terms_accepted"
+        const val KEY_HELP_DISPLAYED = "help_displayed"
     }
 
     private val prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
@@ -28,6 +29,16 @@ class AppStorage(ctx: Context) {
     fun acceptTerms() {
         return prefs.edit()
             .putBoolean(KEY_TERMS_ACCEPTED, true)
+            .apply()
+    }
+
+    fun isDisplayedHelp(): Boolean {
+        return prefs.getBoolean(KEY_HELP_DISPLAYED, false)
+    }
+
+    fun displayHelp() {
+        return prefs.edit()
+            .putBoolean(KEY_HELP_DISPLAYED, true)
             .apply()
     }
 }

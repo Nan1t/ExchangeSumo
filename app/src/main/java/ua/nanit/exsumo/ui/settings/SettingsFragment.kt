@@ -12,15 +12,12 @@ import java.util.*
 
 class SettingsFragment : BasePrefsFragment(R.xml.preferences) {
 
-    private lateinit var storage: AppStorage
     private lateinit var locale: ListPreference
     private lateinit var nightMode: SwitchPreferenceCompat
     private lateinit var about: Preference
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
-
-        storage = AppStorage(requireContext())
 
         locale = findPreference(AppStorage.KEY_LOCALE)!!
         nightMode = findPreference(AppStorage.KEY_NIGHT_MODE)!!

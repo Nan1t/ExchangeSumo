@@ -6,27 +6,33 @@ data class Rate(
     var amountOut: Double,
     var currencyIn: String,
     var currencyOut: String,
-    val minAmount: Int,
+    val minAmount: Double,
     val fund: Int,
     val link: String,
     val reviewsLink: String,
     val isManual: Boolean,
     val isMediator: Boolean,
     val isCardVerify: Boolean,
-    var active: Boolean = true
+    var active: Boolean = true,
+    var inactiveByMinAmount: Boolean = false,
+    var inactiveByFund: Boolean = false
 ) : Computed {
 
     override fun calcIn(amount: Double) {
         val course = amountOut / amountIn
         amountIn = amount
         amountOut = amount * course
-        active = amount <= fund
+        inactiveByMinAmount = amount < minAmount
+        inactiveByFund = amount > fund
+        active = !inactiveByMinAmount && !inactiveByFund
     }
 
     override fun calcOut(amount: Double) {
         val course = amountIn / amountOut
         amountOut = amount
         amountIn = amount * course
-        active = amount <= fund
+        inactiveByMinAmount = amountIn < minAmount
+        inactiveByFund = amount > fund
+        active = !inactiveByMinAmount && !inactiveByFund
     }
 }

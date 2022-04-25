@@ -23,6 +23,7 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         val info = ctx.packageManager.getPackageInfo(ctx.packageName, 0)
 
         val version = findPreference<Preference>("version")!!
+        val partner = findPreference<Preference>("partner")!!
         val tos = findPreference<Preference>("tos")!!
         val sources = findPreference<Preference>("sources")!!
         contacts = findPreference("contacts")!!
@@ -34,13 +35,18 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
             false
         }
 
+        partner.setOnPreferenceClickListener {
+            openUrl(ctx.getString(R.string.about_partner_url))
+            true
+        }
+
         tos.setOnPreferenceClickListener {
             TermsDialog().show(requireContext())
             false
         }
 
         sources.setOnPreferenceClickListener {
-            openSources()
+            openUrl(ctx.getString(R.string.about_source_url))
             false
         }
     }
@@ -59,8 +65,7 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         ).show()
     }
 
-    private fun openSources() {
-        val uri = Uri.parse(requireContext().getString(R.string.about_source_url))
-        startActivity(Intent(Intent.ACTION_VIEW, uri))
+    private fun openUrl(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 }

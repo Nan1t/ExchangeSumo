@@ -9,11 +9,15 @@ import ua.nanit.exsumo.util.ThemeUtil
 
 class App : Application() {
 
+    companion object {
+        lateinit var storage: AppStorage
+    }
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
 
         if (base != null) {
-            val storage = AppStorage(base)
+            storage = AppStorage(base)
             ThemeUtil.setNightMode(storage.isNightMode())
         }
     }

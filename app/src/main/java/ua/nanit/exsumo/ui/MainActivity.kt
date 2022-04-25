@@ -10,8 +10,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ua.nanit.exsumo.App
 import ua.nanit.exsumo.R
-import ua.nanit.exsumo.storage.AppStorage
 import ua.nanit.exsumo.util.LocaleUtil
 
 class MainActivity : AppCompatActivity(), Navigation {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), Navigation {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val storage = AppStorage(this)
+        val storage = App.storage
 
         LocaleUtil.updateLocale(this, storage.locale())
         setContentView(R.layout.activity_main)

@@ -21,6 +21,11 @@
         app:iconSpaceReserved="false" />
 
     <Preference
+        android:key="partner"
+        android:title="@string/about_partner"
+        app:iconSpaceReserved="false" />
+
+    <Preference
         android:key="tos"
         android:title="@string/about_terms"
         app:iconSpaceReserved="false" />

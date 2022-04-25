@@ -22,7 +22,7 @@
     <string name="rates_head_in">Віддаєте</string>
     <string name="rates_head_out">Отримуєте</string>
     <string name="rates_head_fund">Резерв</string>
-    <string name="rates_nothing">Обмінів за даним напрямком не знайдено</string>
+    <string name="rates_nothing">Обмінів не знайдено\n\n\nОберіть напрям, натиснувши на іконку [img] зверху</string>
 
     <!--  Rates Bottom Sheet  -->
     <string name="rates_badge_manual">Ручний або напівавтоматичний режим</string>
@@ -70,6 +70,7 @@
     <string name="about_terms">Правила користування</string>
     <string name="about_license">Ліцензія</string>
     <string name="about_contacts">Контакти</string>
+    <string name="about_partner">Сайт ExchangeSumo</string>
     <string name="about_version">Версія</string>
     <string name="about_sources">Вихідний код</string>
     <string name="about_contacts_copied">Контакт скопійований</string>

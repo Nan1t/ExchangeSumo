@@ -10,4 +10,20 @@ data class Exchanger(
     val age: String,
     val country: String,
     val reviews: List<Review>
-)
+) {
+
+    companion object {
+        val EMPTY = Exchanger(
+            "",
+            "",
+            "",
+            null,
+            "",
+            "",
+            "",
+            "",
+            emptyList()
+        )
+    }
+
+}

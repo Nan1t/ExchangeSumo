@@ -1,6 +1,7 @@
 package ua.nanit.exsumo.ui.exchanger
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
@@ -15,16 +16,20 @@ class ExchangerViewModel(
     private val exchangerRepo: ExchangerRepo
 ) : ViewModel() {
 
-    private val _exchanger = Signal<Exchanger>()
+    private val _exchanger = MutableLiveData<Exchanger>()
     private val _url = Signal<String>()
 
     val exchanger: LiveData<Exchanger> get() = _exchanger
     val url: LiveData<String> get() = _url
 
     fun load(rate: Rate) {
+        _exchanger.value = Exchanger.EMPTY
+
         viewModelScope.launch(dispatcher) {
             val data = exchangerRepo.provide(rate)
-            viewModelScope.launch { _exchanger.setValue(data) }
+            viewModelScope.launch {
+                _exchanger.setValue(data)
+            }
         }
     }
 

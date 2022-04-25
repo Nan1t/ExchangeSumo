@@ -42,9 +42,9 @@ class ExchangerFragment : BaseFragment() {
         binding.exchangerBtnWebsite.setOnClickListener { viewModel.openWebsite() }
         binding.exchangerBtnReviews.setOnClickListener { viewModel.openReviews() }
 
-        viewModel.exchanger.observe(viewLifecycleOwner, this::observeExchanger)
-        viewModel.url.observe(viewLifecycleOwner, this::observeUrl)
-        sharedViewModel.rateInfo.observe(viewLifecycleOwner, this::requestInfo)
+        sharedViewModel.rateInfo.observe(viewLifecycleOwner, ::requestInfo)
+        viewModel.exchanger.observe(viewLifecycleOwner, ::observeExchanger)
+        viewModel.url.observe(viewLifecycleOwner, ::observeUrl)
     }
 
     private fun requestInfo(rate: Rate) {
@@ -52,6 +52,7 @@ class ExchangerFragment : BaseFragment() {
     }
 
     private fun observeUrl(url: String) {
+        if (url.isEmpty()) return
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
@@ -63,8 +64,10 @@ class ExchangerFragment : BaseFragment() {
         binding.exchangerAge.text = exchanger.age
         binding.exchangerCountry.text = exchanger.country
 
-        Picasso.get()
-            .load(Uri.parse(exchanger.iconUrl))
-            .into(binding.exchangerLogo)
+        if (exchanger.iconUrl != null) {
+            Picasso.get()
+                .load(Uri.parse(exchanger.iconUrl))
+                .into(binding.exchangerLogo)
+        }
     }
 }

@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <attr name="backgroundColorVariant" format="color" />
+
     <style name="Theme.ExchangersTop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/darkPrimaryLightColor</item>
@@ -16,6 +17,7 @@
         <item name="actionBarStyle">@style/Widget.MaterialComponents.ActionBar.Primary</item>
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
         <item name="materialAlertDialogTheme">@style/Theme.ExchangersTop.Dialog</item>
+        <item name="colorError">@color/errorColor</item>
         <item name="colorSurface">@color/darkBackgroundColor</item>
         <item name="colorOnSurface">@color/white</item>
         <item name="android:colorBackground">@color/darkBackgroundColor</item>

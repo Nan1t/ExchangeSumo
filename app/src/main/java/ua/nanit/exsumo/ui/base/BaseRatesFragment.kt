@@ -1,6 +1,8 @@
 package ua.nanit.exsumo.ui.base
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ImageSpan
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -16,14 +18,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.skydoves.balloon.*
 import ua.nanit.exsumo.R
 import ua.nanit.exsumo.databinding.DialogCalculatorBinding
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.ui.RatesViewModel
 import ua.nanit.exsumo.ui.RatesVmFactory
 import ua.nanit.exsumo.ui.shared.SharedViewModel
-import ua.nanit.exsumo.util.getColorFromAttr
 import java.lang.IllegalArgumentException
 
 abstract class BaseRatesFragment<T> : BaseFragment() {
@@ -64,6 +64,8 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
 
         ratesList.adapter = ratesAdapter
         ratesList.layoutManager = LinearLayoutManager(requireContext())
+
+        formatEmptyListText()
 
         swipeRefresh.setOnRefreshListener { refreshRates() }
 
@@ -108,13 +110,6 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
         if (rates.isEmpty()) {
             swipeRefresh.visibility = View.GONE
             emptyList.visibility = View.VISIBLE
-
-            val searchMenuButton = requireActivity()
-                .findViewById<View?>(R.id.menu_search)
-
-            if (searchMenuButton != null) {
-                createSearchBalloon().showAlignBottom(searchMenuButton)
-            }
             return
         }
 
@@ -163,27 +158,14 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
             .create()
     }
 
-    private fun createSearchBalloon(): Balloon {
-        val ctx = requireContext()
-        val bgColor = ctx.getColorFromAttr(com.google.android.material.R.attr.colorSurface)
-        val textColor = ctx.getColorFromAttr(com.google.android.material.R.attr.colorOnSurface)
+    private fun formatEmptyListText() {
+        val imgSpan = ImageSpan(requireContext(), R.drawable.ic_baseline_search)
+        val text = emptyList.text
+        val spannableText = SpannableString(text)
+        val start = text.indexOf("[img]")
+        val end = start + 5
 
-        return createBalloon(ctx) {
-            setWidth(BalloonSizeSpec.WRAP)
-            setHeight(BalloonSizeSpec.WRAP)
-            setTextResource(R.string.tooltip_search)
-            setBackgroundColor(bgColor)
-            setTextColor(textColor)
-            setTextSize(15f)
-            setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            setArrowSize(10)
-            setArrowPosition(0.5f)
-            setPadding(5)
-            setCornerRadius(5f)
-            setBalloonAnimation(BalloonAnimation.ELASTIC)
-            setLifecycleOwner(viewLifecycleOwner)
-            build()
-        }
+        spannableText.setSpan(imgSpan, start, end, 0)
+        emptyList.text = spannableText
     }
-
 }
