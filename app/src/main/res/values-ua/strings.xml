@@ -9,6 +9,7 @@
     <string name="nav_double">Подвійний обмін</string>
     <string name="nav_settings">Налаштування</string>
     <string name="tooltip_search">Виберіть напрям обміну</string>
+    <string name="error_network">Не вдалося завантажити жані. Перевірте підключення до мережі</string>
 
     <!--  Search Fragment  -->
     <string name="search_title">Пошук</string>

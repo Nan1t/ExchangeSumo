@@ -135,9 +135,9 @@ abstract class BaseRatesFragment<T> : BaseFragment() {
         }
     }
 
-    private fun observeError(msg: String) {
+    private fun observeError(th: Throwable) {
         setSwipeRefreshing(false)
-        Snackbar.make(requireView(), msg, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(requireView(), R.string.error_network, Snackbar.LENGTH_LONG).show()
     }
 
     private fun setupCalcDialog() {

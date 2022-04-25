@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import ua.nanit.exsumo.R
 import ua.nanit.exsumo.databinding.FragmentExchangerBinding
 import ua.nanit.exsumo.monitoring.data.Exchanger
 import ua.nanit.exsumo.monitoring.data.Rate
@@ -33,11 +35,11 @@ class ExchangerFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity(), ExchangerVmFactory(requireContext()))
+        viewModel = ViewModelProvider(requireActivity(), ExchangerVmFactory(view.context))
             .get(ExchangerViewModel::class.java)
         sharedViewModel = sharedViewModel()
 
-        binding.exchangerReviewsList.layoutManager = LinearLayoutManager(requireContext())
+        binding.exchangerReviewsList.layoutManager = LinearLayoutManager(view.context)
 
         binding.exchangerBtnWebsite.setOnClickListener { viewModel.openWebsite() }
         binding.exchangerBtnReviews.setOnClickListener { viewModel.openReviews() }
@@ -45,6 +47,9 @@ class ExchangerFragment : BaseFragment() {
         sharedViewModel.rateInfo.observe(viewLifecycleOwner, ::requestInfo)
         viewModel.exchanger.observe(viewLifecycleOwner, ::observeExchanger)
         viewModel.url.observe(viewLifecycleOwner, ::observeUrl)
+        viewModel.error.observe(viewLifecycleOwner) {
+            Snackbar.make(view, R.string.error_network, Snackbar.LENGTH_LONG).show()
+        }
     }
 
     private fun requestInfo(rate: Rate) {
@@ -57,27 +62,22 @@ class ExchangerFragment : BaseFragment() {
     }
 
     private fun observeExchanger(exchanger: Exchanger) {
-        if (!exchanger.isEmpty()) {
-            binding.exchangerShimmerLayout.hideShimmer()
+        if (exchanger.isEmpty()) return
 
-            binding.exchangerName.background = null
-            binding.exchangerStatus.background = null
-            binding.exchangerFund.background = null
-            binding.exchangerAge.background = null
-            binding.exchangerCountry.background = null
+        binding.exchangerName.text = exchanger.name
+        binding.exchangerReviewsList.adapter = ReviewsAdapter(exchanger.reviews)
+        binding.exchangerStatus.text = exchanger.status
+        binding.exchangerFund.text = exchanger.fund
+        binding.exchangerAge.text = exchanger.age
+        binding.exchangerCountry.text = exchanger.country
 
-            binding.exchangerName.text = exchanger.name
-            binding.exchangerReviewsList.adapter = ReviewsAdapter(exchanger.reviews)
-            binding.exchangerStatus.text = exchanger.status
-            binding.exchangerFund.text = exchanger.fund
-            binding.exchangerAge.text = exchanger.age
-            binding.exchangerCountry.text = exchanger.country
-
-            if (exchanger.iconUrl != null) {
-                Picasso.get()
-                    .load(Uri.parse(exchanger.iconUrl))
-                    .into(binding.exchangerLogo)
-            }
+        if (exchanger.iconUrl != null) {
+            Picasso.get()
+                .load(Uri.parse(exchanger.iconUrl))
+                .into(binding.exchangerLogo)
         }
+
+        binding.exchangerShimmer.hideShimmer()
+        binding.exchangerShimmer.visibility = View.GONE
     }
 }

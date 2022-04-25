@@ -18,17 +18,21 @@ class ExchangerViewModel(
 
     private val _exchanger = MutableLiveData<Exchanger>()
     private val _url = Signal<String>()
+    private val _error = Signal<Unit>()
 
     val exchanger: LiveData<Exchanger> get() = _exchanger
     val url: LiveData<String> get() = _url
+    val error: LiveData<Unit> get() = _error
 
     fun load(rate: Rate) {
         _exchanger.value = Exchanger.EMPTY
 
         viewModelScope.launch(dispatcher) {
-            val data = exchangerRepo.provide(rate)
-            viewModelScope.launch {
-                _exchanger.setValue(data)
+            try {
+                val data = exchangerRepo.provide(rate)
+                viewModelScope.launch { _exchanger.setValue(data) }
+            } catch (th: Throwable) {
+                viewModelScope.launch { _error.setValue(Unit) }
             }
         }
     }

@@ -20,12 +20,12 @@ class RatesViewModel(
     private var calculator: RateCalculator
 ) : ViewModel() {
 
-    private val _error = Signal<String>()
+    private val _error = Signal<Throwable>()
     private val _rates = MutableLiveData<List<Rate>>()
     private val _doubleRates = MutableLiveData<List<DoubleRate>>()
     private val _currencies = MutableLiveData<String>()
 
-    val error: LiveData<String> get() = _error
+    val error: LiveData<Throwable> get() = _error
     val rates: LiveData<List<Rate>> get() = _rates
     val doubleRates: LiveData<List<DoubleRate>> get() = _doubleRates
     val currencies: LiveData<String> get() = _currencies
@@ -75,12 +75,12 @@ class RatesViewModel(
         provider: (String, String) -> List<T>,
         livedata: MutableLiveData<List<T>>
     ) {
-        var error: String? = null
+        var error: Throwable? = null
 
         val rates: List<T> = try {
             provider(currencyIn, currencyOut)
         } catch (th: Throwable) {
-            error = th.message
+            error = th
             emptyList()
         }
 
