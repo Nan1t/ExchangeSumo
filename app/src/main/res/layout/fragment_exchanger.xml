@@ -16,163 +16,175 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:orientation="vertical"
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/exchanger_shimmer_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="25dp"
+                android:layout_height="match_parent"
+                app:shimmer_auto_start="true"
                 app:layout_collapseMode="pin">
 
-                <!-- LOGO AND TITLE -->
-
-                <ImageView
-                    android:id="@+id/exchanger_logo"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:background="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/icon" />
-
-                <TextView
-                    android:id="@+id/exchanger_name"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="20dp"
-                    android:gravity="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/exchanger_logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/exchanger_logo"
-                    app:layout_constraintTop_toTopOf="@+id/exchanger_logo"
-                    tools:text="Exchanger name" />
-
-                <!-- ABOUT STATUS -->
-
-                <TextView
-                    android:id="@+id/exchanger_status_key"
-                    style="@style/ExchangerAbout.Key"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/exchanger_status"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_logo" />
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="25dp">
 
-                <TextView
-                    android:id="@+id/exchanger_status"
-                    style="@style/ExchangerAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/exchanger_status_key"
-                    tools:text="TEXT" />
+                    <!-- LOGO AND TITLE -->
 
-                <!-- ABOUT FUND -->
+                    <ImageView
+                        android:id="@+id/exchanger_logo"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:background="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/icon" />
 
-                <TextView
-                    android:id="@+id/exchanger_fund_key"
-                    style="@style/ExchangerAbout.Key"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/exchanger_fund"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_status_key" />
+                    <TextView
+                        android:id="@+id/exchanger_name"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/exchanger_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/exchanger_logo"
+                        app:layout_constraintTop_toTopOf="@+id/exchanger_logo"
+                        tools:text="Exchanger name" />
 
-                <TextView
-                    android:id="@+id/exchanger_fund"
-                    style="@style/ExchangerAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/exchanger_fund_key"
-                    tools:text="TEXT" />
+                    <!-- ABOUT STATUS -->
 
-                <!-- ABOUT AGE -->
+                    <TextView
+                        android:id="@+id/exchanger_status_key"
+                        style="@style/ExchangerAbout.Key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/exchanger_status"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_logo" />
 
-                <TextView
-                    android:id="@+id/exchanger_age_key"
-                    style="@style/ExchangerAbout.Key"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/exchanger_age"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_fund_key" />
+                    <TextView
+                        android:id="@+id/exchanger_status"
+                        style="@style/ExchangerAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/exchanger_status_key"
+                        tools:text="TEXT" />
 
-                <TextView
-                    android:id="@+id/exchanger_age"
-                    style="@style/ExchangerAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/exchanger_age_key"
-                    tools:text="TEXT" />
+                    <!-- ABOUT FUND -->
 
-                <!-- ABOUT COUNTRY -->
+                    <TextView
+                        android:id="@+id/exchanger_fund_key"
+                        style="@style/ExchangerAbout.Key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exchanger_fund"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_status_key" />
 
-                <TextView
-                    android:id="@+id/exchanger_country_key"
-                    style="@style/ExchangerAbout.Key"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/exchanger_country"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_age_key" />
+                    <TextView
+                        android:id="@+id/exchanger_fund"
+                        style="@style/ExchangerAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/exchanger_fund_key"
+                        tools:text="TEXT" />
 
-                <TextView
-                    android:id="@+id/exchanger_country"
-                    style="@style/ExchangerAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/exchanger_country_key"
-                    tools:text="TEXT" />
+                    <!-- ABOUT AGE -->
 
-                <!-- BUTTON WEBSITE -->
+                    <TextView
+                        android:id="@+id/exchanger_age_key"
+                        style="@style/ExchangerAbout.Key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exchanger_age"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_fund_key" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/exchanger_btn_website"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_public"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/exchanger_btn_reviews"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_country_key" />
+                    <TextView
+                        android:id="@+id/exchanger_age"
+                        style="@style/ExchangerAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/exchanger_age_key"
+                        tools:text="TEXT" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/exchanger_website"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_website"
-                    app:layout_constraintStart_toStartOf="@+id/exchanger_btn_website"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_btn_website" />
+                    <!-- ABOUT COUNTRY -->
 
-                <!-- BUTTON REVIEWS WEB PAGE -->
+                    <TextView
+                        android:id="@+id/exchanger_country_key"
+                        style="@style/ExchangerAbout.Key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exchanger_country"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_age_key" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/exchanger_btn_reviews"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_reviews"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/exchanger_btn_website"
-                    app:layout_constraintTop_toTopOf="@id/exchanger_btn_website" />
+                    <TextView
+                        android:id="@+id/exchanger_country"
+                        style="@style/ExchangerAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/exchanger_country_key"
+                        tools:text="TEXT" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/exchanger_reviews"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_reviews"
-                    app:layout_constraintStart_toStartOf="@+id/exchanger_btn_reviews"
-                    app:layout_constraintTop_toBottomOf="@+id/exchanger_btn_reviews" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!-- BUTTON WEBSITE -->
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/exchanger_btn_website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_public"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/exchanger_btn_reviews"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_country_key" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/exchanger_website"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_website"
+                        app:layout_constraintStart_toStartOf="@+id/exchanger_btn_website"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_btn_website" />
+
+                    <!-- BUTTON REVIEWS WEB PAGE -->
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/exchanger_btn_reviews"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_reviews"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/exchanger_btn_website"
+                        app:layout_constraintTop_toTopOf="@id/exchanger_btn_website" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/exchanger_reviews"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/exchanger_btn_reviews"
+                        app:layout_constraintStart_toStartOf="@+id/exchanger_btn_reviews"
+                        app:layout_constraintTop_toBottomOf="@+id/exchanger_btn_reviews" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

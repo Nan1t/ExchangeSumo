@@ -26,4 +26,8 @@ data class Exchanger(
         )
     }
 
+    fun isEmpty(): Boolean {
+        return this === EMPTY
+    }
+
 }

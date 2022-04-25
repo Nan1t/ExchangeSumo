@@ -57,17 +57,27 @@ class ExchangerFragment : BaseFragment() {
     }
 
     private fun observeExchanger(exchanger: Exchanger) {
-        binding.exchangerName.text = exchanger.name
-        binding.exchangerReviewsList.adapter = ReviewsAdapter(exchanger.reviews)
-        binding.exchangerStatus.text = exchanger.status
-        binding.exchangerFund.text = exchanger.fund
-        binding.exchangerAge.text = exchanger.age
-        binding.exchangerCountry.text = exchanger.country
+        if (!exchanger.isEmpty()) {
+            binding.exchangerShimmerLayout.hideShimmer()
 
-        if (exchanger.iconUrl != null) {
-            Picasso.get()
-                .load(Uri.parse(exchanger.iconUrl))
-                .into(binding.exchangerLogo)
+            binding.exchangerName.background = null
+            binding.exchangerStatus.background = null
+            binding.exchangerFund.background = null
+            binding.exchangerAge.background = null
+            binding.exchangerCountry.background = null
+
+            binding.exchangerName.text = exchanger.name
+            binding.exchangerReviewsList.adapter = ReviewsAdapter(exchanger.reviews)
+            binding.exchangerStatus.text = exchanger.status
+            binding.exchangerFund.text = exchanger.fund
+            binding.exchangerAge.text = exchanger.age
+            binding.exchangerCountry.text = exchanger.country
+
+            if (exchanger.iconUrl != null) {
+                Picasso.get()
+                    .load(Uri.parse(exchanger.iconUrl))
+                    .into(binding.exchangerLogo)
+            }
         }
     }
 }
