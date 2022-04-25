@@ -9,7 +9,7 @@
     <string name="nav_double">Подвійний обмін</string>
     <string name="nav_settings">Налаштування</string>
     <string name="tooltip_search">Виберіть напрям обміну</string>
-    <string name="error_network">Не вдалося завантажити жані. Перевірте підключення до мережі</string>
+    <string name="error_network">Не вдалось завантажити дані. Перевірте підключення до мережі</string>
 
     <!--  Search Fragment  -->
     <string name="search_title">Пошук</string>
@@ -23,7 +23,7 @@
     <string name="rates_head_in">Віддаєте</string>
     <string name="rates_head_out">Отримуєте</string>
     <string name="rates_head_fund">Резерв</string>
-    <string name="rates_nothing">Обмінів не знайдено\n\n\nОберіть напрям, натиснувши на іконку [img] зверху</string>
+    <string name="rates_nothing">Обмінники не знайдені\n\n\nОберіть напрям, натиснувши на іконку [img] зверху</string>
 
     <!--  Rates Bottom Sheet  -->
     <string name="rates_badge_manual">Ручний або напівавтоматичний режим</string>

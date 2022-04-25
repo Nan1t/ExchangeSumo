@@ -79,5 +79,7 @@ class ExchangerFragment : BaseFragment() {
 
         binding.exchangerShimmer.hideShimmer()
         binding.exchangerShimmer.visibility = View.GONE
+        binding.exchangerInfo.visibility = View.VISIBLE
+        binding.exchangerReviews.visibility = View.VISIBLE
     }
 }

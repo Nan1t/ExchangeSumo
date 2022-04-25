@@ -25,7 +25,7 @@
     <string name="rates_head_in">Отдаете</string>
     <string name="rates_head_out">Получите</string>
     <string name="rates_head_fund">Резерв</string>
-    <string name="rates_nothing">Обмены не найдены\n\n\nВыберите направление, нажав на иконку [img] вверху</string>
+    <string name="rates_nothing">Обменники не найдены\n\n\nВыберите направление, нажав на иконку [img] вверху</string>
 
     <!--  Rates Bottom Sheet  -->
     <string name="rates_badge_manual">Ручной или полуавтоматический режим</string>

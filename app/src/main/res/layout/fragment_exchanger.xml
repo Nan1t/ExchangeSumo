@@ -7,6 +7,9 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/exchanger_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface">
@@ -177,6 +180,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/exchanger_reviews"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -204,8 +210,7 @@
         android:id="@+id/exchanger_shimmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorSurface"
-        app:shimmer_base_alpha="1">
+        app:shimmer_auto_start="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
