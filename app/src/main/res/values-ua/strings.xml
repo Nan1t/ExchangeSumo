@@ -1,8 +1,6 @@
 <resources>
     <string name="locale_name">Українська</string>
-
     <string name="apply">Застосувати</string>
-    <string name="cancel">Відмінити</string>
 
     <!--  Navigation Menu  -->
     <string name="nav_rates">Обмінники</string>
@@ -68,11 +66,29 @@
     <string name="settings_theme">Темна тема</string>
 
     <!--  About Fragment  -->
+    <string name="about_version">Версія</string>
     <string name="about_terms">Правила користування</string>
     <string name="about_license">Ліцензія</string>
     <string name="about_contacts">Контакти</string>
     <string name="about_partner">Сайт ExchangeSumo</string>
-    <string name="about_version">Версія</string>
     <string name="about_sources">Вихідний код</string>
     <string name="about_contacts_copied">Контакт скопійований</string>
+
+    <string name="terms_ok">OK</string>
+    <string name="terms_website">Відвідати сайт</string>
+    <string name="terms_text">"Це додаток для швидкого пошуку валютних обмінників з найвигіднішим курсом.
+
+Додаток відображає дані з відкритих джерел, доступних для кожного.
+Ці дані включають списки обмінників, курси валют, посилання, зображення, відгуки користувачів.
+
+Додаток не збирає, не зберігає та не розповсюджує дані користувачів.
+
+Автор додатку не може гарантувати надійність відображених обмінників та ваших угод, і не несе за них відповідальність.
+Це може робити ресурс, який надає дані, що відображаються цим додатком.
+
+У свою чергу, користувач має право вимагати від автора, щоб у додатку були присутні заявлені функції, і їхня робота була коректною.
+
+З усіх питань пишіть на imnanit@gmail.com
+
+Приємного користування :)"</string>
 </resources>

@@ -2,8 +2,6 @@
     <string name="app_name" translatable="false">ExchangeSumo</string>
     <string name="locale_name">Русский</string>
 
-    <string name="ok" translatable="false">ОК</string>
-    <string name="cancel">Отмена</string>
     <string name="apply">Применить</string>
     <string name="tooltip_search">Выберите направление обмена</string>
     <string name="error_network">Не удалось загрузить данные. Проверьте подключение к сети</string>
@@ -77,9 +75,28 @@
     <string name="about_partner">Сайт ExchangeSumo</string>
     <string name="about_sources">Исходный код</string>
     <string name="about_contacts_copied">Контакт скопирован</string>
-
     <string name="about_contacts_value" translatable="false">imnanit@gmail.com</string>
     <string name="about_license_value" translatable="false">GNU General Public License v3</string>
     <string name="about_source_url" translatable="false">https://github.com/Nan1t/ExchangeSumo</string>
     <string name="about_partner_url" translatable="false">https://exchangesumo.com/?partner=2554-20902</string>
+
+    <!--  Terms And Conditions Dialog  -->
+
+    <string name="terms_ok">OK</string>
+    <string name="terms_website">Посетить сайт</string>
+    <string name="terms_text">"Это приложение для быстрого поиска валютных обменников с самым выгодным курсом.
+
+Приложение отображает данные из открытых и доступных для каждого источников.
+Эти данные включают в себя списки обменников, курсы валют, ссылки, изображения, отзывы пользователей.
+
+Приложение не собирает, не хранит и не распространяет никакие данные пользователей.
+
+Автор приложения не может гарантировать надежность отображаемых обменников и ваших сделок, и не несет за них ответственность.
+Это может делать ресурс, который предоставляет данные, отображаемые приложением.
+
+В свою очередь, пользователь вправе требовать от автора, чтобы в приложении присутствовали заявленные функции, и их работа была корректной.
+
+По всем вопросам пишите на imnanit@gmail.com
+
+Приятного использования :)"</string>
 </resources>
