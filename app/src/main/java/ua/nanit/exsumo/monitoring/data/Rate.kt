@@ -23,7 +23,7 @@ data class Rate(
         amountIn = amount
         amountOut = amount * course
         inactiveByMinAmount = amount < minAmount
-        inactiveByFund = amount > fund
+        inactiveByFund = amountOut > fund
         active = !inactiveByMinAmount && !inactiveByFund
     }
 
@@ -32,7 +32,7 @@ data class Rate(
         amountOut = amount
         amountIn = amount * course
         inactiveByMinAmount = amountIn < minAmount
-        inactiveByFund = amount > fund
+        inactiveByFund = amountOut > fund
         active = !inactiveByMinAmount && !inactiveByFund
     }
 }
