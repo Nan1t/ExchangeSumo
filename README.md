@@ -5,5 +5,11 @@
 
 # Скриншоты
 
-![img](media/screenshots/phone/Screenshot_20220426_162302.png) ![img](media/screenshots/phone/Screenshot_20220426_162449.png)
-![img](media/screenshots/phone/Screenshot_20220426_162429.png) ![img](media/screenshots/phone/Screenshot_20220426_162541.png)
+Главная страница | Двойной обмен
+:---------------:|:-------------:
+![img](media/screenshots/phone/Screenshot_20220426_162302.png) | ![img](media/screenshots/phone/Screenshot_20220426_162449.png)
+
+
+Главная страница (dark) | Двойной обмен (dark)
+:----------------------:|:---------------------:
+![img](media/screenshots/phone/Screenshot_20220426_162429.png) | ![img](media/screenshots/phone/Screenshot_20220426_162541.png)
