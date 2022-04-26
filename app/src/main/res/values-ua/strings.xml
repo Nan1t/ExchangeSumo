@@ -67,9 +67,10 @@
 
     <!--  About Fragment  -->
     <string name="about_version">Версія</string>
-    <string name="about_terms">Правила користування</string>
     <string name="about_license">Ліцензія</string>
     <string name="about_contacts">Контакти</string>
+    <string name="about_terms">Умови користування</string>
+    <string name="about_privacy">Політика конфіденційності</string>
     <string name="about_partner">Сайт ExchangeSumo</string>
     <string name="about_sources">Вихідний код</string>
     <string name="about_contacts_copied">Контакт скопійований</string>
@@ -77,6 +78,8 @@
     <string name="terms_ok">OK</string>
     <string name="terms_website">Відвідати сайт</string>
     <string name="terms_text">"Це додаток для швидкого пошуку валютних обмінників з найвигіднішим курсом.
+
+Автор додатку не має ніякого відношення до сервісу ExchangeSumo.
 
 Додаток відображає дані з відкритих джерел, доступних для кожного.
 Ці дані включають списки обмінників, курси валют, посилання, зображення, відгуки користувачів.

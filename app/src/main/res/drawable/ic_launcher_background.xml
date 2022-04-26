@@ -13,9 +13,9 @@
         android:strokeColor="#00000000"
         android:strokeLineCap="round"/>
     <path
-        android:pathData="M99.5,-0.5h100v200h-100z"
+        android:pathData="M99.5,2h100v200h-100z"
         android:strokeLineJoin="round"
-        android:fillColor="#e3e3e3"
+        android:fillColor="#fff"
         android:fillType="evenOdd"
         android:strokeColor="#00000000"
         android:strokeLineCap="round"/>

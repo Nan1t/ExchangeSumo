@@ -27,6 +27,7 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         val partner = findPreference<Preference>("partner")!!
         val license = findPreference<Preference>("license")!!
         val tos = findPreference<Preference>("tos")!!
+        val privacy = findPreference<Preference>("privacy")!!
         val sources = findPreference<Preference>("sources")!!
         contacts = findPreference("contacts")!!
 
@@ -45,6 +46,11 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
         license.setOnPreferenceClickListener {
             LicenseDialog().show(ctx)
             true
+        }
+
+        privacy.setOnPreferenceClickListener {
+            openUrl(ctx.getString(R.string.about_privacy_url))
+            false
         }
 
         tos.setOnPreferenceClickListener {

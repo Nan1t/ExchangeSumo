@@ -31,6 +31,10 @@
         android:title="@string/about_terms"
         app:iconSpaceReserved="false" />
 
+    <Preference android:key="privacy"
+        android:title="@string/about_privacy"
+        app:iconSpaceReserved="false" />
+
     <Preference
         android:key="sources"
         android:title="@string/about_sources"
