@@ -9,8 +9,9 @@ import android.os.Bundle
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
 import ua.nanit.exsumo.R
-import ua.nanit.exsumo.ui.TermsDialog
+import ua.nanit.exsumo.ui.dialog.TermsDialog
 import ua.nanit.exsumo.ui.base.BasePrefsFragment
+import ua.nanit.exsumo.ui.dialog.LicenseDialog
 
 class AboutFragment : BasePrefsFragment(R.xml.about) {
 
@@ -24,6 +25,7 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
 
         val version = findPreference<Preference>("version")!!
         val partner = findPreference<Preference>("partner")!!
+        val license = findPreference<Preference>("license")!!
         val tos = findPreference<Preference>("tos")!!
         val sources = findPreference<Preference>("sources")!!
         contacts = findPreference("contacts")!!
@@ -37,6 +39,11 @@ class AboutFragment : BasePrefsFragment(R.xml.about) {
 
         partner.setOnPreferenceClickListener {
             openUrl(ctx.getString(R.string.about_partner_url))
+            true
+        }
+
+        license.setOnPreferenceClickListener {
+            LicenseDialog().show(ctx)
             true
         }
 

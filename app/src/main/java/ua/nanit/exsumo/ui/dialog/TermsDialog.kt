@@ -1,4 +1,4 @@
-package ua.nanit.exsumo.ui
+package ua.nanit.exsumo.ui.dialog
 
 import android.content.Context
 import android.content.Intent

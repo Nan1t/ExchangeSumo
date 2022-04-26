@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.exsumo.App
 import ua.nanit.exsumo.R
+import ua.nanit.exsumo.ui.dialog.TermsDialog
 import ua.nanit.exsumo.util.LocaleUtil
 
 class MainActivity : AppCompatActivity(), Navigation {
