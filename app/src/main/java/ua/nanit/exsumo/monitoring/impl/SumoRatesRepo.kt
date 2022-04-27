@@ -1,10 +1,8 @@
 package ua.nanit.exsumo.monitoring.impl
 
 import org.jsoup.Jsoup
-import ua.nanit.exsumo.log.Logger
 import ua.nanit.exsumo.monitoring.RatesRepo
 import ua.nanit.exsumo.monitoring.data.Rate
-import kotlin.math.roundToInt
 
 class SumoRatesRepo : RatesRepo {
 
@@ -34,7 +32,6 @@ class SumoRatesRepo : RatesRepo {
                 ?.text()
                 ?.replace(" ", "")
                 ?.toDoubleOrNull()
-                ?.roundToInt()
             val reviewsRoute = row.selectFirst("td.cell-comments")
                 ?.attr("data-open")
             val reviewsLink = "$SUMO_BASE_URL$reviewsRoute"
@@ -49,7 +46,7 @@ class SumoRatesRepo : RatesRepo {
                 currencyIn,
                 currencyOut,
                 minAmount ?: 0.0,
-                fund ?: 0,
+                fund ?: 0.0,
                 link,
                 reviewsLink,
                 isManual,

@@ -7,7 +7,7 @@ data class Rate(
     var currencyIn: String,
     var currencyOut: String,
     val minAmount: Double,
-    val fund: Int,
+    val fund: Double,
     val link: String,
     val reviewsLink: String,
     val isManual: Boolean,
