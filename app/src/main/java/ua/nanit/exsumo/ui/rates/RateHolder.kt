@@ -31,7 +31,7 @@ class RateHolder(
         this.rate = rate
 
         binding.rateOrganization.text = rate.exchanger
-        binding.rateFund.text = rate.fund.toString()
+        binding.rateFund.text = rate.fund.toRawString()
         binding.rateMinAmount.text = rate.minAmount.toRawString()
         binding.rateAmountIn.text = rate.amountIn.toRawString()
         binding.rateAmountOut.text = rate.amountOut.toRawString()
