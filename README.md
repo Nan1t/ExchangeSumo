@@ -1,5 +1,7 @@
 # ExchangeSumo
 
+[Insert Google Play link here]
+
 Приложение для поиска и расчета обменов электронных валют.
 Программа получает данные из сервиса ExchangeSumo.com методом парсинга HTML страниц.
 
