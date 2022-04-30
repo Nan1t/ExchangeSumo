@@ -1,6 +1,6 @@
 # ExchangeSumo
 
-[Insert Google Play link here]
+<a href='https://play.google.com/store/apps/details?id=ua.nanit.exsumo&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="256" alt='Доступно в Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/ru_badge_web_generic.png'/></a>
 
 Приложение для поиска и расчета обменов электронных валют.
 Программа получает данные из сервиса ExchangeSumo.com методом парсинга HTML страниц.
