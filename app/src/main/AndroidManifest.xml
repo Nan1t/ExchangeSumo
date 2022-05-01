@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExchangersTop">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7140109678422701~7405213074"/>
+
         <activity
             android:name="ua.nanit.exsumo.ui.MainActivity"
             android:exported="true">

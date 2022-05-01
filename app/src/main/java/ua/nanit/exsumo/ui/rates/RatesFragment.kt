@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.gms.ads.AdRequest
 import ua.nanit.exsumo.databinding.FragmentRatesBinding
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.monitoring.data.Rate
@@ -34,6 +35,8 @@ class RatesFragment : BaseRatesFragment<Rate>() {
         selectedRateSheet = RateBottomSheet()
         viewModel.rates.observe(viewLifecycleOwner) { updateList(it) }
         sharedViewModel.ratesRefresh.observe(viewLifecycleOwner) { refreshRates() }
+
+        binding.adView.loadAd(AdRequest.Builder().build())
     }
 
     override fun createAdapter(): BaseRateAdapter<Rate, *> {

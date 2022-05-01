@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.gms.ads.AdRequest
 import ua.nanit.exsumo.databinding.FragmentDoubleBinding
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.monitoring.data.DoubleRate
@@ -36,6 +37,8 @@ class DoubleRateFragment : BaseRatesFragment<DoubleRate>() {
         selectedRateSheet = DoubleRateBottomSheet()
         viewModel.doubleRates.observe(viewLifecycleOwner) { updateList(it) }
         sharedViewModel.doubleRatesRefresh.observe(viewLifecycleOwner) { refreshRates() }
+
+        binding.adView.loadAd(AdRequest.Builder().build())
     }
 
     override fun createAdapter(): BaseRateAdapter<DoubleRate, *> {

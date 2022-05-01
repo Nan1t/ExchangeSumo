@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.nanit.exsumo.App
 import ua.nanit.exsumo.R
@@ -45,6 +46,8 @@ class MainActivity : AppCompatActivity(), Navigation {
         if (!storage.isTermsAccepted()) {
             TermsDialog().show(this, storage)
         }
+
+        MobileAds.initialize(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {

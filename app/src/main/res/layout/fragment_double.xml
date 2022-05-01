@@ -50,6 +50,14 @@
             android:text="@string/double_head_course"/>
     </LinearLayout>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:adSize="BANNER"
+        app:adUnitId="@string/ad_unit_id" />
+
     <TextView
         android:visibility="gone"
         android:id="@+id/double_list_empty"

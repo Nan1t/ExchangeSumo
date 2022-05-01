@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
 import ua.nanit.exsumo.databinding.FragmentSearchBinding
 import ua.nanit.exsumo.monitoring.Direction
 import ua.nanit.exsumo.ui.base.BaseFragment
@@ -56,6 +57,8 @@ class SearchFragment : BaseFragment() {
 
         viewModel.enableConfirmBtn.observe(viewLifecycleOwner, this::observeEnableConfirmBtn)
         viewModel.search.observe(viewLifecycleOwner) { observeSearch() }
+
+        binding.adView.loadAd(AdRequest.Builder().build())
     }
 
     private fun observeEnableConfirmBtn(value: Boolean) {
