@@ -75,13 +75,14 @@ class SearchViewModel(
     }
 
     fun selectCurrency(currency: Currency) {
-        when(currenciesMenuMode) {
+        when (currenciesMenuMode) {
             Direction.IN -> {
                 _currencyIn.value = currency
             }
             Direction.OUT -> {
                 _currencyOut.value = currency
             }
+            else -> {}
         }
 
         _enableConfirmBtn.value = currencyIn.value != null

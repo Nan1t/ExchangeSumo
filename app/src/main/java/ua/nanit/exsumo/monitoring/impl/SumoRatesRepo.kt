@@ -28,7 +28,7 @@ class SumoRatesRepo : RatesRepo {
                 ?.text()
                 ?.substring(3)
                 ?.toDoubleOrNull()
-            val fund = row.selectFirst("td.cell-rezerv")
+            val fund = row.selectFirst("td.cell-rezerv .txt-reserv + span")
                 ?.text()
                 ?.replace(" ", "")
                 ?.toDoubleOrNull()
